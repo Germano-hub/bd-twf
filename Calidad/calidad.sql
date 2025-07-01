@@ -1,0 +1,2508 @@
+DROP DATABASE IF EXISTS bdCalidad;
+CREATE DATABASE bdCalidad;
+USE bdCalidad;
+
+CREATE TABLE operador(
+	cod_ope CHAR(5) NOT NULL,
+	nombre_ope VARCHAR(20) NOT NULL,
+	PRIMARY KEY (cod_ope)
+);
+
+INSERT INTO operador VALUES ("CSU", "Cencosud");
+INSERT INTO operador VALUES ("PPG", "Papagallo");
+
+CREATE TABLE cliente(
+	cod_cli CHAR(5) NOT NULL,
+	nombre_cli VARCHAR(20) NOT NULL,
+	PRIMARY KEY (cod_cli)
+);
+
+INSERT INTO cliente VALUES ("AIVR", "AGROINVER");
+INSERT INTO cliente VALUES ("CSUR", "CENTRO SUR");
+
+CREATE TABLE ruta(
+	cod_ruta CHAR(5) NOT NULL,
+	nombre_ruta VARCHAR(20) NULL,
+	PRIMARY KEY (cod_ruta)
+);
+
+INSERT INTO ruta (cod_ruta) VALUES ("DTO");
+INSERT INTO ruta (cod_ruta) VALUES ("GRU");
+INSERT INTO ruta (cod_ruta) VALUES ("SCL");
+
+CREATE TABLE aero (
+	cod_aero CHAR(5) NOT NULL,
+	aerolinea VARCHAR(20) NOT NULL,
+	PRIMARY KEY(cod_aero)
+);
+
+INSERT INTO aero VALUES ("ARP", "AIR EUROPA");
+INSERT INTO aero VALUES ("IBA", "IBERIA");
+INSERT INTO aero VALUES ("LAN", "LAN");
+INSERT INTO aero VALUES ("PLT", "PLUS ULTRA");
+
+CREATE TABLE ag (
+	cod_ag CHAR(4) NOT NULL,
+	descripcion VARCHAR(20) NULL,
+	PRIMARY KEY (cod_ag)
+);
+
+INSERT INTO ag (cod_ag) VALUES ("CPX");
+INSERT INTO ag (cod_ag) VALUES ("HPL");
+INSERT INTO ag (cod_ag) VALUES ("NWT");
+INSERT INTO ag (cod_ag) VALUES ("SMT");
+INSERT INTO ag (cod_ag) VALUES ("TRS");
+
+CREATE TABLE despacho_cliente (
+	cod_descli CHAR(10) NOT NULL,
+	cod_cli CHAR(5) NOT NULL,
+	PRIMARY KEY (cod_descli),
+	FOREIGN KEY (cod_cli) REFERENCES cliente(cod_cli)
+);
+
+INSERT INTO despacho_cliente VALUES 
+('AIVR001', 'AIVR'),
+('AIVR002', 'AIVR'),
+('AIVR003', 'AIVR'),
+('AIVR004', 'AIVR'),
+('AIVR005', 'AIVR'),
+('AIVR006', 'AIVR'),
+('AIVR007', 'AIVR'),
+('CSUR001', 'CSUR'),
+('AIVR008', 'AIVR'),
+('AIVR009', 'AIVR'),
+('AIVR010', 'AIVR'),
+('CSUR002', 'CSUR'),
+('AIVR011', 'AIVR'),
+('CSUR003', 'CSUR'),
+('AIVR012', 'AIVR'),
+('AIVR013', 'AIVR'),
+('CSUR004', 'CSUR'),
+('AIVR014', 'AIVR'),
+('AIVR015', 'AIVR'),
+('CSUR005', 'CSUR'),
+('AIVR016', 'AIVR'),
+('AIVR017', 'AIVR'),
+('CSUR006', 'CSUR'),
+('AIVR018', 'AIVR'),
+('CSUR007', 'CSUR'),
+('AIVR019', 'AIVR'),
+('AIVR020', 'AIVR'),
+('AIVR021', 'AIVR'),
+('AIVR022', 'AIVR'),
+('CSUR008', 'CSUR'),
+('AIVR023', 'AIVR'),
+('AIVR024', 'AIVR'),
+('AIVR025', 'AIVR'),
+('AIVR026', 'AIVR'),
+('AIVR027', 'AIVR'),
+('CSUR009', 'CSUR'),
+('AIVR028', 'AIVR'),
+('AIVR029', 'AIVR'),
+('CSUR010', 'CSUR'),
+('CSUR011', 'CSUR'),
+('CSUR012', 'CSUR'),
+('AIVR030', 'AIVR'),
+('AIVR031', 'AIVR'),
+('CSUR013', 'CSUR'),
+('CSUR014', 'CSUR'),
+('AIVR032', 'AIVR'),
+('AIVR033', 'AIVR'),
+('AIVR034', 'AIVR'),
+('CSUR015', 'CSUR'),
+('CSUR016', 'CSUR'),
+('AIVR035', 'AIVR'),
+('CSUR017', 'CSUR'),
+('AIVR036', 'AIVR'),
+('CSUR018', 'CSUR'),
+('AIVR037', 'AIVR'),
+('CSUR019', 'CSUR'),
+('CSUR020', 'CSUR'),
+('CSUR021', 'CSUR'),
+('AIVR038', 'AIVR'),
+('AIVR039', 'AIVR'),
+('AIVR040', 'AIVR'),
+('CSUR022', 'CSUR'),
+('CSUR023', 'CSUR'),
+('AIVR041', 'AIVR'),
+('AIVR042', 'AIVR'),
+('AIVR043', 'AIVR'),
+('CSUR024', 'CSUR'),
+('CSUR025', 'CSUR'),
+('CSUR026', 'CSUR'),
+('CSUR027', 'CSUR'),
+('AIVR044', 'AIVR'),
+('AIVR045', 'AIVR'),
+('AIVR046', 'AIVR'),
+('AIVR047', 'AIVR'),
+('CSUR028', 'CSUR'),
+('CSUR029', 'CSUR'),
+('CSUR030', 'CSUR'),
+('CSUR031', 'CSUR'),
+('AIVR048', 'AIVR'),
+('AIVR049', 'AIVR'),
+('AIVR050', 'AIVR'),
+('AIVR051', 'AIVR'),
+('AIVR052', 'AIVR'),
+('AIVR053', 'AIVR'),
+('CSUR032', 'CSUR'),
+('CSUR033', 'CSUR'),
+('CSUR034', 'CSUR'),
+('CSUR035', 'CSUR'),
+('AIVR054', 'AIVR'),
+('AIVR055', 'AIVR'),
+('AIVR056', 'AIVR'),
+('AIVR057', 'AIVR'),
+('CSUR036', 'CSUR'),
+('AIVR058', 'AIVR'),
+('CSUR037', 'CSUR'),
+('AIVR059', 'AIVR'),
+('CSUR038', 'CSUR'),
+('AIVR060', 'AIVR'),
+('AIVR061', 'AIVR'),
+('CSUR039', 'CSUR'),
+('CSUR040', 'CSUR'),
+('CSUR041', 'CSUR'),
+('AIVR062', 'AIVR'),
+('AIVR063', 'AIVR'),
+('AIVR064', 'AIVR'),
+('AIVR065', 'AIVR'),
+('CSUR042', 'CSUR'),
+('AIVR066', 'AIVR'),
+('CSUR043', 'CSUR'),
+('AIVR067', 'AIVR'),
+('AIVR068', 'AIVR'),
+('AIVR069', 'AIVR'),
+('AIVR070', 'AIVR'),
+('CSUR044', 'CSUR'),
+('CSUR045', 'CSUR'),
+('CSUR046', 'CSUR'),
+('CSUR047', 'CSUR'),
+('AIVR071', 'AIVR'),
+('CSUR048', 'CSUR'),
+('AIVR072', 'AIVR'),
+('AIVR073', 'AIVR'),
+('AIVR074', 'AIVR'),
+('AIVR075', 'AIVR'),
+('AIVR076', 'AIVR'),
+('CSUR049', 'CSUR'),
+('AIVR077', 'AIVR'),
+('AIVR078', 'AIVR'),
+('CSUR050', 'CSUR');
+
+CREATE TABLE packer (
+	cod_packer CHAR(5) NOT NULL,
+	nombre_packer VARCHAR(25) NOT NULL,
+	precio_mayor_5 NUMERIC(3,2) NOT NULL,
+	precio_menor_5 NUMERIC(3,2) NOT NULL,
+	dam BOOLEAN NOT NULL,
+	ceo BOOLEAN NOT NULL,
+	PRIMARY KEY (cod_packer)
+);
+
+INSERT INTO packer VALUES
+('AGRI', 'AGRIFER', 1.2, 0.6, false, false),
+('AGRO', 'AGROKASA', 0.6, 0.3, true, false),
+('AGGS', 'AGRO. G&S', 1.2, 0.6, true, true),
+('FLOR', 'FLORIDA BLANCA', 1.2, 0.6, true, false),
+('PRIM', 'PRIME EXPORT', 1.2, 0.6, true, true),
+('SFER', 'SAN FERNANDO', 1.2, 0.6, true, false),
+('TAEX', 'TA EXPORT', 0.6, 0.3, true, true),
+('HUAR', 'HUARMEY', 1.2, 0.6, true, true),
+('AIPR', 'AGROINPER', 1.2, 0.6, true, true),
+('PEPA', 'PEPAS', 1.2, 0.6, true, true),
+('PRTI', 'PRIME TIME', 0.6, 0.3, true, true),
+('TWF', 'TWF', 1.2, 0.6, true, true),
+('COMP', 'COMPOSITAN', 1.2, 0.6, true, true),
+('DANP', 'DANPER', 1.2, 0.6, false, false),
+('MOGR', 'MOCHE GROWER', 0.6, 0.3, true, true),
+('TALS', 'TALSA', 1.2, 0.6, true, true),
+('VISA', 'VITA SANA', 1.2, 0.6, true, true),
+('MEZC', 'MEZCU', 0.6, 0.3, true, true),
+('AGDC', 'AGRO. D&C', 1.2, 0.6, false, false),
+('GOFR', 'GOLDEN FRUIT', 0.6, 0.3, true, true),
+('PEFO', 'PERU FOODS', 1.2, 0.6, true, true),
+('BETA', 'BETA', 0.6, 0.3, true, false),
+('CEPR', 'CERRO PRIETO', 1.2, 0.6, true, false),
+('CYNA', 'CYNARA', 0.3, 0.3, true, true);
+
+CREATE TABLE despacho_packer (
+	cod_despac CHAR(10) NOT NULL,
+	cod_packer CHAR(5) NOT NULL,
+	PRIMARY KEY (cod_despac),
+	FOREIGN KEY (cod_packer) REFERENCES packer(cod_packer)
+);
+
+INSERT INTO despacho_packer VALUES
+('PER001', 'PEFO'),
+('PER002', 'PEFO'),
+('PER003', 'PEFO'),
+('PER004', 'PEFO'),
+('PER005', 'PEFO'),
+('PER006', 'PEFO'),
+('PER007', 'PEFO'),
+('FLO001', 'FLOR'),
+('PEP001', 'PEPA'),
+('PEP002', 'PEPA'),
+('PER008', 'PEFO'),
+('FLO002', 'FLOR'),
+('PER009', 'PEFO'),
+('FLO003', 'FLOR'),
+('PER010', 'PEFO'),
+('PER011', 'PEFO'),
+('FLO004', 'FLOR'),
+('PEP003', 'PEPA'),
+('PER012', 'PEFO'),
+('DAN001', 'DANP'),
+('PER013', 'PEFO'),
+('PEP004', 'PEPA'),
+('FLO005', 'FLOR'),
+('PER014', 'PEFO'),
+('DAN002', 'DANP'),
+('PER015', 'PEFO'),
+('PEP005', 'PEPA'),
+('PER016', 'PEFO'),
+('PER017', 'PEFO'),
+('DAN003', 'DANP'),
+('PER018', 'PEFO'),
+('PEP006', 'PEPA'),
+('AGP001', 'AIPR'),
+('PER019', 'PEFO'),
+('PER020', 'PEFO'),
+('FLO006', 'FLOR'),
+('PER021', 'PEFO'),
+('PER022', 'PEFO'),
+('TWF001', 'TWF'),
+('TWF002', 'TWF'),
+('VIT001', 'VISA'),
+('PEP007', 'PEPA'),
+('AGP002', 'AIPR'),
+('DAN004', 'DANP'),
+('MOG001', 'MOGR'),
+('D&C001', 'AGDC'),
+('PER023', 'PEFO'),
+('PEP008', 'PEPA'),
+('DAN005', 'DANP'),
+('DAN006', 'DANP'),
+('BET001', 'BETA'),
+('DAN007', 'DANP'),
+('PER024', 'PEFO'),
+('DAN008', 'DANP'),
+('PER025', 'PEFO'),
+('TWF003', 'TWF'),
+('DAN009', 'DANP'),
+('VIT002', 'VISA'),
+('AGP003', 'AIPR'),
+('BET002', 'BETA'),
+('PEP009', 'PEPA'),
+('DAN010', 'DANP'),
+('DAN011', 'DANP'),
+('BET003', 'BETA'),
+('D&C002', 'AGDC'),
+('PER026', 'PEFO'),
+('MOG002', 'MOGR'),
+('TWF004', 'TWF'),
+('TWF005', 'TWF'),
+('VIT003', 'VISA'),
+('PEP010', 'PEPA'),
+('AGP004', 'AIPR'),
+('PEP011', 'PEPA'),
+('BET004', 'BETA'),
+('MOG003', 'MOGR'),
+('DAN012', 'DANP'),
+('TWF006', 'TWF'),
+('FLO007', 'FLOR'),
+('PER027', 'PEFO'),
+('PER028', 'PEFO'),
+('PER029', 'PEFO'),
+('PER030', 'PEFO'),
+('PRI001', 'PRIM'),
+('PEP012', 'PEPA'),
+('MOG004', 'MOGR'),
+('DAN013', 'DANP'),
+('FLO008', 'FLOR'),
+('VIT004', 'VISA'),
+('BET005', 'BETA'),
+('BET006', 'BETA'),
+('BET007', 'BETA'),
+('BET008', 'BETA'),
+('DAN014', 'DANP'),
+('AGP005', 'AIPR'),
+('DAN015', 'DANP'),
+('PRI002', 'PRIM'),
+('DAN016', 'DANP'),
+('PER031', 'PEFO'),
+('PER032', 'PEFO'),
+('TWF007', 'TWF'),
+('DAN017', 'DANP'),
+('FLO009', 'FLOR'),
+('D&C003', 'AGDC'),
+('PEP013', 'PEPA'),
+('PER033', 'PEFO'),
+('AGP006', 'AIPR'),
+('FLO010', 'FLOR'),
+('BET009', 'BETA'),
+('DAN018', 'DANP'),
+('PER034', 'PEFO'),
+('PER035', 'PEFO'),
+('BET011', 'BETA'),
+('PER036', 'PEFO'),
+('MOG005', 'MOGR'),
+('VIT005', 'VISA'),
+('DAN019', 'DANP'),
+('DAN020', 'DANP'),
+('BET010', 'BETA'),
+('FLO011', 'FLOR'),
+('PEP014', 'PEPA'),
+('PER037', 'PEFO'),
+('PER038', 'PEFO'),
+('PER039', 'PEFO'),
+('HUA001', 'HUAR'),
+('DAN021', 'DANP'),
+('PER040', 'PEFO'),
+('PER041', 'PEFO'),
+('FLO012', 'FLOR');
+
+CREATE TABLE operacion (
+	id_operacion CHAR(20) NOT NULL,
+	n_embarcacion INT NOT NULL AUTO_INCREMENT,
+	cod_ope CHAR(5) NOT NULL,
+	camp VARCHAR(10) NOT NULL,
+	mes VARCHAR(10) NOT NULL,
+	cod_descli CHAR(10) NOT NULL,
+	cod_despac CHAR(10) NOT NULL,
+	destino VARCHAR(10) NOT NULL,
+	cod_ag CHAR(5) NOT NULL,
+	aero1 VARCHAR(20) NOT NULL,
+	cod_aero CHAR(5) NOT NULL,
+	cod_ruta CHAR(5) NOT NULL,
+	awb CHAR(15) NOT NULL,
+	hawb CHAR(15) NULL,
+	total_kg NUMERIC(6,2) NOT NULL,
+	tot_flete_inicial NUMERIC(6,2) NOT NULL,
+	n_nc INT DEFAULT 0 NULL,
+	total_nc NUMERIC(5,2) DEFAULT 0 NULL,
+	eta_lima DATE NULL,
+	hora TIME NULL,
+	temperatura_i NUMERIC(4,2) NULL,
+	etd_lima DATE NULL,
+	conex DATE NULL,
+	eta_dest DATE NOT NULL,
+	temperatura_f NUMERIC(4,2) NULL,
+    control_calidad_f DATE NULL,
+	PRIMARY KEY (n_embarcacion),
+	FOREIGN KEY (cod_ope) REFERENCES operador(cod_ope),
+	FOREIGN KEY (cod_descli) REFERENCES despacho_cliente(cod_descli),
+	FOREIGN KEY (cod_despac) REFERENCES despacho_packer(cod_despac),
+	FOREIGN KEY (cod_ag) REFERENCES ag(cod_ag),
+	FOREIGN KEY (cod_aero) REFERENCES aero(cod_aero),
+	FOREIGN KEY (cod_ruta) REFERENCES ruta(cod_ruta)
+)AUTO_INCREMENT=1;
+
+INSERT INTO operacion (
+  id_operacion, cod_ope, camp, mes, cod_descli, cod_despac, destino, cod_ag, aero1, cod_aero, cod_ruta, awb, hawb, 
+  total_kg, tot_flete_inicial, n_nc, total_nc, eta_lima, hora, temperatura_i, etd_lima, conex, eta_dest, temperatura_f, control_calidad_f
+) VALUES 
+('075-66527764', 'PPG', 'CAMP.', 'MAYO', 'AIVR001', 'PER001', 'MAD', 'HPL', 'DIRECTOS', 'IBA', 'DTO', '075-66527764', null, 1163, 1709.98, 0, 0, '2025-05-01', '10:41', 3.6, '2025-05-02', null, '2025-05-03', 11.2, '2025-05-07'),
+('145-90639500', 'PPG', 'CAMP.', 'MAYO', 'AIVR002', 'PER002', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-90639500', null, 1173, 2052.75, 0, 0, '2025-05-03', '17:07', 5.7, '2025-05-04', null, '2025-05-05', 11.9, '2025-05-07'),
+('075-66526972', 'PPG', 'CAMP.', 'MAYO', 'AIVR003', 'PER003', 'MAD', 'HPL', 'DIRECTOS', 'IBA', 'DTO', '075-66526972', null, 1183, 1691.86, 0, 0, '2025-05-08', '10:27', 4.1, '2025-05-08', null, '2025-05-09', 12.1, null),
+('075-66527893', 'PPG', 'CAMP.', 'MAYO', 'AIVR004', 'PER004', 'MAD', 'HPL', 'DIRECTOS', 'IBA', 'DTO', '075-66527893', null, 1173, 1665.93, 0, 0, '2025-05-14', '05:19', 4, '2025-05-15', null, '2025-05-16', 14.2, null),
+('075-66527915', 'PPG', 'CAMP.', 'MAYO', 'AIVR005', 'PER005', 'MAD', 'HPL', 'DIRECTOS', 'IBA', 'DTO', '075-66527915', null, 1162, 1650.42, 0, 0, '2025-05-16', '04:38', 5.4, '2025-05-16', null, '2025-05-17', 8.6, null),
+('145-90639496', 'PPG', 'CAMP.', 'MAYO', 'AIVR006', 'PER006', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-90639496', null, 1160, 1693.6, 0, 0, '2025-05-18', '11:50', 5.3, '2025-05-18', null, '2025-05-19', 11.8, '2025-05-20'),
+('145-90690526', 'PPG', 'CAMP.', 'MAYO', 'AIVR007', 'PER007', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-90690526', null, 1167, 1703.82, 0, 0, '2025-05-21', '16:32', 3.2, '2025-05-21', null, '2025-05-22', 17.4, '2025-05-23'),
+('145-90639566', 'PPG', 'CAMP.', 'MAYO', 'CSUR001', 'FLO001', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-90639566', null, 1173, 1712.58, 0, 0, '2025-05-22', '02:50', 3.9, '2025-05-22', null, '2025-05-23', 13.8, '2025-05-24'),
+('145-90690843', 'PPG', 'CAMP.', 'MAYO', 'AIVR008', 'PEP001', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-90690843', null, 3495, 5102.7, 0, 0, '2025-05-21', '21:55', 2.6, '2025-05-22', null, '2025-05-23', 13.8, '2025-05-24'),
+('075-66528593', 'PPG', 'CAMP.', 'MAYO', 'AIVR009', 'PEP002', 'MAD', 'HPL', 'DIRECTOS', 'IBA', 'DTO', '075-66528593', null, 3498, 4909.2, 0, 0, '2025-05-23', '11:55', 3.1, '2025-05-23', null, '2025-05-24', 11.6, '2025-05-26'),
+('996-13800242', 'PPG', 'CAMP.', 'MAYO', 'AIVR010', 'PER008', 'MAD', 'HPL', 'DIRECTOS', 'ARP', 'DTO', '996-13800242', null, 1745, 2328.5, 0, 0, '2025-05-23', '16:56', 3.7, '2025-05-24', null, '2025-05-25', 13.1, '2025-05-26'),
+('075-66528545', 'PPG', 'CAMP.', 'MAYO', 'CSUR002', 'FLO002', 'MAD', 'HPL', 'DIRECTOS', 'IBA', 'DTO', '075-66528545', null, 588, 835.2, 0, 0, '2025-05-24', '03:55', 4.3, '2025-05-24', null, '2025-05-25', 12.7, null),
+('145-90639614', 'PPG', 'CAMP.', 'MAYO', 'AIVR011', 'PER009', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-90639614', null, 1158, 1690.68, 0, 0, '2025-05-24', '17:53', 3.8, '2025-05-24', null, '2025-05-25', 12.9, '2025-05-26'),
+('075-66528523', 'PPG', 'CAMP.', 'MAYO', 'CSUR003', 'FLO003', 'MAD', 'HPL', 'DIRECTOS', 'IBA', 'DTO', '075-66528523', null, 893, 1172.9, 0, 0, '2025-05-27', '03:24', 3.7, '2025-05-27', null, '2025-05-28', 10.8, '2025-05-29'),
+('145-90993276', 'PPG', 'CAMP.', 'MAYO', 'AIVR012', 'PER010', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-90993276', null, 2941, 4293.86, 0, 0, '2025-05-27', '12:03', 3.7, '2025-05-27', null, '2025-05-28', 8.4, '2025-05-29'),
+('145-90690644', 'PPG', 'CAMP.', 'MAYO', 'AIVR013', 'PER011', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-90690644', null, 2921, 4264.66, 0, 0, '2025-05-28', '13:56', 4.4, '2025-05-28', null, '2025-05-29', 11.3, '2025-05-30'),
+('663-00296236', 'PPG', 'CAMP.', 'MAYO', 'CSUR004', 'FLO004', 'MAD', 'HPL', 'DIRECTOS', 'PLT', 'DTO', '663-00296236', null, 601, 716.15, 0, 0, '2025-05-29', '05:17', 4.6, '2025-05-29', null, '2025-05-30', 13.9, '2025-06-02'),
+('145-90690806', 'PPG', 'CAMP.', 'MAYO', 'AIVR014', 'PEP003', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-90690806', null, 3529, 5152.34, 0, 0, '2025-05-28', '19:57', 3.4, '2025-05-29', null, '2025-05-30', 10.2, '2025-05-31'),
+('145-11714813', 'PPG', 'CAMP.', 'MAYO', 'AIVR015', 'PER012', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-11714813', null, 2930, 4277.8, 0, 0, '2025-05-29', '19:27', 3.7, '2025-05-30', null, '2025-05-31', 9.3, '2025-06-02'),
+('075-66528615', 'PPG', 'CAMP.', 'MAYO', 'CSUR005', 'DAN001', 'MAD', 'HPL', 'DIRECTOS', 'IBA', 'DTO', '075-66528615', null, 1174, 1139.04, 0, 0, '2025-05-30', '12:31', 2.3, '2025-05-30', null, '2025-05-31', 9.9, '2025-06-02'),
+('145-11714861', 'PPG', 'CAMP.', 'MAYO', 'AIVR016', 'PER013', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-11714861', null, 2937, 3700.62, 0, 0, '2025-05-30', '17:43', 3.6, '2025-05-30', null, '2025-05-31', 10.9, '2025-06-02'),
+('075-66528641', 'PPG', 'CAMP.', 'MAYO', 'AIVR017', 'PEP004', 'MAD', 'HPL', 'DIRECTOS', 'IBA', 'DTO', '075-66528641', null, 3500, 3372, 0, 0, '2025-05-30', '22:36', 3.2, '2025-05-31', null, '2025-06-01', 12.9, '2025-06-02'),
+('075-66528696', 'PPG', 'CAMP.', 'MAYO', 'CSUR006', 'FLO005', 'MAD', 'HPL', 'DIRECTOS', 'IBA', 'DTO', '075-66528696', null, 1188, 1152.48, 0, 0, '2025-05-31', '10:48', 3.7, '2025-05-31', null, '2025-06-01', 10.8, '2025-06-02'),
+('075-66528652', 'PPG', 'CAMP.', 'JUNIO', 'AIVR018', 'PER014', 'MAD', 'HPL', 'DIRECTOS', 'IBA', 'DTO', '075-66528652', null, 2947, 2841.12, 0, 0, '2025-05-31', '19:19', 4.2, '2025-06-01', null, '2025-06-02', 12.3, '2025-06-03'),
+('145-11714791', 'PPG', 'CAMP.', 'JUNIO', 'CSUR007', 'DAN002', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-11714791', null, 2370, 2986.2, 0, 0, '2025-06-01', '10:57', 3.1, '2025-06-01', null, '2025-06-02', 10.8, null),
+('075-66528685', 'PPG', 'CAMP.', 'JUNIO', 'AIVR019', 'PER015', 'MAD', 'HPL', 'DIRECTOS', 'IBA', 'DTO', '075-66528685', null, 2933, 2827.68, 0, 0, '2025-06-01', '18:31', 3.8, '2025-06-02', null, '2025-06-03', 8.7, '2025-06-04'),
+('145-90690504', 'PPG', 'CAMP.', 'JUNIO', 'AIVR020', 'PEP005', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-90690504', null, 2931, 3693.06, 0, 0, '2025-06-01', '20:17', 2.4, '2025-06-02', null, '2025-06-03', 12.8, '2025-06-04'),
+('145-11714802', 'PPG', 'CAMP.', 'JUNIO', 'AIVR021', 'PER016', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-11714802', null, 2933, 3695.58, 0, 0, '2025-06-02', '12:55', 4.4, '2025-06-02', null, '2025-06-03', 12.9, '2025-06-04'),
+('145-11714776', 'PPG', 'CAMP.', 'JUNIO', 'AIVR022', 'PER017', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-11714776', null, 2952, 3719.52, 0, 0, '2025-06-02', '12:55', 4.4, '2025-06-02', null, '2025-06-03', 13.2, '2025-06-04'),
+('145-11714964', 'PPG', 'CAMP.', 'JUNIO', 'CSUR008', 'DAN003', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-11714964', null, 1189, 1498.14, 0, 0, '2025-06-03', '14:25', 4.1, '2025-06-03', null, '2025-06-04', 9.1, null),
+('075-66530085', 'PPG', 'CAMP.', 'JUNIO', 'AIVR023', 'PER018', 'MAD', 'HPL', 'DIRECTOS', 'IBA', 'DTO', '075-66530085', null, 2956, 2849.76, 0, 0, '2025-06-03', '18:40', 4.9, '2025-06-04', null, '2025-06-05', 12.8, '2025-06-06'),
+('075-66528663', 'PPG', 'CAMP.', 'JUNIO', 'AIVR024', 'PEP006', 'MAD', 'HPL', 'DIRECTOS', 'IBA', 'DTO', '075-66528663', null, 3515, 3386.4, 0, 0, '2025-06-04', '18:19', 2.9, '2025-06-05', null, '2025-06-06', 10.8, '2025-06-07'),
+('663-00296214', 'PPG', 'CAMP.', 'JUNIO', 'AIVR025', 'AGP001', 'MAD', 'HPL', 'DIRECTOS', 'PLT', 'DTO', '663-00296214', null, 1168, 1146.28, 0, 0, '2025-06-05', '00:01', 3.3, '2025-06-05', null, '2025-06-06', 10.2, '2025-06-08'),
+('145-11714986', 'PPG', 'CAMP.', 'JUNIO', 'AIVR026', 'PER019', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-11714986', null, 2970, 3742.2, 0, 0, '2025-06-04', '16:16', 3.2, '2025-06-05', null, '2025-06-06', 13.5, '2025-06-07'),
+('145-11715001', 'PPG', 'CAMP.', 'JUNIO', 'AIVR027', 'PER020', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-11715001', null, 2964, 3734.64, 0, 0, '2025-06-04', '16:16', 3.7, '2025-06-05', null, '2025-06-06', 12.1, '2025-06-07'),
+('663-00296240', 'PPG', 'CAMP.', 'JUNIO', 'CSUR009', 'FLO006', 'MAD', 'HPL', 'DIRECTOS', 'PLT', 'DTO', '663-00296240', null, 957, 943.72, 0, 0, '2025-06-05', '05:10', 4.5, '2025-06-05', null, '2025-06-06', 11.8, '2025-06-09'),
+('075-66530052', 'PPG', 'CAMP.', 'JUNIO', 'AIVR028', 'PER021', 'MAD', 'HPL', 'DIRECTOS', 'IBA', 'DTO', '075-66530052', null, 2968, 2861.28, 0, 0, '2025-06-05', '18:38', 4.1, '2025-06-06', null, '2025-06-07', 12.7, '2025-06-08'),
+('145-11715012', 'PPG', 'CAMP.', 'JUNIO', 'AIVR029', 'PER022', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-11715012', null, 2969, 3740.94, 0, 0, '2025-06-05', '18:38', 5.3, '2025-06-06', null, '2025-06-07', 10.4, '2025-06-08'),
+('075-66530133', 'PPG', 'CAMP.', 'JUNIO', 'CSUR010', 'TWF001', 'MAD', 'HPL', 'DIRECTOS', 'IBA', 'DTO', '075-66530133', null, 1134, 1100.64, 0, 0, '2025-06-06', '10:18', 3.7, '2025-06-06', null, '2025-06-07', 0, null),
+('075-66530122', 'PPG', 'CAMP.', 'JUNIO', 'CSUR011', 'TWF002', 'MAD', 'HPL', 'DIRECTOS', 'IBA', 'DTO', '075-66530122', null, 1129, 1095.84, 0, 0, '2025-06-06', '10:18', 3.6, '2025-06-06', null, '2025-06-07', 13.1, '2025-06-08'),
+('145-11715244', 'CSU', 'CAMP.', 'JUNIO', 'CSUR012', 'VIT001', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-11715244', null, 1171, 1475.46, 0, 0, '2025-06-06', '13:02', 5.1, '2025-06-06', null, '2025-06-07', 16.2, null),
+('075-66530111', 'PPG', 'CAMP.', 'JUNIO', 'AIVR030', 'PEP007', 'MAD', 'HPL', 'DIRECTOS', 'IBA', 'DTO', '075-66530111', null, 3540, 3410.4, 0, 0, '2025-06-06', '20:17', 3, '2025-06-07', null, '2025-06-08', 13.8, '2025-06-09'),
+('075-66530144', 'PPG', 'CAMP.', 'JUNIO', 'AIVR031', 'AGP002', 'MAD', 'HPL', 'DIRECTOS', 'IBA', 'DTO', '075-66530144', null, 1166, 1131.36, 0, 0, '2025-06-07', '01:58', 0, '2025-06-07', null, '2025-06-08', 11.2, '2025-06-09'),
+('075-66530063', 'PPG', 'CAMP.', 'JUNIO', 'CSUR013', 'DAN004', 'MAD', 'HPL', 'DIRECTOS', 'IBA', 'DTO', '075-66530063', null, 2379, 2295.84, 0, 0, '2025-06-07', '14:44', 5.1, '2025-06-07', null, '2025-06-08', 10.8, '2025-06-10'),
+('145-11715023', 'CSU', 'CAMP.', 'JUNIO', 'CSUR014', 'MOG001', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-11715023', null, 2957, 3725.82, 0, 0, '2025-06-07', '10:36', 4.4, '2025-06-07', null, '2025-06-08', 6.3, '2025-06-09'),
+('145-11715045', 'PPG', 'CAMP.', 'JUNIO', 'AIVR032', 'D&C001', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-11715045', null, 1155, 1455.3, 0, 0, '2025-06-07', '15:05', 5, '2025-06-08', null, '2025-06-09', 11.7, '2025-06-10'),
+('075-66530074', 'PPG', 'CAMP.', 'JUNIO', 'AIVR033', 'PER023', 'MAD', 'HPL', 'DIRECTOS', 'IBA', 'DTO', '075-66530074', null, 2952, 2845.92, 0, 0, '2025-06-07', '17:35', 3.8, '2025-06-08', null, '2025-06-09', 9.1, '2025-06-10'),
+('145-11715056', 'PPG', 'CAMP.', 'JUNIO', 'AIVR034', 'PEP008', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-11715056', null, 2917, 3675.42, 0, 0, '2025-06-08', '11:54', 2.5, '2025-06-08', null, '2025-06-09', 8.9, '2025-06-10'),
+('075-66530155', 'PPG', 'CAMP.', 'JUNIO', 'CSUR015', 'DAN005', 'MAD', 'HPL', 'DIRECTOS', 'IBA', 'DTO', '075-66530155', null, 1786, 1726.56, 0, 0, '2025-06-08', '13:50', 4.2, '2025-06-09', null, '2025-06-10', 10, '2025-06-11'),
+('145-11715082', 'PPG', 'CAMP.', 'JUNIO', 'CSUR016', 'DAN006', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-11715082', null, 2380, 2998.8, 0, 0, '2025-06-09', '13:31', 3.3, '2025-06-09', null, '2025-06-10', 11.5, '2025-06-11'),
+('075-66530170', 'CSU', 'CAMP.', 'JUNIO', 'AIVR035', 'BET001', 'MAD', 'HPL', 'DIRECTOS', 'IBA', 'DTO', '075-66530170', null, 2934, 5762.64, 0, 0, '2025-06-09', '22:38', 3.2, '2025-06-10', null, '2025-06-11', 10.2, null),
+('145-99777226', 'PPG', 'CAMP.', 'JUNIO', 'CSUR017', 'DAN007', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-99777226', null, 2360, 2973.6, 0, 0, '2025-06-10', '13:42', 4.2, '2025-06-10', null, '2025-06-11', 9, '2025-06-12'),
+('145-11715071', 'PPG', 'CAMP.', 'JUNIO', 'AIVR036', 'PER024', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-11715071', null, 2942, 3706.92, 0, 0, '2025-06-10', '16:53', 3.9, '2025-06-10', null, '2025-06-11', 9.9, '2025-06-13'),
+('075-66530203', 'PPG', 'CAMP.', 'JUNIO', 'CSUR018', 'DAN008', 'MAD', 'HPL', 'DIRECTOS', 'IBA', 'DTO', '075-66530203', null, 2343, 2261.28, 0, 0, '2025-06-10', '13:42', 2.8, '2025-06-11', null, '2025-06-12', 11.1, '2025-06-13'),
+('075-66530192', 'PPG', 'CAMP.', 'JUNIO', 'AIVR037', 'PER025', 'MAD', 'HPL', 'DIRECTOS', 'IBA', 'DTO', '075-66530192', null, 2954, 2847.84, 0, 0, '2025-06-10', '19:38', 4.5, '2025-06-11', null, '2025-06-12', 12, '2025-06-13'),
+('145-99777263', 'PPG', 'CAMP.', 'JUNIO', 'CSUR019', 'TWF003', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-99777263', null, 1123, 1414.98, 0, 0, '2025-06-10', '18:31', 4.6, '2025-06-11', null, '2025-06-12', 15.3, '2025-06-13'),
+('145-99777274', 'PPG', 'CAMP.', 'JUNIO', 'CSUR020', 'DAN009', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-99777274', null, 1770, 2230.2, 0, 0, '2025-06-11', '09:01', 3.3, '2025-06-11', null, '2025-06-12', 12.3, '2025-06-13'),
+('145-99777230', 'CSU', 'CAMP.', 'JUNIO', 'CSUR021', 'VIT002', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-99777230', null, 2348, 2958.48, 0, 0, '2025-06-11', '18:19', 5.3, '2025-06-12', null, '2025-06-13', 13.2, null),
+('145-99777300', 'PPG', 'CAMP.', 'JUNIO', 'AIVR038', 'AGP003', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-99777300', null, 2908, 3664.08, 0, 0, '2025-06-11', '22:52', 3.6, '2025-06-12', null, '2025-06-13', 10.2, '2025-06-14'),
+('145-99777285', 'CSU', 'CAMP.', 'JUNIO', 'AIVR039', 'BET002', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-99777285', null, 1742, 2194.92, 0, 0, '2025-06-12', '00:07', 2.3, '2025-06-12', null, '2025-06-13', 12.9, null),
+('996-13800286', 'PPG', 'CAMP.', 'JUNIO', 'AIVR040', 'PEP009', 'MAD', 'HPL', 'DIRECTOS', 'ARP', 'DTO', '996-13800286', null, 3484, 3718.2, 0, 0, '2025-06-11', '15:32', 3.6, '2025-06-13', null, '2025-06-14', 13.8, '2025-06-15'),
+('996-13800290', 'PPG', 'CAMP.', 'JUNIO', 'CSUR022', 'DAN010', 'MAD', 'HPL', 'DIRECTOS', 'ARP', 'DTO', '996-13800290', null, 2922, 3128.1, 0, 0, '2025-06-12', '14:32', 3.7, '2025-06-13', null, '2025-06-14', 13.6, '2025-06-15'),
+('075-66530763', 'PPG', 'CAMP.', 'JUNIO', 'CSUR023', 'DAN011', 'MAD', 'HPL', 'DIRECTOS', 'IBA', 'DTO', '075-66530763', null, 1778, 1718.88, 0, 0, '2025-06-12', '14:18', 2.8, '2025-06-13', null, '2025-06-14', 10, '2025-06-15'),
+('075-66530800', 'CSU', 'CAMP.', 'JUNIO', 'AIVR041', 'BET003', 'MAD', 'HPL', 'DIRECTOS', 'IBA', 'DTO', '075-66530800', null, 2916, 2811.36, 0, 0, '2025-06-12', '00:07', 2.9, '2025-06-13', null, '2025-06-14', 12.8, null),
+('075-66530774', 'PPG', 'CAMP.', 'JUNIO', 'AIVR042', 'D&C002', 'MAD', 'HPL', 'DIRECTOS', 'IBA', 'DTO', '075-66530774', null, 1141, 1107.36, 0, 0, '2025-06-12', '19:43', 2.3, '2025-06-13', null, '2025-06-14', 9.2, '2025-06-15'),
+('145-99777296', 'PPG', 'CAMP.', 'JUNIO', 'AIVR043', 'PER026', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-99777296', null, 2957, 3725.82, 0, 0, '2025-06-12', '16:39', 4.3, '2025-06-13', null, '2025-06-14', 8.8, '2025-06-15'),
+('145-99777311', 'CSU', 'CAMP.', 'JUNIO', 'CSUR024', 'MOG002', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-99777311', null, 2951, 3718.26, 0, 0, '2025-06-13', '07:59', 5, '2025-06-13', null, '2025-06-14', 9.4, '2025-06-15'),
+('145-11750992', 'PPG', 'CAMP.', 'JUNIO', 'CSUR025', 'TWF004', 'MAD', 'TRS', 'DIRECTOS', 'LAN', 'DTO', '145-11750992', null, 1118, 1408.68, 0, 0, '2025-06-13', '16:06', 3.1, '2025-06-13', null, '2025-06-14', 13.3, '2025-06-15'),
+('145-11751003', 'PPG', 'CAMP.', 'JUNIO', 'CSUR026', 'TWF005', 'MAD', 'TRS', 'DIRECTOS', 'LAN', 'DTO', '145-11751003', null, 1119, 1409.94, 0, 0, '2025-06-13', '16:06', 2.8, '2025-06-13', null, '2025-06-14', 12.8, '2025-06-15'),
+('996-13797534', 'CSU', 'CAMP.', 'JUNIO', 'CSUR027', 'VIT003', 'MAD', 'HPL', 'DIRECTOS', 'ARP', 'DTO', '996-13797534', null, 1171, 1289.55, 0, 0, '2025-06-13', '10:28', 4.3, '2025-06-14', null, '2025-06-15', 0, null),
+('996-13802110', 'PPG', 'CAMP.', 'JUNIO', 'AIVR044', 'PEP010', 'MAD', 'HPL', 'DIRECTOS', 'ARP', 'DTO', '996-13802110', null, 1761, 1909.05, 0, 0, '2025-06-13', '20:19', 2.7, '2025-06-14', null, '2025-06-15', 10.8, '2025-06-16'),
+('075-66530785', 'PPG', 'CAMP.', 'JUNIO', 'AIVR045', 'AGP004', 'MAD', 'HPL', 'DIRECTOS', 'IBA', 'DTO', '075-66530785', null, 2931, 2825.76, 0, 0, '2025-06-13', '23:39', 4.1, '2025-06-14', null, '2025-06-15', 0, '2025-06-16'),
+('075-66530811', 'PPG', 'CAMP.', 'JUNIO', 'AIVR046', 'PEP011', 'MAD', 'HPL', 'DIRECTOS', 'IBA', 'DTO', '075-66530811', null, 2914, 2809.44, 0, 0, '2025-06-13', '18:46', 2.7, '2025-06-14', null, '2025-06-15', 0, '2025-06-16'),
+('145-99777333', 'CSU', 'CAMP.', 'JUNIO', 'AIVR047', 'BET004', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-99777333', null, 2926, 3686.76, 0, 0, '2025-06-14', '10:33', 3, '2025-06-14', null, '2025-06-15', 10.2, null),
+('145-99777591', 'CSU', 'CAMP.', 'JUNIO', 'CSUR028', 'MOG003', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-99777591', null, 1968, 2479.68, 0, 0, '2025-06-14', '10:47', 4.6, '2025-06-14', null, '2025-06-15', 10.8, '2025-06-16'),
+('145-11747105', 'PPG', 'CAMP.', 'JUNIO', 'CSUR029', 'DAN012', 'MAD', 'TRS', 'DIRECTOS', 'LAN', 'DTO', '145-11747105', null, 2374, 2991.24, 0, 0, '2025-06-14', '16:17', 4.1, '2025-06-14', null, '2025-06-15', 11.6, '2025-06-16'),
+('145-11747186', 'PPG', 'CAMP.', 'JUNIO', 'CSUR030', 'TWF006', 'MAD', 'TRS', 'DIRECTOS', 'LAN', 'DTO', '145-11747186', null, 1118, 1408.68, 0, 0, '2025-06-14', '10:47', 4.6, '2025-06-14', null, '2025-06-15', 9.2, '2025-06-19'),
+('145-11747094', 'PPG', 'CAMP.', 'JUNIO', 'CSUR031', 'FLO007', 'MAD', 'TRS', 'DIRECTOS', 'LAN', 'DTO', '145-11747094', null, 1200, 1512, 0, 0, '2025-06-14', '10:42', 4.3, '2025-06-14', null, '2025-06-15', 10.1, '2025-06-17'),
+('075-66517430', 'PPG', 'CAMP.', 'JUNIO', 'AIVR048', 'PER027', 'MAD', 'CPX', 'DIRECTOS', 'IBA', 'DTO', '075-66517430', null, 2945, 3159.7, 0, 0, '2025-06-14', '20:08', 4.3, '2025-06-15', null, '2025-06-16', 11.3, '2025-06-17'),
+('996-13798956', 'PPG', 'CAMP.', 'JUNIO', 'AIVR049', 'PER028', 'MAD', 'SMT', 'DIRECTOS', 'ARP', 'DTO', '996-13798956', null, 2958, 2870.1, 0, 0, '2025-06-14', '20:08', 4, '2025-06-15', null, '2025-06-16', 12.8, '2025-06-18'),
+('075-66530822', 'PPG', 'CAMP.', 'JUNIO', 'AIVR050', 'PER029', 'MAD', 'HPL', 'DIRECTOS', 'IBA', 'DTO', '075-66530822', null, 2998, 2890.08, 0, 0, '2025-06-14', '16:44', 5.8, '2025-06-15', null, '2025-06-16', 11.6, '2025-06-17'),
+('145-99777355', 'PPG', 'CAMP.', 'JUNIO', 'AIVR051', 'PER030', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-99777355', null, 2947, 3713.22, 0, 0, '2025-06-14', '20:08', 4.4, '2025-06-15', null, '2025-06-16', 9.5, '2025-06-17'),
+('145-99777381', 'CSU', 'CAMP.', 'JUNIO', 'AIVR052', 'PRI001', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-99777381', null, 2918, 3676.68, 0, 0, '2025-06-14', '14:13', 3.8, '2025-06-16', null, '2025-06-17', 9.1, null),
+('075-66530844', 'PPG', 'CAMP.', 'JUNIO', 'AIVR053', 'PEP012', 'MAD', 'HPL', 'DIRECTOS', 'IBA', 'DTO', '075-66530844', null, 2908, 3239.88, 0, 0, '2025-06-14', '20:19', 2.6, '2025-06-16', null, '2025-06-17', 14.2, '2025-06-18'),
+('145-99777366', 'CSU', 'CAMP.', 'JUNIO', 'CSUR032', 'MOG004', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-99777366', null, 2955, 3723.3, 0, 0, '2025-06-15', '15:59', 5.2, '2025-06-16', null, '2025-06-17', 10.9, '2025-06-18'),
+('145-99777370', 'PPG', 'CAMP.', 'JUNIO', 'CSUR033', 'DAN013', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-99777370', null, 2358, 2971.08, 0, 0, '2025-06-15', '07:07', 3.2, '2025-06-17', null, '2025-06-18', 11.7, '2025-06-19'),
+('145-11160612', 'PPG', 'CAMP.', 'JUNIO', 'CSUR034', 'FLO008', 'MAD', 'TRS', 'DIRECTOS', 'LAN', 'DTO', '145-11160612', null, 1801, 2269.26, 0, 0, '2025-06-15', '23:09', 2.9, '2025-06-17', null, '2025-06-18', 13.9, '2025-06-19'),
+('145-11747142', 'CSU', 'CAMP.', 'JUNIO', 'CSUR035', 'VIT004', 'MAD', 'TRS', 'DIRECTOS', 'LAN', 'DTO', '145-11747142', null, 1175, 1480.5, 0, 0, '2025-06-16', '03:43', 4, '2025-06-17', null, '2025-06-18', 12.9, '2025-06-19'),
+('996-13798960', 'CSU', 'CAMP.', 'JUNIO', 'AIVR054', 'BET005', 'MAD', 'SMT', 'DIRECTOS', 'ARP', 'DTO', '996-13798960', null, 2910, 3261, 0, 0, '2025-06-14', '21:56', 3.4, '2025-06-17', null, '2025-06-18', 12.1, null),
+('075-66530796', 'CSU', 'CAMP.', 'JUNIO', 'AIVR055', 'BET006', 'MAD', 'HPL', 'DIRECTOS', 'IBA', 'DTO', '075-66530796', null, 2896, 3226.56, 0, 0, '2025-06-15', '22:11', 3.8, '2025-06-17', null, '2025-06-18', 11.6, null),
+('145-99777613', 'CSU', 'CAMP.', 'JUNIO', 'AIVR056', 'BET007', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-99777613', null, 1731, 2181.06, 0, 0, '2025-06-15', '22:11', 3.6, '2025-06-17', null, '2025-06-18', 12.5, null),
+('075-66530855', 'CSU', 'CAMP.', 'JUNIO', 'AIVR057', 'BET008', 'MAD', 'HPL', 'DIRECTOS', 'IBA', 'DTO', '075-66530855', null, 2911, 3243.21, 0, 0, '2025-06-17', '02:48', 4.4, '2025-06-17', null, '2025-06-18', 12.1, null),
+('145-90650781', 'PPG', 'CAMP.', 'JUNIO', 'CSUR036', 'DAN014', 'MAD', 'SMT', 'DIRECTOS', 'LAN', 'DTO', '145-90650781', null, 2390, 2743.4, 0, 0, '2025-06-16', '14:24', 3.7, '2025-06-17', null, '2025-06-18', 13, '2025-06-20'),
+('145-99777624', 'PPG', 'CAMP.', 'JUNIO', 'AIVR058', 'AGP005', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-99777624', null, 2897, 3650.22, 0, 0, '2025-06-17', '00:05', 4.4, '2025-06-18', null, '2025-06-19', 12.6, '2025-06-20'),
+('996-13801922', 'PPG', 'CAMP.', 'JUNIO', 'CSUR037', 'DAN015', 'MAD', 'NWT', 'DIRECTOS', 'ARP', 'DTO', '996-13801922', null, 2368, 2664.8, 0, 0, '2025-06-16', '14:24', 4.2, '2025-06-18', null, '2025-06-19', 12.8, '2025-06-20'),
+('145-11163412', 'CSU', 'CAMP.', 'JUNIO', 'AIVR059', 'PRI002', 'MAD', 'SMT', 'LAN', 'LAN', 'SCL', '145-11163412', null, 1747, 1921.7, 0, 0, '2025-06-17', '15:04', 5.6, '2025-06-18', '2025-06-18', '2025-06-19', 12.2, '2025-06-20'),
+('145-99777440', 'PPG', 'CAMP.', 'JUNIO', 'CSUR038', 'DAN016', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-99777440', null, 2932, 3694.32, 0, 0, '2025-06-17', '11:43', 2.5, '2025-06-18', null, '2025-06-19', 10.5, '2025-06-20'),
+('145-11160741', 'PPG', 'CAMP.', 'JUNIO', 'AIVR060', 'PER031', 'MAD', 'TRS', 'LAN', 'LAN', 'SCL', '145-11160741', null, 2929, 3690.54, 0, 0, '2025-06-17', '19:10', 4.9, '2025-06-18', '2025-06-18', '2025-06-19', 10.8, '2025-06-20'),
+('075-66530866', 'PPG', 'CAMP.', 'JUNIO', 'AIVR061', 'PER032', 'MAD', 'HPL', 'DIRECTOS', 'IBA', 'DTO', '075-66530866', null, 2938, 3273.18, 0, 0, '2025-06-17', '19:10', 4.9, '2025-06-18', null, '2025-06-19', 7.7, '2025-06-20'),
+('145-11163423', 'PPG', 'CAMP.', 'JUNIO', 'CSUR039', 'TWF007', 'MAD', 'SMT', 'LAN', 'LAN', 'GRU ', '145-11163423', null, 1121, 1233.1, 0, 0, '2025-06-17', '15:04', 2.9, '2025-06-18', '2025-06-18', '2025-06-19', 12.5, '2025-06-20'),
+('145-91032756', 'PPG', 'CAMP.', 'JUNIO', 'CSUR040', 'DAN017', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-91032756', null, 2380, 2998.8, 0, 0, '2025-06-18', '14:14', 3.5, '2025-06-18', null, '2025-06-19', 13.6, '2025-06-20'),
+('145-99777543', 'PPG', 'CAMP.', 'JUNIO', 'CSUR041', 'FLO009', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-99777543', null, 1808, 2278.08, 0, 0, '2025-06-18', '04:29', 3.7, '2025-06-18', null, '2025-06-19', 13.9, '2025-06-20'),
+('145-99777436', 'PPG', 'CAMP.', 'JUNIO', 'AIVR062', 'D&C003', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-99777436', null, 1163, 1465.38, 0, 0, '2025-06-17', '15:24', 3.6, '2025-06-18', null, '2025-06-19', 10, '2025-06-20'),
+('996-13802121', 'PPG', 'CAMP.', 'JUNIO', 'AIVR063', 'PEP013', 'MAD', 'HPL', 'DIRECTOS', 'ARP', 'DTO', '996-13802121', null, 2924, 3276.4, 0, 0, '2025-06-17', '19:55', 3.4, '2025-06-19', null, '2025-06-20', 11.6, '2025-06-21'),
+('996-13801933', 'PPG', 'CAMP.', 'JUNIO', 'AIVR064', 'PER033', 'MAD', 'NWT', 'DIRECTOS', 'ARP', 'DTO', '996-13801933', null, 2948, 3202.8, 0, 0, '2025-06-18', '19:24', 3, '2025-06-19', null, '2025-06-20', 9.9, '2025-06-21'),
+('145-99777554', 'PPG', 'CAMP.', 'JUNIO', 'AIVR065', 'AGP006', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-99777554', null, 1762, 2220.12, 0, 0, '2025-06-18', '22:13', 3.4, '2025-06-19', null, '2025-06-20', 10.1, '2025-06-21'),
+('145-99777565', 'PPG', 'CAMP.', 'JUNIO', 'CSUR042', 'FLO010', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-99777565', null, 1209, 1523.34, 0, 0, '2025-06-19', '03:51', 4.1, '2025-06-19', null, '2025-06-20', 10.2, '2025-06-21'),
+('075-66530870', 'CSU', 'CAMP.', 'JUNIO', 'AIVR066', 'BET009', 'MAD', 'HPL', 'DIRECTOS', 'IBA', 'DTO', '075-66530870', null, 1742, 1945.62, 0, 0, '2025-06-17', '21:48', 3.3, '2025-06-20', null, '2025-06-21', 12.4, null),
+('075-66530903', 'PPG', 'CAMP.', 'JUNIO', 'CSUR043', 'DAN018', 'MAD', 'HPL', 'DIRECTOS', 'IBA', 'DTO', '075-66530903', null, 2376, 2649.36, 0, 0, '2025-06-18', '07:32', 3.3, '2025-06-20', null, '2025-06-21', 14.7, '2025-06-22'),
+('145-11753652', 'PPG', 'CAMP.', 'JUNIO', 'AIVR067', 'PER034', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-11753652', null, 2932, 3694.32, 0, 0, '2025-06-19', '18:05', 4.6, '2025-06-20', null, '2025-06-21', 12.7, '2025-06-23'),
+('145-99777576', 'PPG', 'CAMP.', 'JUNIO', 'AIVR068', 'PER035', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-99777576', null, 2927, 3688.02, 0, 0, '2025-06-19', '18:05', 4.7, '2025-06-20', null, '2025-06-21', 11.8, '2025-06-22'),
+('145-11753663', 'CSU', 'CAMP.', 'JUNIO', 'AIVR069', 'BET011', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-11753663', null, 2321, 2924.46, 0, 0, '2025-06-20', '01:02', 2.8, '2025-06-21', null, '2025-06-22', 11.5, null),
+('145-11751106', 'PPG', 'CAMP.', 'JUNIO', 'AIVR070', 'PER036', 'MAD', 'TRS', 'DIRECTOS', 'LAN', 'DTO', '145-11751106', null, 2979, 3753.54, 0, 0, '2025-06-19', '18:05', 3.8, '2025-06-21', null, '2025-06-22', 13.6, '2025-06-23'),
+('145-11753674', 'CSU', 'CAMP.', 'JUNIO', 'CSUR044', 'MOG005', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-11753674', null, 3130, 3943.8, 0, 0, '2025-06-20', '10:01', 6, '2025-06-21', null, '2025-06-22', 0, null),
+('996-13802692', 'CSU', 'CAMP.', 'JUNIO', 'CSUR045', 'VIT005', 'MAD', 'SMT', 'DIRECTOS', 'ARP', 'DTO', '996-13802692', null, 2952, 3307.2, 0, 0, '2025-06-20', '12:05', 5.7, '2025-06-22', null, '2025-06-23', 10.1, null),
+('075-66530940', 'PPG', 'CAMP.', 'JUNIO', 'CSUR046', 'DAN019', 'MAD', 'HPL', 'DIRECTOS', 'IBA', 'DTO', '075-66530940', null, 2378, 2651.58, 0, 0, '2025-06-20', '10:41', 3.1, '2025-06-22', null, '2025-06-23', 13.1, null),
+('145-11753685', 'PPG', 'CAMP.', 'JUNIO', 'CSUR047', 'DAN020', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-11753685', null, 1782, 2245.32, 0, 0, '2025-06-20', '10:41', 2.6, '2025-06-22', null, '2025-06-23', 13.5, '2025-06-24'),
+('075-66530914', 'CSU', 'CAMP.', 'JUNIO', 'AIVR071', 'BET010', 'MAD', 'HPL', 'DIRECTOS', 'IBA', 'DTO', '075-66530914', null, 2925, 3258.75, 0, 0, '2025-06-20', '01:02', 2.7, '2025-06-22', null, '2025-06-23', 10.9, null),
+('145-11753696', 'PPG', 'CAMP.', 'JUNIO', 'CSUR048', 'FLO011', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-11753696', null, 1205, 1518.3, 0, 0, '2025-06-20', '06:33', 5.5, '2025-06-22', null, '2025-06-23', 11.9, null),
+('996-13800776', 'PPG', 'CAMP.', 'JUNIO', 'AIVR072', 'PEP014', 'MAD', 'NWT', 'DIRECTOS', 'ARP', 'DTO', '996-13800776', null, 2914, 3265.4, 0, 0, '2025-06-21', '14:28', 3.1, '2025-06-22', null, '2025-06-23', 9.2, '2025-06-24'),
+('075-66532196', 'PPG', 'CAMP.', 'JUNIO', 'AIVR073', 'PER037', 'MAD', 'SMT', 'DIRECTOS', 'IBA', 'DTO', '075-66532196', null, 2968, 3332.48, 0, 0, '2025-06-20', '14:35', 3.9, '2025-06-23', null, '2025-06-24', 12.9, null),
+('145-11751121', 'PPG', 'CAMP.', 'JUNIO', 'AIVR074', 'PER038', 'MAD', 'TRS', 'DIRECTOS', 'LAN', 'DTO', '145-11751121', null, 2946, 3711.96, 0, 0, '2025-06-20', '14:35', 3.5, '2025-06-23', null, '2025-06-24', 10.8, null),
+('145-11754035', 'PPG', 'CAMP.', 'JUNIO', 'AIVR075', 'PER039', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-11754035', null, 1163, 1465.38, 0, 0, '2025-06-21', '17:55', 5, '2025-06-23', null, '2025-06-24', 9.9, null),
+('145-99777473', 'PPG', 'CAMP.', 'JUNIO', 'AIVR076', 'HUA001', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-99777473', null, 1126, 1418.76, 0, 0, '2025-06-21', '21:54', 3.5, '2025-06-23', null, '2025-06-24', 12.5, null),
+('145-11753711', 'PPG', 'CAMP.', 'JUNIO', 'CSUR049', 'DAN021', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-11753711', null, 2369, 2984.94, 0, 0, '2025-06-22', '09:55', 3.8, '2025-06-23', null, '2025-06-24', 12.8, null),
+('145-11753884', 'PPG', 'CAMP.', 'JUNIO', 'AIVR077', 'PER040', 'MAD', 'HPL', 'DIRECTOS', 'LAN', 'DTO', '145-11753884', null, 2785, 3509.1, 0, 0, '2025-06-22', '20:41', 3.6, '2025-06-24', null, '2025-06-25', 0, null),
+('075-66532502', 'PPG', 'CAMP.', 'JUNIO', 'AIVR078', 'PER041', 'MAD', 'HPL', 'DIRECTOS', 'IBA', 'DTO', '075-66532502', null, 2961, 3298.71, 0, 0, '2025-06-22', '20:13', 2.4, '2025-06-24', null, '2025-06-25', 0, null),
+('145-11160881', 'PPG', 'CAMP.', 'JUNIO', 'CSUR050', 'FLO012', 'MAD', 'TRS', 'DIRECTOS', 'LAN', 'DTO', '145-11160881', null, 3008, 3790.08, 0, 0, '2025-06-23', '02:06', 4.6, '2025-06-24', null, '2025-06-25', 0, null);
+
+
+
+CREATE TABLE calibre (
+	cod_calibre CHAR(5) NOT NULL,
+    nombre_calibre VARCHAR(15) NOT NULL,
+    PRIMARY KEY (cod_calibre)
+);
+
+INSERT INTO calibre values 
+("L", "LARGE"),
+("L1", "LARGE 1"),
+("SM", "SMALL"),
+("STD", "STANDARD"),
+("TIP", "TIP"),
+("XL", "EXTRA LARGE");
+
+CREATE TABLE planta_proveedor (
+	cod_plantap CHAR(3) NOT NULL,
+    nombre_provp VARCHAR(15) NOT NULL,
+    PRIMARY KEY(cod_plantap)
+);
+
+INSERT INTO planta_proveedor VALUES 
+("PJN", "PAIJAN"),
+("NA", "NA"),
+("CHK", "CHASKIMUCHIC");
+
+CREATE TABLE atados (
+	cod_atado INT NOT NULL,
+    atado CHAR(8) NOT NULL,
+    PRIMARY KEY(cod_atado)
+);
+
+INSERT INTO atados VALUES 
+(12, "12X420"),
+(17, "17X300"),
+(20, "20X250"),
+(25, "25X160"),
+(30, "30X160");
+
+CREATE TABLE ag_destino (
+	cod_agd CHAR(5) NOT NULL,
+    destino VARCHAR(20) NOT NULL,
+    PRIMARY KEY(cod_agd)
+);
+
+INSERT INTO ag_destino VALUES
+("ASAT", "ASATRANS");
+
+CREATE TABLE valores (
+	id_valor CHAR(25) NOT NULL,
+    n_embarcacion INT NOT NULL,
+    awb CHAR(15) NOT NULL,
+    hawb CHAR(15) NULL,
+    prod CHAR(5) NOT NULL,
+    t_c NUMERIC(3,2) NOT NULL,
+    cal1 INT DEFAULT 0 NULL,
+    cod_calibre CHAR(5) NOT NULL,
+    skd NUMERIC(3,2) NOT NULL,
+    total_caja INT NOT NULL,
+    cod_atado INT NOT NULL,
+    cubre BOOLEAN NOT NULL,
+    fecha_factura DATE NOT NULL,
+    n_factura CHAR(10) NOT NULL,
+    precio_compra DECIMAL(8,2) NOT NULL,
+    nc_nd_compra DECIMAL(8,2) NOT NULL,
+    n_origen CHAR(10) NULL,
+    n_fto CHAR(8) NOT NULL,
+    precio_venta DECIMAL(8,2) NOT NULL,
+    nc_nd_venta DECIMAL(8,2) NOT NULL,
+    cod_agd CHAR(5) NOT NULL,
+    n_dam CHAR(7) NULL,
+    awb_reg_ceo CHAR(13) NULL,
+    cod_plantap CHAR(3) NOT NULL,
+    PRIMARY KEY (id_valor),
+    FOREIGN KEY (n_embarcacion) REFERENCES operacion(n_embarcacion),
+    FOREIGN KEY (cod_calibre) REFERENCES calibre(cod_calibre),
+    FOREIGN KEY (cod_atado) REFERENCES atados(cod_atado),
+    FOREIGN KEY (cod_agd) REFERENCES ag_destino(cod_agd),
+    FOREIGN KEY (cod_plantap) REFERENCES planta_proveedor(cod_plantap)
+);
+
+INSERT INTO valores
+ (id_valor, n_embarcacion, awb, hawb, prod, t_c, cod_calibre, skd, total_caja, cod_atado, cubre, fecha_factura, n_factura,
+ precio_compra, nc_nd_compra, n_origen, n_fto, precio_venta, nc_nd_venta, cod_agd, n_dam, awb_reg_ceo, cod_plantap)
+ VALUES 
+('075-66527764-5STD20X250', 1, '075-66527764', null, 'EV', 5, 'STD', 2, 200, '20', FALSE, '2025-04-30', '001-03281', 18, 0, '853889', '1642911', 18, 0, 'ASAT', '032189', '145-90639500', 'PJN'),
+('145-90639500-5STD20X250', 2, '145-90639500', null, 'EV', 5, 'STD', 2, 200, '20', FALSE, '2025-05-02', '001-03283', 18, 0, '853886', '1644147', 18, 0, 'ASAT', '032601', null, 'PJN'),
+('075-66526972-5STD20X250', 3, '075-66526972', null, 'EV', 5, 'STD', 2, 200, '20', FALSE, '2025-05-07', '001-03298', 18, 0, '853334', '1647003', 18, 0, 'ASAT', '033543', null, 'PJN'),
+('075-66527893-5STD20X250', 4, '075-66527893', null, 'EV', 5, 'STD', 2, 200, '20', FALSE, '2025-05-13', '001-03312', 18, 0, '854250', '1649118', 18, 0, 'ASAT', '034795', null, 'PJN'),
+('075-66527915-5STD20X250', 5, '075-66527915', null, 'EV', 5, 'STD', 2, 200, '20', FALSE, '2025-05-15', '001-03314', 18, 0, '854347', '1649575', 18, 0, 'ASAT', '035381', null, 'PJN'),
+('145-90639496-5STD20X250', 6, '145-90639496', null, 'EV', 5, 'STD', 2, 200, '20', FALSE, '2025-05-17', '001-03321', 18, 0, '853011', '1651586', 18, 0, 'ASAT', '035911', '145-90690526', 'PJN'),
+('145-90690526-5STD20X250', 7, '145-90690526', null, 'EV', 5, 'STD', 2, 200, '20', FALSE, '2025-05-20', '001-03328', 18, 0, '853012', '1652851', 18, 0, 'ASAT', '036506', null, 'PJN'),
+('145-90639566-5SM20X250', 8, '145-90639566', null, 'EV', 5, 'SM', 2, 200, '20', FALSE, '2025-05-21', '001-08564', 15, 0, '855848', '1653051', 15, 0, 'ASAT', '036513', null, 'NA'),
+('145-90690843-5SM20X250', 9, '145-90690843', null, 'EV', 5, 'SM', 3, 300, '20', FALSE, '2025-05-21', '001-01637', 12.5, 0, '853010', '1653288', 12.5, 0, 'ASAT', '036769', null, 'NA'),
+('145-90690843-15STD20X250', 9, '145-90690843', '1', 'EV', 5, 'STD', 2, 200, '20', FALSE, '2025-05-21', '001-01637', 16, 0, '853010', '1653288', 16.5, 0, 'ASAT', '036769', null, 'NA'),
+('145-90690843-25STD20X250', 9, '145-90690843', '2', 'EV', 5, 'STD', 1, 100, '20', FALSE, '2025-05-21', '001-01636', 17.5, 0, '853009', '1653284', 16.5, 0, 'ASAT', '036769', null, 'NA'),
+('075-66528593-5SM20X250', 10, '075-66528593', null, 'EV', 5, 'SM', 3, 300, '20', FALSE, '2025-05-23', '001-01639', 12.5, 0, '853008', '1653771', 12.5, 0, 'ASAT', '036853', null, 'NA'),
+('075-66528593-15STD20X250', 10, '075-66528593', '1', 'EV', 5, 'STD', 2, 200, '20', FALSE, '2025-05-23', '001-01639', 16, 0, '853008', '1653771', 16.5, 0, 'ASAT', '036853', null, 'NA'),
+('075-66528593-25STD20X250', 10, '075-66528593', '2', 'EV', 5, 'STD', 1, 100, '20', FALSE, '2025-05-23', '001-01638', 17.5, 0, '853004', '1653774', 16.5, 0, 'ASAT', '036853', null, 'NA'),
+('996-13800242-5SM20X250', 11, '996-13800242', null, 'EV', 5, 'SM', 1, 100, '20', FALSE, '2025-05-22', '001-03334', 13, 0, '853006', '1653328', 13, 0, 'ASAT', '037030', null, 'PJN'),
+('996-13800242-5STD20X250', 11, '996-13800242', null, 'EV', 5, 'STD', 2, 200, '20', FALSE, '2025-05-22', '001-03334', 18, 0, '853006', '1653867', 18, 0, 'ASAT', '037030', null, 'PJN'),
+('075-66528545-5SM20X250', 12, '075-66528545', null, 'EV', 5, 'SM', 1, 100, '20', FALSE, '2025-05-23', '001-08568', 15, 0, '855877', '1653874', 15, 0, 'ASAT', '037313', null, 'NA'),
+('145-90639614-5SM20X250', 13, '145-90639614', null, 'EV', 5, 'SM', 2, 200, '20', FALSE, '2025-05-23', '001-03342', 13, 0, '854168', '1654511', 13, 0, 'ASAT', '037403', null, 'PJN'),
+('075-66528523-5SM20X250', 14, '075-66528523', null, 'EV', 5, 'SM', 2, 150, '20', FALSE, '2025-05-26', '001-08573', 15, 0, '855892', '1655477', 15, 0, 'ASAT', '037644', null, 'NA'),
+('145-90993276-5SM20X250', 15, '145-90993276', null, 'EV', 5, 'SM', 2, 200, '20', FALSE, '2025-05-26', '001-03346', 13, 0, '854174', '1655544', 13, 0, 'ASAT', '037805', null, 'PJN'),
+('145-90993276-5STD20X250', 15, '145-90993276', null, 'EV', 5, 'STD', 1, 100, '20', FALSE, '2025-05-26', '001-03346', 17, 0, '854174', '1655544', 17, 0, 'ASAT', '037805', null, 'PJN'),
+('145-90993276-5L17X300', 15, '145-90993276', null, 'EV', 5, 'L', 2, 200, '17', FALSE, '2025-05-26', '001-03346', 19, 0, '854174', '1655544', 19, 0, 'ASAT', '037805', null, 'PJN'),
+('145-90690644-5SM20X250', 16, '145-90690644', null, 'EV', 5, 'SM', 1, 100, '20', FALSE, '2025-05-27', '001-03349', 13, 0, '855623', '1655497', 13, 0, 'ASAT', '038103', null, 'PJN'),
+('145-90690644-5STD20X250', 16, '145-90690644', null, 'EV', 5, 'STD', 1.5, 150, '20', FALSE, '2025-05-27', '001-03349', 17, 0, '855623', '1655497', 17, 0, 'ASAT', '038103', null, 'PJN'),
+('145-90690644-5L17X300', 16, '145-90690644', null, 'EV', 5, 'L', 1, 100, '17', FALSE, '2025-05-27', '001-03349', 19, 0, '855623', '1655497', 19, 0, 'ASAT', '038103', null, 'PJN'),
+('145-90690644-5L20X250', 16, '145-90690644', null, 'EV', 5, 'L', 1, 100, '20', FALSE, '2025-05-27', '001-03349', 19, 0, '855623', '1655497', 19, 0, 'ASAT', '038103', null, 'PJN'),
+('145-90690644-5XL12X420', 16, '145-90690644', null, 'EV', 5, 'XL', 0.5, 50, '12', FALSE, '2025-05-27', '001-03349', 20, 0, '855623', '1655497', 20, 0, 'ASAT', '038103', null, 'PJN'),
+('663-00296236-5SM20X250', 17, '663-00296236', null, 'EV', 5, 'SM', 1, 100, '20', FALSE, '2025-05-28', '001-08577', 15, 0, '855930', '1656770', 15, 0, 'ASAT', '038200', null, 'NA'),
+('145-90690806-15SM20X250', 18, '145-90690806', '1', 'EV', 5, 'SM', 3, 300, '20', FALSE, '2025-05-28', '001-01643', 12.5, 0, '855629', '1656538', 12.5, 0, 'ASAT', '038201', null, 'NA'),
+('145-90690806-25SM20X250', 18, '145-90690806', '2', 'EV', 5, 'SM', 2, 200, '20', FALSE, '2025-05-28', '001-01643', 16, 0, '855629', '1656538', 16.5, 0, 'ASAT', '038201', null, 'NA'),
+('145-90690806-5STD20X250', 18, '145-90690806', null, 'EV', 5, 'STD', 1, 100, '20', FALSE, '2025-05-28', '001-01643', 17.5, 0, '855629', '1656538', 16.5, 0, 'ASAT', '038201', null, 'NA'),
+('145-11714813-5SM20X250', 19, '145-11714813', null, 'EV', 5, 'SM', 1, 100, '20', FALSE, '2025-05-28', '001-03352', 13, 0, '855628', '1656168', 13, 0, 'ASAT', '038356', null, 'PJN'),
+('145-11714813-5STD20X250', 19, '145-11714813', null, 'EV', 5, 'STD', 1.5, 150, '20', FALSE, '2025-05-28', '001-03352', 17, 0, '855628', '1656168', 17, 0, 'ASAT', '038356', null, 'PJN'),
+('145-11714813-5L17X300', 19, '145-11714813', null, 'EV', 5, 'L', 1, 100, '17', FALSE, '2025-05-28', '001-03352', 19, 0, '855628', '1656168', 19, 0, 'ASAT', '038356', null, 'PJN'),
+('145-11714813-5L12X420', 19, '145-11714813', null, 'EV', 5, 'L', 1, 100, '12', FALSE, '2025-05-28', '001-03352', 19, 0, '855628', '1656168', 19, 0, 'ASAT', '038356', null, 'PJN'),
+('145-11714813-5XL12X420', 19, '145-11714813', null, 'EV', 5, 'XL', 0.5, 50, '12', FALSE, '2025-05-28', '001-03352', 20, 0, '855628', '1656168', 20, 0, 'ASAT', '038356', null, 'PJN'),
+('075-66528615-5SM20X250', 20, '075-66528615', null, 'EV', 5, 'SM', 2, 200, '20', FALSE, '2025-05-29', '005-26156', 16, 0, '-', '1656960', 16, 0, 'ASAT', '037862', null, 'NA'),
+('145-11714861-5SM20X250', 21, '145-11714861', null, 'EV', 5, 'SM', 1, 100, '20', FALSE, '2025-05-29', '001-03357', 13, 0, '855630', '1656166', 13, 0, 'ASAT', '038665', null, 'PJN'),
+('145-11714861-5STD20X250', 21, '145-11714861', null, 'EV', 5, 'STD', 1.5, 150, '20', FALSE, '2025-05-29', '001-03357', 17, 0, '855630', '1656166', 17, 0, 'ASAT', '038665', null, 'PJN'),
+('145-11714861-5L17X300', 21, '145-11714861', null, 'EV', 5, 'L', 1, 100, '17', FALSE, '2025-05-29', '001-03357', 19, 0, '855630', '1656166', 19, 0, 'ASAT', '038665', null, 'PJN'),
+('145-11714861-5L20X250', 21, '145-11714861', null, 'EV', 5, 'L', 1, 100, '20', FALSE, '2025-05-29', '001-03357', 19, 0, '855630', '1656166', 19, 0, 'ASAT', '038665', null, 'PJN'),
+('145-11714861-5XL12X420', 21, '145-11714861', null, 'EV', 5, 'XL', 0.5, 50, '12', FALSE, '2025-05-29', '001-03357', 20, 0, '855630', '1656166', 20, 0, 'ASAT', '038665', null, 'PJN'),
+('075-66528641-5SM20X250', 22, '075-66528641', null, 'EV', 5, 'SM', 3, 300, '20', FALSE, '2025-05-30', '001-01645', 14.5, 0, '855647', '1657668', 14.5, 0, 'ASAT', '038778', null, 'NA'),
+('075-66528641-15STD20X250', 22, '075-66528641', '1', 'EV', 5, 'STD', 2, 200, '20', FALSE, '2025-05-30', '001-01645', 16, 0, '855647', '1657668', 16.5, 0, 'ASAT', '038778', null, 'NA'),
+('075-66528641-25STD20X250', 22, '075-66528641', '2', 'EV', 5, 'STD', 1, 100, '20', FALSE, '2025-05-30', '001-01645', 17.5, 0, '855647', '1657668', 16.5, 0, 'ASAT', '038778', null, 'NA'),
+('075-66528696-5SM20X250', 23, '075-66528696', null, 'EV', 5, 'SM', 2, 200, '20', FALSE, '2025-05-30', '001-08583', 15, 0, '855960', '1657662', 15, 0, 'ASAT', '038806', null, 'NA'),
+('075-66528652-5SM20X250', 24, '075-66528652', null, 'EV', 5, 'SM', 2, 200, '20', FALSE, '2025-05-30', '001-03360', 13, 0, '855656', '1656647', 13, 0, 'ASAT', '039151', '145-90690504', 'PJN'),
+('075-66528652-5STD20X250', 24, '075-66528652', null, 'EV', 5, 'STD', 0.5, 50, '20', FALSE, '2025-05-30', '001-03360', 17, 0, '855656', '1656647', 17, 0, 'ASAT', '039151', '145-90690504', 'PJN'),
+('075-66528652-5L17X300', 24, '075-66528652', null, 'EV', 5, 'L', 1, 100, '17', FALSE, '2025-05-30', '001-03360', 19, 0, '855656', '1656647', 19, 0, 'ASAT', '039151', '145-90690504', 'PJN'),
+('075-66528652-5L12X420', 24, '075-66528652', null, 'EV', 5, 'L', 1, 100, '12', FALSE, '2025-05-30', '001-03360', 19, 0, '855656', '1656647', 19, 0, 'ASAT', '039151', '145-90690504', 'PJN'),
+('075-66528652-5XL12X420', 24, '075-66528652', null, 'EV', 5, 'XL', 0.5, 50, '12', FALSE, '2025-05-30', '001-03360', 20, 0, '855656', '1656647', 20, 0, 'ASAT', '039151', '145-90690504', 'PJN'),
+('145-11714791-5SM20X250', 25, '145-11714791', null, 'EV', 5, 'SM', 4, 400, '20', FALSE, '2025-05-30', '005-26191', 16, 0, '-', '1658204', 16, 0, 'ASAT', '038789', null, 'NA'),
+('075-66528685-5SM20X250', 26, '075-66528685', null, 'EV', 5, 'SM', 2, 200, '20', FALSE, '2025-05-31', '001-03361', 13, 0, '855648', '1656629', 13, 0, 'ASAT', '039261', null, 'PJN'),
+('075-66528685-5STD20X250', 26, '075-66528685', null, 'EV', 5, 'STD', 0.5, 50, '20', FALSE, '2025-05-31', '001-03361', 17, 0, '855648', '1656629', 17, 0, 'ASAT', '039261', null, 'PJN'),
+('075-66528685-5L17X300', 26, '075-66528685', null, 'EV', 5, 'L', 1, 100, '17', FALSE, '2025-05-31', '001-03361', 19, 0, '855648', '1656629', 19, 0, 'ASAT', '039261', null, 'PJN'),
+('075-66528685-5L20X250', 26, '075-66528685', null, 'EV', 5, 'L', 1, 100, '20', FALSE, '2025-05-31', '001-03361', 19, 0, '855648', '1656629', 19, 0, 'ASAT', '039261', null, 'PJN'),
+('075-66528685-5XL12X420', 26, '075-66528685', null, 'EV', 5, 'XL', 0.5, 50, '12', FALSE, '2025-05-31', '001-03361', 20, 0, '855648', '1656629', 20, 0, 'ASAT', '039261', null, 'PJN'),
+('145-90690504-5SM20X250', 27, '145-90690504', null, 'EV', 5, 'SM', 5, 500, '20', FALSE, '2025-06-01', '001-01649', 14.5, 0, '855655', '1657936', 14.5, 0, 'ASAT', '039183', null, 'NA'),
+('145-11714802-5SM20X250', 28, '145-11714802', null, 'EV', 5, 'SM', 2.5, 250, '20', FALSE, '2025-06-01', '001-03365', 13, 0, '855760', '1657803', 13, 0, 'ASAT', '039378', null, 'PJN'),
+('145-11714802-5STD20X250', 28, '145-11714802', null, 'EV', 5, 'STD', 1.5, 150, '20', FALSE, '2025-06-01', '001-03365', 17, 0, '855760', '1657803', 17, 0, 'ASAT', '039378', null, 'PJN'),
+('145-11714802-5L17X300', 28, '145-11714802', null, 'EV', 5, 'L', 1, 100, '17', FALSE, '2025-06-01', '001-03365', 19, 0, '855760', '1657803', 19, 0, 'ASAT', '039378', null, 'PJN'),
+('145-11714776-5SM20X250', 29, '145-11714776', null, 'EV', 5, 'SM', 2.5, 250, '20', FALSE, '2025-06-01', '001-03366', 13, 0, '855798', '1657199', 13, 0, 'ASAT', '039379', null, 'PJN'),
+('145-11714776-5STD20X250', 29, '145-11714776', null, 'EV', 5, 'STD', 1.5, 150, '20', FALSE, '2025-06-01', '001-03366', 17, 0, '855798', '1657199', 17, 0, 'ASAT', '039379', null, 'PJN'),
+('145-11714776-5L17X300', 29, '145-11714776', null, 'EV', 5, 'L', 1, 100, '17', FALSE, '2025-06-01', '001-03366', 19, 0, '855798', '1657199', 19, 0, 'ASAT', '039379', null, 'PJN'),
+('145-11714964-5SM20X250', 30, '145-11714964', null, 'EV', 5, 'SM', 2, 200, '20', FALSE, '2025-06-02', '005-26240', 16, 0, '-', '1658915', 16, 0, 'ASAT', '039394', null, 'NA'),
+('075-66530085-5SM20X250', 31, '075-66530085', null, 'EV', 5, 'SM', 2.5, 250, '20', FALSE, '2025-06-02', '001-03369', 15, 0, '855659', '1657767', 15, 0, 'ASAT', '039601', null, 'PJN'),
+('075-66530085-5STD20X250', 31, '075-66530085', null, 'EV', 5, 'STD', 1.5, 150, '20', FALSE, '2025-06-02', '001-03369', 20, 0, '855659', '1657767', 20, 0, 'ASAT', '039601', null, 'PJN'),
+('075-66530085-5XL12X420', 31, '075-66530085', null, 'EV', 5, 'XL', 1, 100, '12', FALSE, '2025-06-02', '001-03369', 24, 0, '855659', '1657767', 24, 0, 'ASAT', '039601', null, 'PJN'),
+('075-66528663-5SM20X250', 32, '075-66528663', null, 'EV', 5, 'SM', 3, 300, '20', FALSE, '2025-06-04', '001-01650', 14.5, 0, '854701', '1659714', 14.5, 0, 'ASAT', '039811', '075-66530052', 'NA'),
+('075-66528663-15STD20X250', 32, '075-66528663', '1', 'EV', 5, 'STD', 2, 200, '20', FALSE, '2025-06-04', '001-01650', 16, 0, '854701', '1659714', 16, 0, 'ASAT', '039811', '075-66530052', 'NA'),
+('075-66528663-25STD20X250', 32, '075-66528663', '2', 'EV', 5, 'STD', 1, 100, '20', FALSE, '2025-06-04', '001-01650', 17.5, 0, '854701', '1659714', 18, 0, 'ASAT', '039811', '075-66530052', 'NA'),
+('663-00296214-5SM20X250', 33, '663-00296214', null, 'EV', 5, 'SM', 2, 200, '20', FALSE, '2025-06-04', '001-06265', 15.75, 0, '853742', '1659457', 15.75, 0, 'ASAT', '039951', '145-99777543', 'NA'),
+('145-11714986-5SM20X250', 34, '145-11714986', null, 'EV', 5, 'SM', 1, 100, '20', FALSE, '2025-06-03', '001-03374', 15, 0, '842525', '1658929', 15, 0, 'ASAT', '039805', null, 'PJN'),
+('145-11714986-5STD20X250', 34, '145-11714986', null, 'EV', 5, 'STD', 2, 200, '20', FALSE, '2025-06-03', '001-03374', 20, 0, '842525', '1658929', 20, 0, 'ASAT', '039805', null, 'PJN'),
+('145-11714986-5L17X300', 34, '145-11714986', null, 'EV', 5, 'L', 1, 100, '17', FALSE, '2025-06-03', '001-03374', 23, 0, '842525', '1658929', 23, 0, 'ASAT', '039805', null, 'PJN'),
+('145-11714986-5L20X250', 34, '145-11714986', null, 'EV', 5, 'L', 1, 100, '20', FALSE, '2025-06-03', '001-03374', 23, 0, '842525', '1658929', 23, 0, 'ASAT', '039805', null, 'PJN'),
+('145-11715001-5SM20X250', 35, '145-11715001', null, 'EV', 5, 'SM', 1.7, 177, '20', FALSE, '2025-06-03', '001-03375', 15, 0, '842524', '1657157', 15, 0, 'ASAT', '039806', null, 'PJN'),
+('145-11715001-5STD20X250', 35, '145-11715001', null, 'EV', 5, 'STD', 2, 200, '20', FALSE, '2025-06-03', '001-03375', 20, 0, '842524', '1657157', 20, 0, 'ASAT', '039806', null, 'PJN'),
+('145-11715001-5L17X300', 35, '145-11715001', null, 'EV', 5, 'L', 1, 100, '17', FALSE, '2025-06-03', '001-03375', 23, 0, '842524', '1657157', 23, 0, 'ASAT', '039806', null, 'PJN'),
+('145-11715001-5XL12X420', 35, '145-11715001', null, 'EV', 5, 'XL', 0.3, 23, '12', FALSE, '2025-06-03', '001-03375', 24, 0, '842524', '1657157', 24, 0, 'ASAT', '039806', null, 'PJN'),
+('663-00296240-5SM20X250', 36, '663-00296240', null, 'EV', 5, 'SM', 2, 160, '20', FALSE, '2025-06-04', '001-08588', 15, 0, '853260', '1659974', 15, 0, 'ASAT', '039946', null, 'NA'),
+('075-66530052-5SM20X250', 37, '075-66530052', null, 'EV', 5, 'SM', 1, 100, '20', FALSE, '2025-06-04', '001-03382', 15, 0, '854703', '1659078', 15, 0, 'ASAT', '040027', null, 'PJN'),
+('075-66530052-5STD20X250', 37, '075-66530052', null, 'EV', 5, 'STD', 1.5, 150, '20', FALSE, '2025-06-04', '001-03382', 20, 0, '854703', '1659078', 20, 0, 'ASAT', '040027', null, 'PJN'),
+('075-66530052-5L17X300', 37, '075-66530052', null, 'EV', 5, 'L', 1, 100, '17', FALSE, '2025-06-04', '001-03382', 23, 0, '854703', '1659078', 23, 0, 'ASAT', '040027', null, 'PJN'),
+('075-66530052-5L20X250', 37, '075-66530052', null, 'EV', 5, 'L', 1, 100, '20', FALSE, '2025-06-04', '001-03382', 23, 0, '854703', '1659078', 23, 0, 'ASAT', '040027', null, 'PJN'),
+('075-66530052-5XL12X420', 37, '075-66530052', null, 'EV', 5, 'XL', 0.5, 50, '12', FALSE, '2025-06-04', '001-03382', 24, 0, '854703', '1659078', 24, 0, 'ASAT', '040027', null, 'PJN'),
+('145-11715012-5SM20X250', 38, '145-11715012', null, 'EV', 5, 'SM', 1.2, 115, '20', FALSE, '2025-06-04', '001-03383', 15, 0, '854702', '1659074', 15, 0, 'ASAT', '040031', null, 'PJN'),
+('145-11715012-5STD20X250', 38, '145-11715012', null, 'EV', 5, 'STD', 1.5, 150, '20', FALSE, '2025-06-04', '001-03383', 20, 0, '854702', '1659074', 20, 0, 'ASAT', '040031', null, 'PJN'),
+('145-11715012-5L17X300', 38, '145-11715012', null, 'EV', 5, 'L', 0.8, 85, '17', FALSE, '2025-06-04', '001-03383', 23, 0, '854702', '1659074', 23, 0, 'ASAT', '040031', null, 'PJN'),
+('145-11715012-5L20X250', 38, '145-11715012', null, 'EV', 5, 'L', 1, 100, '20', FALSE, '2025-06-04', '001-03383', 23, 0, '854702', '1659074', 23, 0, 'ASAT', '040031', null, 'PJN'),
+('145-11715012-5XL12X420', 38, '145-11715012', null, 'EV', 5, 'XL', 0.5, 50, '12', FALSE, '2025-06-04', '001-03383', 24, 0, '854702', '1659074', 24, 0, 'ASAT', '040031', null, 'PJN'),
+('075-66530133-5SM20X250', 39, '075-66530133', null, 'EV', 5, 'SM', 2, 200, '20', FALSE, '2025-06-06', '001-04029', 12, -12, 'RECHAZADO', '1660557', 14, -14, 'ASAT', '040350', null, 'NA'),
+('075-66530122-5SM20X250', 40, '075-66530122', null, 'EV', 5, 'SM', 2, 200, '20', FALSE, '2025-06-06', '001-04030', 12, 0, '837215', '1660564', 14, 0, 'ASAT', '040349', '075-66532524', 'NA'),
+('145-11715244-5SM20X250', 41, '145-11715244', null, 'EV', 5, 'SM', 2, 200, '20', FALSE, '2025-06-06', '001-00489', 15, 0, '853164', '1660522', 15, 0, 'ASAT', '040239', '075-66530940', 'CHK'),
+('075-66530111-5SM20X250', 42, '075-66530111', null, 'EV', 5, 'SM', 3, 300, '20', FALSE, '2025-06-06', '001-01652', 14.5, 0, '854705', '1660453', 14.5, 0, 'ASAT', '040354', null, 'NA'),
+('075-66530111-15STD20X250', 42, '075-66530111', '1', 'EV', 5, 'STD', 2, 200, '20', FALSE, '2025-06-06', '001-01652', 16, 0, '854705', '1660453', 16, 0, 'ASAT', '040354', null, 'NA'),
+('075-66530111-25STD20X250', 42, '075-66530111', '2', 'EV', 5, 'STD', 1, 100, '20', FALSE, '2025-06-06', '001-01652', 17.5, 0, '854705', '1660453', 18, 0, 'ASAT', '040354', null, 'NA'),
+('075-66530144-5SM20X250', 43, '075-66530144', null, 'EV', 5, 'SM', 2, 200, '20', FALSE, '2025-06-06', '001-06268', 15.75, 0, '853743', '1660531', 15.75, 0, 'ASAT', '040634', '145-99777543', 'NA'),
+('075-66530063-5SM20X250', 44, '075-66530063', null, 'EV', 5, 'SM', 4, 400, '20', FALSE, '2025-06-05', '005-26267', 16, 0, '-', '1661061', 16, 0, 'ASAT', '040069', null, 'NA'),
+('145-11715023-5SM20X250', 45, '145-11715023', null, 'EV', 5, 'SM', 2, 200, '20', FALSE, '2025-06-06', '001-00617', 14, 0, '854706', '1660539', 0, 0, 'ASAT', '040560', null, 'NA'),
+('145-11715023-5STD20X250', 45, '145-11715023', null, 'EV', 5, 'STD', 2, 200, '20', FALSE, '2025-06-06', '001-00617', 17, 0, '854706', '1660539', 0, 0, 'ASAT', '040560', null, 'NA'),
+('145-11715023-5L20X250', 45, '145-11715023', null, 'EV', 5, 'L', 1, 100, '20', FALSE, '2025-06-06', '001-00617', 22, 0, '854706', '1660539', 0, 0, 'ASAT', '040560', null, 'NA'),
+('145-11715045-5SM20X250', 46, '145-11715045', null, 'EV', 5, 'SM', 1, 98, '20', FALSE, '2025-06-07', '002-01282', 14, 0, '854711', '1661202', 14, 0, 'ASAT', '040824', '145-99777226', 'NA'),
+('145-11715045-5STD20X250', 46, '145-11715045', null, 'EV', 5, 'STD', 1, 102, '20', FALSE, '2025-06-07', '002-01282', 18, 0, '854711', '1661202', 18, 0, 'ASAT', '040824', '145-99777226', 'NA'),
+('075-66530074-5SM20X250', 47, '075-66530074', null, 'EV', 5, 'SM', 1.5, 150, '20', FALSE, '2025-06-06', '001-03385', 15, 0, '854707', '1661207', 15, 0, 'ASAT', '040761', null, 'PJN'),
+('075-66530074-5STD20X250', 47, '075-66530074', null, 'EV', 5, 'STD', 2, 200, '20', FALSE, '2025-06-06', '001-03385', 20, 0, '854707', '1661207', 20, 0, 'ASAT', '040761', null, 'PJN'),
+('075-66530074-5L17X300', 47, '075-66530074', null, 'EV', 5, 'L', 0.5, 50, '17', FALSE, '2025-06-06', '001-03385', 23, 0, '854707', '1661207', 23, 0, 'ASAT', '040761', null, 'PJN'),
+('075-66530074-5XL12X420', 47, '075-66530074', null, 'EV', 5, 'XL', 1, 100, '12', FALSE, '2025-06-06', '001-03385', 24, 0, '854707', '1661207', 24, 0, 'ASAT', '040761', null, 'PJN'),
+('145-11715056-5SM20X250', 48, '145-11715056', null, 'EV', 5, 'SM', 5, 500, '20', FALSE, '2025-06-08', '001-01654', 14.5, 0, '854714', '1661002', 14.5, 0, 'ASAT', '040356', '996-13800286', 'NA'),
+('075-66530155-5SM20X250', 49, '075-66530155', null, 'EV', 5, 'SM', 3, 300, '20', FALSE, '2025-06-07', '005-26296', 16, 0, '-', '1661559', 16, 0, 'ASAT', '040458', null, 'NA'),
+('145-11715082-5STD20X250', 50, '145-11715082', null, 'EV', 5, 'STD', 2, 192, '20', FALSE, '2025-06-08', '005-26303', 20.5, 0, '-', '1661644', 20.5, 0, 'ASAT', '040466', null, 'NA'),
+('145-11715082-5L17X300', 50, '145-11715082', null, 'EV', 5, 'L', 2, 192, '17', FALSE, '2025-06-08', '005-26303', 23.5, 0, '-', '1661644', 23.5, 0, 'ASAT', '040466', null, 'NA'),
+('075-66530170-5SM20X250', 51, '075-66530170', null, 'EV', 5, 'SM', 5, 500, '20', FALSE, '2025-06-08', '042-16007', 15, 0, '-', '1661688', 15, 0, 'ASAT', '040935', null, 'NA'),
+('145-99777226-5SM20X250', 52, '145-99777226', null, 'EV', 5, 'SM', 4, 400, '20', FALSE, '2025-06-09', '005-26327', 16, 0, '-', '1662193', 16, 0, 'ASAT', '041038', null, 'NA'),
+('145-11715071-5SM20X250', 53, '145-11715071', null, 'EV', 5, 'SM', 2, 200, '20', FALSE, '2025-06-09', '001-03395', 15, 0, '854712', '1662350', 15, 0, 'ASAT', '041260', null, 'PJN'),
+('145-11715071-5STD20X250', 53, '145-11715071', null, 'EV', 5, 'STD', 1.5, 150, '20', FALSE, '2025-06-09', '001-03395', 19, 0, '854712', '1662350', 19, 0, 'ASAT', '041260', null, 'PJN'),
+('145-11715071-5L17X300', 53, '145-11715071', null, 'EV', 5, 'L', 1, 100, '17', FALSE, '2025-06-09', '001-03395', 21, 0, '854712', '1662350', 21, 0, 'ASAT', '041260', null, 'PJN'),
+('145-11715071-5XL12X420', 53, '145-11715071', null, 'EV', 5, 'XL', 0.5, 50, '12', FALSE, '2025-06-09', '001-03395', 23, 0, '854712', '1662350', 23, 0, 'ASAT', '041260', null, 'PJN'),
+('075-66530203-5STD20X250', 54, '075-66530203', null, 'EV', 5, 'STD', 2, 192, '20', FALSE, '2025-06-09', '005-26332', 20.5, 0, '-', '1662191', 20.5, 0, 'ASAT', '041057', null, 'NA'),
+('075-66530203-5L20X250', 54, '075-66530203', null, 'EV', 5, 'L', 2, 192, '20', FALSE, '2025-06-09', '005-26332', 23.5, 0, '-', '1662191', 23.5, 0, 'ASAT', '041057', null, 'NA'),
+('075-66530192-5SM20X250', 55, '075-66530192', null, 'EV', 5, 'SM', 2, 200, '20', FALSE, '2025-06-09', '001-03394', 15, 0, '854710', '1661703', 15, 0, 'ASAT', '041277', null, 'PJN'),
+('075-66530192-5STD20X250', 55, '075-66530192', null, 'EV', 5, 'STD', 1.5, 150, '20', FALSE, '2025-06-09', '001-03394', 19, 0, '854710', '1661703', 19, 0, 'ASAT', '041277', null, 'PJN'),
+('075-66530192-5L17X300', 55, '075-66530192', null, 'EV', 5, 'L', 1, 100, '17', FALSE, '2025-06-09', '001-03394', 21, 0, '854710', '1661703', 21, 0, 'ASAT', '041277', null, 'PJN'),
+('075-66530192-5XL12X420', 55, '075-66530192', null, 'EV', 5, 'XL', 0.5, 50, '12', FALSE, '2025-06-09', '001-03394', 23, 0, '854710', '1661703', 23, 0, 'ASAT', '041277', null, 'PJN'),
+('145-99777263-5SM20X250', 56, '145-99777263', null, 'EV', 5, 'SM', 2, 200, '20', FALSE, '2025-06-10', '001-04039', 12, 0, '837214', '1662023', 15, 0, 'ASAT', '041412', '075-66532524', 'NA'),
+('145-99777274-5SM20X250', 57, '145-99777274', null, 'EV', 5, 'SM', 3, 300, '20', FALSE, '2025-06-10', '005-26339', 16, 0, '-', '1662808', 16, 0, 'ASAT', '041254', null, 'NA'),
+('145-99777230-5SM20X250', 58, '145-99777230', null, 'EV', 5, 'SM', 4, 400, '20', FALSE, '2025-06-11', '001-00490', 15, 0, '853731', '1662890', 15, 0, 'ASAT', '041469', null, 'CHK'),
+('145-99777300-5SM20X250', 59, '145-99777300', null, 'EV', 5, 'SM', 3, 300, '20', FALSE, '2025-06-11', '001-06273', 14, 0, '853733', '1662824', 14, 0, 'ASAT', '041548', null, 'NA'),
+('145-99777300-5STD20X250', 59, '145-99777300', null, 'EV', 5, 'STD', 1, 100, '20', FALSE, '2025-06-11', '001-06273', 17, 0, '853733', '1662824', 18, 0, 'ASAT', '041548', null, 'NA'),
+('145-99777300-5L12X420', 59, '145-99777300', null, 'EV', 5, 'L', 1, 100, '12', FALSE, '2025-06-11', '001-06273', 21, 0, '853733', '1662824', 21, 0, 'ASAT', '041548', null, 'NA'),
+('145-99777285-5L12X420', 60, '145-99777285', null, 'EV', 5, 'L', 3, 300, '12', FALSE, '2025-06-10', '042-16013', 25.5, 0, '-', '1662969', 25.5, 0, 'ASAT', '041420', null, 'NA'),
+('996-13800286-5SM20X250', 61, '996-13800286', null, 'EV', 5, 'SM', 3, 300, '20', FALSE, '2025-06-11', '001-01658', 14.5, 0, '854713', '1662692', 14.5, 0, 'ASAT', '041494', null, 'NA'),
+('996-13800286-15STD20X250', 61, '996-13800286', '1', 'EV', 5, 'STD', 2, 200, '20', FALSE, '2025-06-11', '001-01658', 16, 0, '854713', '1662692', 16, 0, 'ASAT', '041494', null, 'NA'),
+('996-13800286-25STD20X250', 61, '996-13800286', '2', 'EV', 5, 'STD', 1, 100, '20', FALSE, '2025-06-11', '001-01658', 17.5, 0, '854713', '1662692', 18, 0, 'ASAT', '041494', null, 'NA'),
+('996-13800290-5STD20X250', 62, '996-13800290', null, 'EV', 5, 'STD', 2, 192, '20', FALSE, '2025-06-11', '005-26359', 20.5, 0, '-', '1663399', 20.5, 0, 'ASAT', '041542', null, 'NA'),
+('996-13800290-5L20X250', 62, '996-13800290', null, 'EV', 5, 'L', 3, 288, '20', FALSE, '2025-06-11', '005-26359', 23.5, 0, '-', '1663399', 23.5, 0, 'ASAT', '041542', null, 'NA'),
+('075-66530763-5SM20X250', 63, '075-66530763', null, 'EV', 5, 'SM', 3, 300, '20', FALSE, '2025-06-11', '005-26362', 16, 0, '-', '1663294', 16, 0, 'ASAT', '041549', null, 'NA'),
+('075-66530800-5SM20X250', 64, '075-66530800', null, 'EV', 5, 'SM', 5, 500, '20', FALSE, '2025-06-10', '042-16012', 15, 0, '-', '1662972', 15, 0, 'ASAT', '041407', null, 'NA'),
+('075-66530774-5SM20X250', 65, '075-66530774', null, 'EV', 5, 'SM', 0.5, 48, '20', FALSE, '2025-06-11', '002-01304', 14, 0, '853736', '1663195', 14, 0, 'ASAT', '041836', null, 'NA'),
+('075-66530774-5STD20X250', 65, '075-66530774', null, 'EV', 5, 'STD', 1.5, 152, '20', FALSE, '2025-06-11', '002-01304', 18, 0, '853736', '1663195', 18, 0, 'ASAT', '041836', null, 'NA'),
+('145-99777296-5SM20X250', 66, '145-99777296', null, 'EV', 5, 'SM', 2, 200, '20', FALSE, '2025-06-11', '001-03402', 15, 0, '853735', '1663394', 15, 0, 'ASAT', '041784', null, 'PJN'),
+('145-99777296-5STD20X250', 66, '145-99777296', null, 'EV', 5, 'STD', 1.5, 150, '20', FALSE, '2025-06-11', '001-03402', 19, 0, '853735', '1663394', 19, 0, 'ASAT', '041784', null, 'PJN'),
+('145-99777296-5L17X300', 66, '145-99777296', null, 'EV', 5, 'L', 1, 100, '17', FALSE, '2025-06-11', '001-03402', 21, 0, '853735', '1663394', 21, 0, 'ASAT', '041784', null, 'PJN'),
+('145-99777296-5XL12X420', 66, '145-99777296', null, 'EV', 5, 'XL', 0.5, 50, '12', FALSE, '2025-06-11', '001-03402', 23, 0, '853735', '1663394', 23, 0, 'ASAT', '041784', null, 'PJN'),
+('145-99777311-5SM20X250', 67, '145-99777311', null, 'EV', 5, 'SM', 2, 200, '20', FALSE, '2025-06-12', '001-00627', 14, 0, '853737', '1663951', 0, 0, 'ASAT', '041586', null, 'NA'),
+('145-99777311-5STD20X250', 67, '145-99777311', null, 'EV', 5, 'STD', 2, 200, '20', FALSE, '2025-06-12', '001-00627', 17, 0, '853737', '1663951', 0, 0, 'ASAT', '041586', null, 'NA'),
+('145-99777311-5L20X250', 67, '145-99777311', null, 'EV', 5, 'L', 1, 100, '20', FALSE, '2025-06-12', '001-00627', 22, 0, '853737', '1663951', 0, 0, 'ASAT', '041586', null, 'NA'),
+('145-11750992-5SM20X250', 68, '145-11750992', null, 'EV', 5, 'SM', 2, 200, '20', FALSE, '2025-06-13', '001-04044', 12, 0, null, '1663863', 15, 0, 'ASAT', '042247', null, 'NA'),
+('145-11751003-5SM20X250', 69, '145-11751003', null, 'EV', 5, 'SM', 2, 200, '20', FALSE, '2025-06-13', '001-04045', 12, 0, null, '1663871', 15, 0, 'ASAT', '042243', null, 'NA'),
+('996-13797534-5SM20X250', 70, '996-13797534', null, 'EV', 5, 'SM', 2, 200, '20', FALSE, '2025-06-13', '001-00491', 15, 0, '853738', '1663955', 15, 0, 'ASAT', '041993', null, 'CHK'),
+('996-13802110-5STD20X250', 71, '996-13802110', null, 'EV', 5, 'STD', 1, 100, '20', FALSE, '2025-06-13', '001-01661', 17.5, 0, '854721', '1663768', 18, 0, 'ASAT', '042114', '075-66530855', 'NA'),
+('996-13802110-5L17X300', 71, '996-13802110', null, 'EV', 5, 'L', 2, 200, '17', FALSE, '2025-06-13', '001-01661', 22, 0, '854721', '1663768', 22.5, 0, 'ASAT', '042114', '075-66530855', 'NA'),
+('075-66530785-5SM20X250', 72, '075-66530785', null, 'EV', 5, 'SM', 3, 300, '20', FALSE, '2025-06-13', '001-06275', 14, 0, '853480', '1664387', 14, 0, 'ASAT', '042285', '145-99777543', 'NA'),
+('075-66530785-5STD20X250', 72, '075-66530785', null, 'EV', 5, 'STD', 1, 100, '20', FALSE, '2025-06-13', '001-06275', 17, 0, '853480', '1664387', 18, 0, 'ASAT', '042285', '145-99777543', 'NA'),
+('075-66530785-5L12X420', 72, '075-66530785', null, 'EV', 5, 'L', 1, 100, '12', FALSE, '2025-06-13', '001-06275', 21, 0, '853480', '1664387', 21, 0, 'ASAT', '042285', '145-99777543', 'NA'),
+('075-66530811-5SM20X250', 73, '075-66530811', null, 'EV', 5, 'SM', 3, 300, '20', FALSE, '2025-06-13', '001-01660', 14.5, 0, '854724', '1663764', 15, 0, 'ASAT', '042111', '075-66530855', 'NA'),
+('075-66530811-5STD20X250', 73, '075-66530811', null, 'EV', 5, 'STD', 2, 200, '20', FALSE, '2025-06-13', '001-01660', 16, 0, '854724', '1663764', 16, 0, 'ASAT', '042111', '075-66530855', 'NA'),
+('145-99777333-5SM20X250', 74, '145-99777333', null, 'EV', 5, 'SM', 5, 500, '20', FALSE, '2025-06-12', '042-16026', 15, 0, '-', '1663997', 15, 0, 'ASAT', '041974', null, 'NA'),
+('145-99777591-5SM20X250', 75, '145-99777591', null, 'EV', 5, 'SM', 1, 100, '20', FALSE, '2025-06-13', '001-00632', 14, 0, '854722', '1664742', 0, 0, 'ASAT', '042105', null, 'NA'),
+('145-99777591-5TIP25X160', 75, '145-99777591', null, 'EV', 5, 'TIP', 1, 140, '25', FALSE, '2025-06-13', '001-00632', 34.5, 0, '854722', '1664742', 0, 0, 'ASAT', '042105', null, 'NA'),
+('145-99777591-5L20X250', 75, '145-99777591', null, 'EV', 5, 'L', 1, 100, '20', FALSE, '2025-06-13', '001-00632', 22, 0, '854722', '1664742', 0, 0, 'ASAT', '042105', null, 'NA'),
+('145-11747105-5SM20X250', 76, '145-11747105', null, 'EV', 5, 'SM', 4, 400, '20', FALSE, '2025-06-13', '005-26378', 16, 0, '-', '1663807', 16, 0, 'ASAT', '041778', null, 'NA'),
+('145-11747186-5SM20X250', 77, '145-11747186', null, 'EV', 5, 'SM', 2, 200, '20', FALSE, '2025-06-14', '001-04047', 12, 0, null, '1664580', 12, 0, 'ASAT', '042526', null, 'NA'),
+('145-11747094-5SM20X250', 78, '145-11747094', null, 'EV', 5, 'SM', 2, 200, '20', FALSE, '2025-06-13', '001-08600', 15, 0, '854509', '1664493', 15, 0, 'ASAT', '042300', null, 'NA'),
+('075-66517430-5SM20X250', 79, '075-66517430', null, 'EV', 5, 'SM', 2, 200, '20', FALSE, '2025-06-13', '001-03408', 15, 0, null, '1664828', 15, 0, 'ASAT', '042538', null, 'PJN'),
+('075-66517430-5STD20X250', 79, '075-66517430', null, 'EV', 5, 'STD', 2, 200, '20', FALSE, '2025-06-13', '001-03408', 19, 0, null, '1664828', 19, 0, 'ASAT', '042538', null, 'PJN'),
+('075-66517430-5L17X300', 79, '075-66517430', null, 'EV', 5, 'L', 1, 100, '17', FALSE, '2025-06-13', '001-03408', 21, 0, null, '1664828', 21, 0, 'ASAT', '042538', null, 'PJN'),
+('996-13798956-5SM20X250', 80, '996-13798956', null, 'EV', 5, 'SM', 2, 200, '20', FALSE, '2025-06-13', '001-03409', 15, 0, null, '1664613', 15, 0, 'ASAT', '042544', null, 'PJN'),
+('996-13798956-5STD20X250', 80, '996-13798956', null, 'EV', 5, 'STD', 2, 200, '20', FALSE, '2025-06-13', '001-03409', 19, 0, null, '1664613', 19, 0, 'ASAT', '042544', null, 'PJN'),
+('996-13798956-5L17X300', 80, '996-13798956', null, 'EV', 5, 'L', 1, 100, '17', FALSE, '2025-06-13', '001-03409', 21, 0, null, '1664613', 21, 0, 'ASAT', '042544', null, 'PJN'),
+('075-66530822-5STD20X250', 81, '075-66530822', null, 'EV', 5, 'STD', 2.5, 248, '20', FALSE, '2025-06-13', '001-03411', 19, 0, '854730', '1664618', 19, 0, 'ASAT', '042565', null, 'PJN'),
+('075-66530822-5L17X300', 81, '075-66530822', null, 'EV', 5, 'L', 1.3, 129, '17', FALSE, '2025-06-13', '001-03411', 21, 0, '854730', '1664618', 21, 0, 'ASAT', '042565', null, 'PJN'),
+('075-66530822-5L12X420', 81, '075-66530822', null, 'EV', 5, 'L', 0.3, 34, '12', FALSE, '2025-06-13', '001-03411', 21, 0, '854730', '1664618', 21, 0, 'ASAT', '042565', null, 'PJN'),
+('075-66530822-5XL17X300', 81, '075-66530822', null, 'EV', 5, 'XL', 0.9, 89, '17', FALSE, '2025-06-13', '001-03411', 23, 0, '854730', '1664618', 23, 0, 'ASAT', '042565', null, 'PJN'),
+('145-99777355-5STD20X250', 82, '145-99777355', null, 'EV', 5, 'STD', 2, 200, '20', FALSE, '2025-06-13', '001-03410', 19, 0, '854728', '1664788', 19, 0, 'ASAT', '042550', '075-66530855', 'PJN'),
+('145-99777355-5L17X300', 82, '145-99777355', null, 'EV', 5, 'L', 2, 200, '17', FALSE, '2025-06-13', '001-03410', 21, 0, '854728', '1664788', 21, 0, 'ASAT', '042550', '075-66530855', 'PJN'),
+('145-99777355-5XL12X420', 82, '145-99777355', null, 'EV', 5, 'XL', 1, 100, '12', FALSE, '2025-06-13', '001-03410', 23, 0, '854728', '1664788', 23, 0, 'ASAT', '042550', '075-66530855', 'PJN'),
+('145-99777381-5SM20X250', 83, '145-99777381', null, 'EV', 5, 'SM', 1.1, 110, '20', FALSE, '2025-06-13', '001-00008', 15, 0, null, '1664363', 15, 0, 'ASAT', '042420', null, 'NA'),
+('145-99777381-5STD20X250', 83, '145-99777381', null, 'EV', 5, 'STD', 2.3, 227, '20', FALSE, '2025-06-13', '001-00008', 19, 0, null, '1664363', 19, 0, 'ASAT', '042420', null, 'NA'),
+('145-99777381-5L17X300', 83, '145-99777381', null, 'EV', 5, 'L', 1.5, 147, '17', FALSE, '2025-06-13', '001-00008', 22, 0, null, '1664363', 22, 0, 'ASAT', '042420', null, 'NA'),
+('145-99777381-5XL12X420', 83, '145-99777381', null, 'EV', 5, 'XL', 0.1, 16, '12', FALSE, '2025-06-13', '001-00008', 23, 0, null, '1664363', 23, 0, 'ASAT', '042420', null, 'NA'),
+('075-66530844-5SM20X250', 84, '075-66530844', null, 'EV', 5, 'SM', 5, 500, '20', FALSE, '2025-06-14', '001-01662', 14.5, 0, '854727', '1664216', 15, 0, 'ASAT', '042112', '075-66530855', 'NA'),
+('145-99777366-5SM20X250', 85, '145-99777366', null, 'EV', 5, 'SM', 2, 200, '20', FALSE, '2025-06-15', '001-00633', 14, 0, '854726', '1664921', 0, 0, 'ASAT', '042107', null, 'NA'),
+('145-99777366-5STD20X250', 85, '145-99777366', null, 'EV', 5, 'STD', 1, 100, '20', FALSE, '2025-06-15', '001-00633', 17, 0, '854726', '1664921', 0, 0, 'ASAT', '042107', null, 'NA'),
+('145-99777366-5L20X250', 85, '145-99777366', null, 'EV', 5, 'L', 2, 200, '20', FALSE, '2025-06-15', '001-00633', 22, 0, '854726', '1664921', 0, 0, 'ASAT', '042107', null, 'NA'),
+('145-99777370-5SM20X250', 86, '145-99777370', null, 'EV', 5, 'SM', 4, 400, '20', FALSE, '2025-06-14', '005-26405', 16, 0, '-', '1664805', 16, 0, 'ASAT', '042459', null, 'NA'),
+('145-11160612-5SM20X250', 87, '145-11160612', null, 'EV', 5, 'SM', 3, 300, '20', FALSE, '2025-06-15', '001-08606', 15, 0, '854515', '1665039', 15, 0, 'ASAT', '042655', null, 'NA'),
+('145-11747142-5SM20X250', 88, '145-11747142', null, 'EV', 5, 'SM', 2, 200, '20', FALSE, '2025-06-15', '001-00492', 15, 0, '854799', '1664917', 15, 0, 'ASAT', '042602', null, 'CHK'),
+('996-13798960-5SM20X250', 89, '996-13798960', null, 'EV', 5, 'SM', 5, 500, '20', FALSE, '2025-06-13', '042-16043', 15, 0, '-', '1664625', 15, 0, 'ASAT', '042318', null, 'NA'),
+('075-66530796-15SM20X250', 90, '075-66530796', '1', 'EV', 5, 'SM', 4, 400, '20', FALSE, '2025-06-14', '042-16055', 15, 0, '-', '1665000', 15, 0, 'ASAT', '042527', null, 'NA'),
+('075-66530796-25SM20X250', 90, '075-66530796', '2', 'EV', 5, 'SM', 1, 100, '20', FALSE, '2025-06-14', '042-16058', 15, 0, '-', '1665000', 15, 0, 'ASAT', '042527', null, 'NA'),
+('145-99777613-5L120X250', 91, '145-99777613', null, 'EV', 5, 'L1', 1, 100, '20', FALSE, '2025-06-14', '042-16056', 24, 0, '-', '1665001', 24, 0, 'ASAT', '042530', null, 'NA'),
+('145-99777613-5L20X250', 91, '145-99777613', null, 'EV', 5, 'L', 2, 200, '20', FALSE, '2025-06-14', '042-16059', 25.5, 0, '-', '1665001', 25.5, 0, 'ASAT', '042530', null, 'NA'),
+('075-66530855-15SM20X250', 92, '075-66530855', '1', 'EV', 5, 'SM', 4, 400, '20', FALSE, '2025-06-15', '042-16064', 15, 0, '-', '1665095', 15, 0, 'ASAT', '042669', null, 'NA'),
+('075-66530855-25SM20X250', 92, '075-66530855', '2', 'EV', 5, 'SM', 1, 100, '20', FALSE, '2025-06-15', '042-16068', 15, 0, '-', '1665095', 15, 0, 'ASAT', '042669', null, 'NA'),
+('145-90650781-15STD20X250', 93, '145-90650781', '1', 'EV', 5, 'STD', 2, 192, '20', FALSE, '2025-06-15', '005-26457', 16.5, 0, '-', '1665018', 16.5, 0, 'ASAT', '042472', null, 'NA'),
+('145-90650781-25STD20X250', 93, '145-90650781', '2', 'EV', 5, 'STD', 2, 96, '20', FALSE, '2025-06-15', '005-26457', 20.5, 0, '-', '1665018', 20.5, 0, 'ASAT', '042472', null, 'NA'),
+('145-90650781-5L20X250', 93, '145-90650781', null, 'EV', 5, 'L', 1, 96, '20', FALSE, '2025-06-15', '005-26457', 23.5, 0, '-', '1665018', 23.5, 0, 'ASAT', '042472', null, 'NA'),
+('145-99777624-5L12X420', 94, '145-99777624', null, 'EV', 5, 'L', 5, 500, '12', FALSE, '2025-06-16', '001-06279', 21, 0, '853478', '1665719', 21, 0, 'ASAT', '042853', '145-99777543', 'NA'),
+('996-13801922-5SM20X250', 95, '996-13801922', null, 'EV', 5, 'SM', 4, 400, '20', FALSE, '2025-06-15', '005-26414', 16, 0, '-', '1664804', 16, 0, 'ASAT', '042469', null, 'NA'),
+('145-11163412-5STD20X250', 96, '145-11163412', null, 'EV', 5, 'STD', 1.4, 144, '20', FALSE, '2025-06-16', '001-00009', 19, 0, null, '1665802', 19, 0, 'ASAT', '042924', null, 'NA'),
+('145-11163412-5L17X300', 96, '145-11163412', null, 'EV', 5, 'L', 1.3, 131, '17', FALSE, '2025-06-16', '001-00009', 22, 0, null, '1665802', 22, 0, 'ASAT', '042924', null, 'NA'),
+('145-11163412-5XL12X420', 96, '145-11163412', null, 'EV', 5, 'XL', 0.3, 25, '12', FALSE, '2025-06-16', '001-00009', 23, 0, null, '1665802', 23, 0, 'ASAT', '042924', null, 'NA'),
+('145-99777440-5L20X250', 97, '145-99777440', null, 'EV', 5, 'L', 2, 192, '20', FALSE, '2025-06-16', '005-26446', 23.5, 0, '-', '1665641', 23.5, 0, 'ASAT', '042838', null, 'NA'),
+('145-99777440-5STD20X250', 97, '145-99777440', null, 'EV', 5, 'STD', 3, 288, '20', FALSE, '2025-06-16', '005-26446', 20.5, 0, '-', '1665641', 20.5, 0, 'ASAT', '042838', null, 'NA'),
+('145-11160741-5STD20X250', 98, '145-11160741', null, 'EV', 5, 'STD', 2, 200, '20', FALSE, '2025-06-16', '001-03420', 17, 0, '854749', '1665744', 17, 0, 'ASAT', '043015', null, 'PJN'),
+('145-11160741-5L17X300', 98, '145-11160741', null, 'EV', 5, 'L', 2, 200, '17', FALSE, '2025-06-16', '001-03420', 20, 0, '854749', '1665744', 20, 0, 'ASAT', '043015', null, 'PJN'),
+('145-11160741-5XL12X420', 98, '145-11160741', null, 'EV', 5, 'XL', 1, 100, '12', FALSE, '2025-06-16', '001-03420', 22, 0, '854749', '1665744', 22, 0, 'ASAT', '043015', null, 'PJN'),
+('075-66530866-5SM20X250', 99, '075-66530866', null, 'EV', 5, 'SM', 1, 100, '20', FALSE, '2025-06-16', '001-03419', 15, 0, '854731', '1665749', 15, 0, 'ASAT', '043008', null, 'PJN'),
+('075-66530866-5STD20X250', 99, '075-66530866', null, 'EV', 5, 'STD', 2, 200, '20', FALSE, '2025-06-16', '001-03419', 17, 0, '854731', '1665749', 17, 0, 'ASAT', '043008', null, 'PJN'),
+('075-66530866-5L17X300', 99, '075-66530866', null, 'EV', 5, 'L', 2, 200, '17', FALSE, '2025-06-16', '001-03419', 20, 0, '854731', '1665749', 20, 0, 'ASAT', '043008', null, 'PJN'),
+('145-11163423-5SM20X250', 100, '145-11163423', null, 'EV', 5, 'SM', 2, 200, '20', FALSE, '2025-06-17', '001-04052', 12, 0, null, '1665602', 12, 0, 'ASAT', '043107', null, 'NA'),
+('145-91032756-5SM20X250', 101, '145-91032756', null, 'EV', 5, 'SM', 4, 400, '20', FALSE, '2025-06-17', '005-26453', 16, 0, '-', '1666141', 16, 0, 'ASAT', '043083', null, 'NA'),
+('145-99777543-5SM20X250', 102, '145-99777543', null, 'EV', 5, 'SM', 3, 300, '20', FALSE, '2025-06-17', '001-08610', 15, 0, '854558', '1666319', 15, 0, 'ASAT', '043066', null, 'NA'),
+('145-99777436-5SM20X250', 103, '145-99777436', null, 'EV', 5, 'SM', 0.5, 49, '20', FALSE, '2025-06-16', '002-01313', 14, 0, '854734', '1665753', 14, 0, 'ASAT', '043005', null, 'NA'),
+('145-99777436-5STD20X250', 103, '145-99777436', null, 'EV', 5, 'STD', 1.5, 151, '20', FALSE, '2025-06-16', '002-01313', 18, 0, '854734', '1665753', 18, 0, 'ASAT', '043005', null, 'NA'),
+('996-13802121-5SM20X250', 104, '996-13802121', null, 'EV', 5, 'SM', 4, 400, '20', FALSE, '2025-06-17', '001-01665', 14.5, 0, '853479', '1666673', 15, 0, 'ASAT', '042978', '145-99777543', 'NA'),
+('996-13802121-5L17X300', 104, '996-13802121', null, 'EV', 5, 'L', 1, 100, '17', FALSE, '2025-06-17', '001-01665', 21, 0, '853479', '1666673', 22, 0, 'ASAT', '042978', '145-99777543', 'NA'),
+('996-13801933-5SM20X250', 105, '996-13801933', null, 'EV', 5, 'SM', 2, 200, '20', FALSE, '2025-06-17', '001-03426', 15, 0, '854791', '1666274', 15, 0, 'ASAT', '043340', null, 'PJN'),
+('996-13801933-5STD20X250', 105, '996-13801933', null, 'EV', 5, 'STD', 0.5, 50, '20', FALSE, '2025-06-17', '001-03426', 17, 0, '854791', '1666274', 17, 0, 'ASAT', '043340', null, 'PJN'),
+('996-13801933-5L17X300', 105, '996-13801933', null, 'EV', 5, 'L', 2, 200, '17', FALSE, '2025-06-17', '001-03426', 20, 0, '854791', '1666274', 20, 0, 'ASAT', '043340', null, 'PJN'),
+('996-13801933-5XL12X420', 105, '996-13801933', null, 'EV', 5, 'XL', 0.5, 50, '12', FALSE, '2025-06-17', '001-03426', 22, 0, '854791', '1666274', 22, 0, 'ASAT', '043340', null, 'PJN'),
+('145-99777554-5SM20X250', 106, '145-99777554', null, 'EV', 5, 'SM', 2, 200, '20', FALSE, '2025-06-18', '001-06282', 14, 0, '837747', '1665728', 14, 0, 'ASAT', '043420', null, 'NA'),
+('145-99777554-5L12X420', 106, '145-99777554', null, 'EV', 5, 'L', 1, 100, '12', FALSE, '2025-06-18', '001-06282', 21, 0, '837747', '1665728', 21, 0, 'ASAT', '043420', null, 'NA'),
+('145-99777565-5L20X250', 107, '145-99777565', null, 'EV', 5, 'L', 2, 200, '20', FALSE, '2025-06-18', '001-08614', 27, 0, '854591', '1666873', 27, 0, 'ASAT', '043330', null, 'NA'),
+('075-66530870-15L20X250', 108, '075-66530870', '1', 'EV', 5, 'L', 1, 100, '20', FALSE, '2025-06-16', '042-16076', 25.5, 0, '-', '1665816', 25.5, 0, 'ASAT', '042785', null, 'NA'),
+('075-66530870-25L20X250', 108, '075-66530870', '2', 'EV', 5, 'L', 2, 200, '20', FALSE, '2025-06-16', '042-16081', 25.5, 0, '-', '1665816', 25.5, 0, 'ASAT', '042785', null, 'NA'),
+('075-66530903-5SM20X250', 109, '075-66530903', null, 'EV', 5, 'SM', 4, 400, '20', FALSE, '2025-06-17', '005-26447', 16, 0, '-', '1666155', 16, 0, 'ASAT', '043098', null, 'NA'),
+('145-11753652-5SM20X250', 110, '145-11753652', null, 'EV', 5, 'SM', 2, 200, '20', FALSE, '2025-06-18', '001-03433', 15, 0, '837754', '1667049', 15, 0, 'ASAT', '043614', null, 'PJN'),
+('145-11753652-5STD20X250', 110, '145-11753652', null, 'EV', 5, 'STD', 0.5, 50, '20', FALSE, '2025-06-18', '001-03433', 17, 0, '837754', '1667049', 17, 0, 'ASAT', '043614', null, 'PJN'),
+('145-11753652-5L17X300', 110, '145-11753652', null, 'EV', 5, 'L', 2, 200, '17', FALSE, '2025-06-18', '001-03433', 20, 0, '837754', '1667049', 20, 0, 'ASAT', '043614', null, 'PJN'),
+('145-11753652-5XL12X420', 110, '145-11753652', null, 'EV', 5, 'XL', 0.5, 50, '12', FALSE, '2025-06-18', '001-03433', 22, 0, '837754', '1667049', 22, 0, 'ASAT', '043614', null, 'PJN'),
+('145-99777576-5SM20X250', 111, '145-99777576', null, 'EV', 5, 'SM', 2, 200, '20', FALSE, '2025-06-18', '001-03434', 15, 0, '837753', '1667072', 15, 0, 'ASAT', '043618', null, 'PJN'),
+('145-99777576-5STD20X250', 111, '145-99777576', null, 'EV', 5, 'STD', 0.5, 50, '20', FALSE, '2025-06-18', '001-03434', 17, 0, '837753', '1667072', 17, 0, 'ASAT', '043618', null, 'PJN'),
+('145-99777576-5L17X300', 111, '145-99777576', null, 'EV', 5, 'L', 2, 200, '17', FALSE, '2025-06-18', '001-03434', 20, 0, '837753', '1667072', 20, 0, 'ASAT', '043618', null, 'PJN'),
+('145-99777576-5XL12X420', 111, '145-99777576', null, 'EV', 5, 'XL', 0.5, 50, '12', FALSE, '2025-06-18', '001-03434', 22, 0, '837753', '1667072', 22, 0, 'ASAT', '043618', null, 'PJN'),
+('145-11753663-5L120X250', 112, '145-11753663', null, 'EV', 5, 'L1', 2, 200, '20', FALSE, '2025-06-18', '042-16101', 23, 0, '-', '1666973', 23, 0, 'ASAT', '043463', null, 'NA'),
+('145-11753663-5L20X250', 112, '145-11753663', null, 'EV', 5, 'L', 2, 200, '20', FALSE, '2025-06-18', '042-16103', 24, 0, '-', '1666973', 24, 0, 'ASAT', '043463', null, 'NA'),
+('145-11751106-5SM20X250', 113, '145-11751106', null, 'EV', 5, 'SM', 1, 100, '20', FALSE, '2025-06-18', '001-03435', 15, 0, null, '1666936', 15, 0, 'ASAT', '043623', null, 'PJN'),
+('145-11751106-5STD20X250', 113, '145-11751106', null, 'EV', 5, 'STD', 1, 100, '20', FALSE, '2025-06-18', '001-03435', 17, 0, null, '1666936', 17, 0, 'ASAT', '043623', null, 'PJN'),
+('145-11751106-5L17X300', 113, '145-11751106', null, 'EV', 5, 'L', 3, 300, '17', FALSE, '2025-06-18', '001-03435', 20, 0, null, '1666936', 20, 0, 'ASAT', '043623', null, 'PJN'),
+('145-11753674-5SM20X250', 114, '145-11753674', null, 'EV', 5, 'SM', 2, 200, '20', FALSE, '2025-06-19', '001-00646', 14, 0, '853167', '1667817', 14, 0, 'ASAT', null, null, 'NA'),
+('145-11753674-5TIP30X160', 114, '145-11753674', null, 'EV', 5, 'TIP', 1, 140, '30', FALSE, '2025-06-19', '001-00646', 34.5, 0, '853167', '1667817', 34.5, 0, 'ASAT', null, null, 'NA'),
+('145-11753674-5L20X250', 114, '145-11753674', null, 'EV', 5, 'L', 2, 200, '20', FALSE, '2025-06-19', '001-00646', 22, 0, '853167', '1667817', 22, 0, 'ASAT', null, null, 'NA'),
+('996-13802692-5SM20X250', 115, '996-13802692', null, 'EV', 5, 'SM', 5, 500, '20', FALSE, '2025-06-20', '001-00493', 15, 0, '854756', '1667843', 15, 0, 'ASAT', '043880', null, 'CHK'),
+('075-66530940-5SM20X250', 116, '075-66530940', null, 'EV', 5, 'SM', 4, 400, '20', FALSE, '2025-06-18', '005-26476', 16, 0, '-', '1667542', 16, 0, 'ASAT', '043696', null, 'NA'),
+('145-11753685-5L20X250', 117, '145-11753685', null, 'EV', 5, 'L', 3, 288, '20', FALSE, '2025-06-18', '005-26477', 23.5, 0, '-', '1666937', 23.5, 0, 'ASAT', '043697', null, 'NA'),
+('075-66530914-5SM20X250', 118, '075-66530914', null, 'EV', 5, 'SM', 5, 500, '20', FALSE, '2025-06-18', '042-16100', 15, 0, '-', '1666974', 15, 0, 'ASAT', '043462', null, 'NA'),
+('145-11753696-5SM20X250', 119, '145-11753696', null, 'EV', 5, 'SM', 2, 200, '20', FALSE, '2025-06-19', '001-08616', 15, 0, '943226', '1667562', 15, 0, 'ASAT', '043741', null, 'NA'),
+('996-13800776-5SM20X250', 120, '996-13800776', null, 'EV', 5, 'SM', 4, 400, '20', FALSE, '2025-06-21', '001-01667', 14.5, 0, '854793', '1668095', 15, 0, 'ASAT', '044039', null, 'NA'),
+('996-13800776-5L17X300', 120, '996-13800776', null, 'EV', 5, 'L', 1, 100, '17', FALSE, '2025-06-21', '001-01667', 21, 0, '854793', '1668095', 22, 0, 'ASAT', '044039', null, 'NA'),
+('075-66532196-5SM20X250', 121, '075-66532196', null, 'EV', 5, 'SM', 1, 100, '20', FALSE, '2025-06-19', '001-03438', 15, 0, null, '1667301', 15, 0, 'ASAT', '044044', null, 'PJN'),
+('075-66532196-5STD20X250', 121, '075-66532196', null, 'EV', 5, 'STD', 1, 100, '20', FALSE, '2025-06-19', '001-03438', 17, 0, null, '1667301', 17, 0, 'ASAT', '044044', null, 'PJN'),
+('075-66532196-5L17X300', 121, '075-66532196', null, 'EV', 5, 'L', 3, 300, '17', FALSE, '2025-06-19', '001-03438', 20, 0, null, '1667301', 20, 0, 'ASAT', '044044', null, 'PJN'),
+('145-11751121-5SM20X250', 122, '145-11751121', null, 'EV', 5, 'SM', 2, 200, '20', FALSE, '2025-06-19', '001-03437', 15, 0, null, '1667693', 15, 0, 'ASAT', '044253', null, 'PJN'),
+('145-11751121-5STD20X250', 122, '145-11751121', null, 'EV', 5, 'STD', 0.5, 50, '20', FALSE, '2025-06-19', '001-03437', 17, 0, null, '1667693', 17, 0, 'ASAT', '044253', null, 'PJN'),
+('145-11751121-5L17X300', 122, '145-11751121', null, 'EV', 5, 'L', 2, 200, '17', FALSE, '2025-06-19', '001-03437', 20, 0, null, '1667693', 20, 0, 'ASAT', '044253', null, 'PJN'),
+('145-11751121-5XL12X420', 122, '145-11751121', null, 'EV', 5, 'XL', 0.5, 50, '12', FALSE, '2025-06-19', '001-03437', 22, 0, null, '1667693', 22, 0, 'ASAT', '044253', null, 'PJN'),
+('145-11754035-5L17X300', 123, '145-11754035', null, 'EV', 5, 'L', 1.5, 141, '17', FALSE, '2025-06-20', '001-03442', 20, 0, '837701', '1668239', 20, 0, 'ASAT', '044375', null, 'PJN'),
+('145-11754035-5XL12X420', 123, '145-11754035', null, 'EV', 5, 'XL', 0.5, 59, '12', FALSE, '2025-06-20', '001-03442', 22, 0, '837701', '1668239', 22, 0, 'ASAT', '044375', null, 'PJN'),
+('145-99777473-15SM20X250', 124, '145-99777473', '1', 'EV', 5, 'SM', 1, 100, '20', FALSE, '2025-06-19', '001-01745', 15.5, 0, '927963', '1668071', 14, 0, 'ASAT', '044432', '075-66532502', 'NA'),
+('145-99777473-25SM20X250', 124, '145-99777473', '2', 'EV', 5, 'SM', 1, 100, '20', FALSE, '2025-06-19', '001-01746', 15.5, 0, '927964', '1668077', 14, 0, 'ASAT', '044432', '075-66532502', 'NA'),
+('145-11753711-5SM20X250', 125, '145-11753711', null, 'EV', 5, 'SM', 4, 400, '20', FALSE, '2025-06-21', '005-26512', 16, 0, '-', '1668541', 16, 0, 'ASAT', '044235', null, 'NA'),
+('145-11753884-5SM20X250', 126, '145-11753884', null, 'EV', 5, 'SM', 1, 100, '20', FALSE, '2025-06-21', '001-03443', 15, 0, '837210', '1668257', 15, 0, 'ASAT', '044508', null, 'PJN'),
+('145-11753884-4TIP25X160', 126, '145-11753884', null, 'EV', 4, 'TIP', 1, 140, '25', FALSE, '2025-06-21', '001-03443', 32, 0, '837210', '1668257', 32, 0, 'ASAT', '044508', null, 'PJN'),
+('145-11753884-5L17X300', 126, '145-11753884', null, 'EV', 5, 'L', 2, 200, '17', FALSE, '2025-06-21', '001-03443', 20, 0, '837210', '1668257', 20, 0, 'ASAT', '044508', null, 'PJN'),
+('145-11753884-5XL12X420', 126, '145-11753884', null, 'EV', 5, 'XL', 1, 60, '12', FALSE, '2025-06-21', '001-03443', 22, 0, '837210', '1668257', 22, 0, 'ASAT', '044508', null, 'PJN'),
+('075-66532502-5SM20X250', 127, '075-66532502', null, 'EV', 5, 'SM', 1, 100, '20', FALSE, '2025-06-21', '001-03444', 15, 0, '837211', '1668462', 15, 0, 'ASAT', '044509', null, 'PJN'),
+('075-66532502-5L17X300', 127, '075-66532502', null, 'EV', 5, 'L', 2.9, 285, '17', FALSE, '2025-06-21', '001-03444', 20, 0, '837211', '1668462', 20, 0, 'ASAT', '044509', null, 'PJN'),
+('075-66532502-5XL12X420', 127, '075-66532502', null, 'EV', 5, 'XL', 1.1, 115, '12', FALSE, '2025-06-21', '001-03444', 22, 0, '837211', '1668462', 22, 0, 'ASAT', '044509', null, 'PJN'),
+('145-11160881-5L20X250', 128, '145-11160881', null, 'EV', 5, 'L', 3, 300, '20', FALSE, '2025-06-22', '001-08624', 27, 0, '942147', '1668870', 27, 0, 'ASAT', '044488', null, 'NA'),
+('145-11160881-5SM20X250', 128, '145-11160881', null, 'EV', 5, 'SM', 2, 200, '20', FALSE, '2025-06-22', '001-08626', 15, 0, '942145', '1668868', 15, 0, 'ASAT', '044488', null, 'NA');
+
+SELECT * FROM operacion;
+
+CREATE OR REPLACE VIEW ope AS
+SELECT 
+    o.n_embarcacion, 
+    cod_ope AS "OPER.", 
+    camp, 
+    mes, 
+    WEEK(etd_lima, 4) AS "SEM", 
+    WEEK(eta_dest, 1) AS "SEM ARR", 
+    WEEK(eta_lima, 3) AS "SEM PACKER", 
+    WEEK(etd_lima, 3) AS "SEM AG", 
+    o.cod_descli AS "C-CLI", 
+    o.cod_despac AS "C-PAC", 
+    p.nombre_packer as "PACKER",
+    c.nombre_cli AS "CLIENTE",
+    destino as "DEST", 
+    cod_ag AS "AG", 
+    aero1 AS "AERO1", 
+    a.aerolinea AS "AERO",
+    cod_ruta AS "RUTA", 
+    o.awb AS "AWB", 
+    o.hawb AS "HAWB", 
+    SUM(v.total_caja) AS "TOTAL CAJAS",
+    ROUND(SUM(
+		CASE 
+			WHEN v.prod = "A" 
+            THEN v.skd / 6
+            ELSE v.skd / 5
+		END
+    )) AS "PAL",
+    total_kg AS "TOTAL KG", 
+    ROUND((total_kg / SUM(v.total_caja)), 2) AS "PESO/CAJA",
+    tot_flete_inicial, 
+    n_nc, 
+    total_nc, 
+    (tot_flete_inicial - total_nc) AS "TOTAL FLETE FINAL",
+    ROUND(((tot_flete_inicial - total_nc) / total_kg), 2) AS "FLETE/KG",
+    eta_lima AS "ETA LIMA", 
+    hora, 
+    temperatura_i AS "TEMP. INI", 
+    etd_lima AS "ETD LIMA", 
+    conex AS "CONEX", 
+    eta_dest AS "ETA DEST",
+    DATEDIFF(eta_dest, etd_lima) AS "ESTADIA",
+    temperatura_f AS "TEMP. FIN", 
+    DATE_ADD(eta_dest, INTERVAL 2 DAY) AS "CONTROL CALIDAD INICIAL",
+    control_calidad_f AS "CONTROL CALIDAD FINAL",
+    DATEDIFF(control_calidad_f, DATE_ADD(eta_dest, INTERVAL 2 DAY)) AS "CONTROL CALIDAD RETRASO"
+FROM operacion o 
+JOIN despacho_packer dp ON dp.cod_despac = o.cod_despac
+JOIN packer p ON p.cod_packer = dp.cod_packer
+JOIN despacho_cliente dc ON dc.cod_descli = o.cod_descli
+JOIN cliente c ON c.cod_cli = dc.cod_cli
+JOIN aero a ON a.cod_aero = o.cod_aero
+JOIN valores v ON v.n_embarcacion = o.n_embarcacion
+GROUP BY 
+    o.n_embarcacion,
+    o.awb,
+    tot_flete_inicial
+ORDER BY n_embarcacion ASC;
+
+SELECT * FROM ope;
+
+CREATE OR REPLACE VIEW val AS
+SELECT
+	id_valor,
+    v.n_embarcacion,
+    o.`OPER.`,
+    o.camp,
+    o.mes,
+    o.`SEM`,
+    o.`SEM ARR`,
+    o.`SEM PACKER`,
+    o.`SEM AG`,
+    o.`C-CLI`,
+    o.`C-PAC`,
+    o.`ETA LIMA`,
+    o.`ETD LIMA`,
+    o.`ETA DEST`,
+    v.awb AS "AWB",
+    v.hawb AS "HAWB",
+    prod AS "PROD",
+    t_c AS "T.C.",
+    cod_calibre AS "CAL",
+    ROUND(SUM(
+		CASE
+			WHEN prod = "A" THEN
+				skd / 6
+			ELSE
+				skd / 5
+		END
+	)) AS "PAL",
+    skd AS "SKD",
+    total_caja AS "TOTAL CAJA",
+    a.atado AS "ATADOS",
+    (CASE
+		WHEN cubre = TRUE THEN
+			"SI"
+		ELSE "NO"
+	END) AS "CUBRE",
+    o.`DEST`,
+    o.`AERO1`,
+    o.`AERO`,
+    o.`RUTA`,
+    o.`FLETE/KG`,
+    o.`PACKER`,
+    fecha_factura AS "F. FACT",
+    n_factura AS "N° FACT",
+    precio_compra AS "PRECIO COMPRA",
+    nc_nd_compra AS "NC-ND COMPRA",
+    ((precio_compra + nc_nd_compra) * total_caja) AS "TOTAL COMPRA",
+    n_origen AS "N° ORIGEN",
+    n_fto AS "N° FITO",
+    precio_venta AS "PRECIO VENTA",
+    nc_nd_venta AS "NC-ND VENTA",
+    ((nc_nd_venta + precio_venta) * total_caja) AS "TOTAL VENTA",
+    ((nc_nd_venta + precio_venta) * total_caja) AS "TOTAL VENTA ALL",
+    o.`CLIENTE`,
+    ag.destino AS "AG DEST.",
+    (
+    CASE
+		WHEN o.`OPER.` = "PPG" THEN
+			((nc_nd_venta + precio_venta) * total_caja) - ((precio_compra + nc_nd_compra) * total_caja)
+		ELSE 0
+	END
+    ) AS "MARGEN",
+    ( (
+    CASE
+		WHEN t_c > 4.8 THEN
+			p.precio_mayor_5
+		ELSE
+			p.precio_menor_5
+	END
+    ) * total_caja ) AS "FEE",
+	(
+    CASE
+		WHEN p.ceo = TRUE THEN
+			"SI"
+		ELSE "NO"
+	END
+    ) AS "CEO",
+    (
+    CASE
+		WHEN p.dam = TRUE THEN
+			"SI"
+		ELSE "NO"
+	END
+    ) AS "DAM",
+    n_dam AS "N° DAM",
+    awb_reg_ceo AS "AWB REG. CEO",
+    pp.nombre_provp AS "PLANTA/ PROV."
+FROM valores v
+JOIN ope o ON v.n_embarcacion = o.n_embarcacion
+JOIN atados a ON a.cod_atado = v.cod_atado
+JOIN ag_destino ag ON ag.cod_agd = v.cod_agd
+JOIN planta_proveedor pp ON pp.cod_plantap = v.cod_plantap
+JOIN packer p ON p.nombre_packer = o.`PACKER`
+GROUP BY 
+	id_valor, p.precio_mayor_5, p.precio_menor_5, p.ceo, p.dam
+ORDER BY 
+	n_embarcacion 
+ASC;
+
+SELECT * FROM val;
+
+CREATE TABLE control (
+	id_control CHAR(12) NOT NULL,
+    id_valor CHAR(25) NOT NULL,
+    reemp_desp DATE NOT NULL,
+    awb CHAR(15) NOT NULL,
+    hawb INT NULL,
+    t_c NUMERIC(3,2) NOT NULL,
+    cod_calibre CHAR(5) NOT NULL,
+    caja_emb INT NOT NULL,
+    caja_obs INT NOT NULL,
+    cod_atado INT NOT NULL,
+    pesoXcaja NUMERIC(6,2) NOT NULL,
+    sobre_peso NUMERIC(6,2) NOT NULL,
+    fuera_rangoXcaja NUMERIC(7,2) NOT NULL,
+    PRIMARY KEY(id_control),
+    FOREIGN KEY (id_valor) REFERENCES valores(id_valor),
+    FOREIGN KEY (cod_calibre) REFERENCES calibre(cod_calibre),
+    FOREIGN KEY (cod_atado) REFERENCES atados(cod_atado)
+);
+
+DELIMITER $$
+
+CREATE PROCEDURE insertar_control (
+    IN p_id_valor CHAR(25),
+    IN p_reemp_desp DATE,
+    IN p_awb CHAR(15),
+    IN p_hawb INT,
+    IN p_t_c NUMERIC(3,2),
+    IN p_cod_calibre CHAR(5),
+    IN p_caja_emb INT,
+    IN p_caja_obs INT,
+    IN p_cod_atado INT,
+    IN p_pesoXcaja NUMERIC(6,2),
+    IN p_sobre_peso NUMERIC(6,2),
+    IN p_fuera_rangoXcaja NUMERIC(7,2)
+)
+BEGIN
+    DECLARE ultimo_numero INT DEFAULT 0;
+    DECLARE nuevo_id CHAR(15);
+
+    -- Buscar el número máximo
+    SELECT MAX(CAST(SUBSTRING(id_control, 8) AS UNSIGNED)) 
+    INTO ultimo_numero 
+    FROM control 
+    WHERE id_control LIKE 'CDDCTRL%';
+
+    -- Si es NULL (no hay registros), poner en 0
+    IF ultimo_numero IS NULL THEN
+        SET ultimo_numero = 0;
+    END IF;
+
+    -- Incrementar el número
+    SET ultimo_numero = ultimo_numero + 1;
+
+    -- Generar el nuevo ID
+    SET nuevo_id = CONCAT('CDDCTRL', LPAD(ultimo_numero, 3, '0'));
+
+    -- Insertar
+    INSERT INTO control (
+        id_control,
+        id_valor,
+        reemp_desp,
+        awb,
+        hawb,
+        t_c,
+        cod_calibre,
+        caja_emb,
+        caja_obs,
+        cod_atado,
+        pesoXcaja,
+        sobre_peso,
+        fuera_rangoXcaja
+    )
+    VALUES (
+        nuevo_id,
+        p_id_valor,
+        p_reemp_desp,
+        p_awb,
+        p_hawb,
+        p_t_c,
+        p_cod_calibre,
+        p_caja_emb,
+        p_caja_obs,
+        p_cod_atado,
+        p_pesoXcaja,
+        p_sobre_peso,
+        p_fuera_rangoXcaja
+    );
+END $$
+DELIMITER ;
+
+CREATE TABLE familia_categoria (
+	id_fami_cate CHAR(5) NOT NULL,
+    nombre_fami_cate VARCHAR(50) NOT NULL,
+    PRIMARY KEY (id_fami_cate)
+);
+
+INSERT INTO familia_categoria VALUES
+("CMP", "Condición de Materia Prima"),
+("LGT", "Logística"),
+("MPP", "Materia Prima - Proceso"),
+("PRC", "Proceso");
+
+CREATE TABLE categoria_defecto (
+	id_cate_defecto CHAR(5) NOT NULL,
+    nombre_cate_defecto VARCHAR(50) NOT NULL,
+    PRIMARY KEY (id_cate_defecto)
+);
+
+INSERT INTO categoria_defecto VALUES
+("MTPM", "Materia Prima"),
+("PRCS", "Proceso"),
+("OTR", "Otros");
+
+CREATE TABLE defectos (
+	id_defecto CHAR(5) NOT NULL,
+    nombre_defecto VARCHAR(50) NOT NULL,
+    id_cate_defecto CHAR(5) NOT NULL,
+    PRIMARY KEY (id_defecto),
+    FOREIGN KEY (id_cate_defecto) REFERENCES categoria_defecto(id_cate_defecto)
+);
+
+INSERT INTO defectos VALUES 
+("PDRD", "PODRIDOS", "MTPM"),
+("DECY", "DECAY", "MTPM"),
+("TNCD", "TURION CRECIDO", "MTPM"),
+("DSHT", "DESHIDRATADO", "PRCS"),
+("DXPG", "DAÑO X PLAGA", "PRCS"),
+("DFCL", "DEFECTO COLOR", "PRCS"),
+("TNRD", "TURION RAJADO", "PRCS"),
+("TNQD", "TURION QUEMADO", "PRCS"),
+("OTDF", "OTROS DEFECTOS", "PRCS"),
+("CZRT", "CABEZAS ROTAS", "PRCS"),
+("BSBL", "BASE BLANCA", "PRCS"),
+("CTSG", "CORTE SESGADO", "PRCS"),
+("SPGD", "ESPIGADO", "PRCS"),
+("TNTD", "TURION TORCIDO", "PRCS"),
+("BCPM", "BASE C/ PRES. MOHO", "PRCS"),
+("CBRD", "CALIBRADO", "PRCS"),
+("TNCL", "TURION CONGELADO", "OTR"),
+("TNCT", "TURION CORTO", "OTR"),
+("TNCV", "TURION CURVO", "OTR"),
+("STPL", "STEM-PHYLIUM", "OTR"),
+("CZTS", "CICATRIZXTRIPS", "OTR");
+
+CREATE TABLE calidad_defecto (
+	id_control CHAR(12) NOT NULL,
+    id_defecto CHAR(5) NOT NULL,
+    cantidad DECIMAL(6,2) NULL DEFAULT 0,
+    PRIMARY KEY(id_control, id_defecto),
+    FOREIGN KEY (id_control) REFERENCES control(id_control),
+    FOREIGN KEY (id_defecto) REFERENCES defectos(id_defecto)
+);
+
+CREATE TABLE calidad_valor (
+	id_cdvalor CHAR(12) NOT NULL,
+    id_control CHAR(12) NOT NULL,
+    apoyo_csu_fr_rango DECIMAL(5,2)NULL,
+    apoyo_csu_defecto DECIMAL(5,2) NULL,
+    mano_obraXkg DECIMAL(10,5) NULL,
+    ad_tp_kg DECIMAL(11,6) NULL,
+    PRIMARY KEY (id_cdvalor),
+    FOREIGN KEY (id_control) REFERENCES control(id_control)
+);
+
+DELIMITER $$
+
+CREATE PROCEDURE generar_id_valor (OUT nuevo_id CHAR(15))
+BEGIN
+    DECLARE ultimo_numero INT DEFAULT 0;
+
+    -- Buscar el máximo número actual extraído del ID
+    SELECT MAX(CAST(SUBSTRING(id_cdvalor, 7) AS UNSIGNED))
+    INTO ultimo_numero
+    FROM calidad_valor
+    WHERE id_cdvalor LIKE 'CDDVLR%';
+
+    -- Si es NULL, poner en 0
+    IF ultimo_numero IS NULL THEN
+        SET ultimo_numero = 0;
+    END IF;
+
+    -- Incrementar el número
+    SET ultimo_numero = ultimo_numero + 1;
+
+    -- Generar el nuevo ID (mínimo 3 dígitos, pero crece según el número)
+    SET nuevo_id = CONCAT('CDDVLR', LPAD(ultimo_numero, 3, '0'));
+END $$
+DELIMITER ;
+
+
+
+DELIMITER $$
+CREATE TRIGGER crea_calidad_valor
+AFTER INSERT ON control
+FOR EACH ROW
+BEGIN
+	CALL generar_id_valor(@nuevo_id);
+    INSERT INTO calidad_valor (id_cdvalor, id_control) VALUES (@nuevo_id, NEW.id_control);
+END $$
+DELIMITER ;
+
+CALL insertar_control('075-66527764-5STD20X250', '2025-05-04', '075-66527764', null, 5, 'STD', 200, 100, 20, 5346, 346, 0);
+CALL insertar_control('075-66527764-5STD20X250', '2025-05-04', '075-66527764', null, 5, 'STD', 0, 100, 20, 5306, 306, 0);
+CALL insertar_control('145-90639500-5STD20X250', '2025-05-06', '145-90639500', null, 5, 'STD', 200, 100, 20, 5266, 266, 0);
+CALL insertar_control('145-90639500-5STD20X250', '2025-05-06', '145-90639500', null, 5, 'STD', 0, 100, 20, 5142, 142, 0);
+CALL insertar_control('145-90639496-5STD20X250', '2025-05-20', '145-90639496', null, 5, 'STD', 200, 100, 20, 5374, 374, 0);
+CALL insertar_control('145-90639496-5STD20X250', '2025-05-20', '145-90639496', null, 5, 'STD', 0, 100, 20, 5238, 238, 0);
+CALL insertar_control('145-90639566-5SM20X250', '2025-05-24', '145-90639566', null, 5, 'SM', 200, 100, 20, 5370, 370, 0);
+CALL insertar_control('145-90639566-5SM20X250', '2025-05-24', '145-90639566', null, 5, 'SM', 0, 100, 20, 5310, 310, 0);
+CALL insertar_control('145-90690526-5STD20X250', '2025-05-23', '145-90690526', null, 5, 'STD', 200, 100, 20, 5276, 276, 0);
+CALL insertar_control('145-90690843-15STD20X250', '2025-05-24', '145-90690843', 1, 5, 'STD', 200, 50, 20, 5322, 322, 108);
+CALL insertar_control('145-90690843-5SM20X250', '2025-05-24', '145-90690843', null, 5, 'SM', 300, 100, 20, 5086, 86, 0);
+CALL insertar_control('145-90690843-5SM20X250', '2025-05-24', '145-90690843', null, 5, 'SM', 0, 100, 20, 5074, 74, 0);
+CALL insertar_control('145-90690843-5SM20X250', '2025-05-24', '145-90690843', null, 5, 'SM', 0, 100, 20, 5474, 474, 0);
+CALL insertar_control('145-90690843-15STD20X250', '2025-05-24', '145-90690843', 1, 5, 'STD', 0, 50, 20, 5068, 68, 140);
+CALL insertar_control('145-90690843-25STD20X250', '2025-05-24', '145-90690843', 2, 5, 'STD', 0, 100, 20, 5166, 166, 52);
+CALL insertar_control('075-66528593-15STD20X250', '2025-05-26', '075-66528593', 1, 5, 'STD', 200, 50, 20, 5282, 282, 0);
+CALL insertar_control('075-66528593-15STD20X250', '2025-05-26', '075-66528593', 1, 5, 'STD', 0, 50, 20, 5114, 114, 0);
+CALL insertar_control('075-66528593-25STD20X250', '2025-05-26', '075-66528593', 2, 5, 'STD', 0, 100, 20, 5232, 232, 0);
+CALL insertar_control('075-66528593-5SM20X250', '2025-05-26', '075-66528593', null, 5, 'SM', 300, 100, 20, 5302, 302, 0);
+CALL insertar_control('145-90639614-5SM20X250', '2025-05-26', '145-90639614', null, 5, 'SM', 200, 100, 20, 5064, 64, 0);
+CALL insertar_control('145-90639614-5SM20X250', '2025-05-26', '145-90639614', null, 5, 'SM', 0, 100, 20, 5166, 166, 0);
+CALL insertar_control('996-13800242-5STD20X250', '2025-05-26', '996-13800242', null, 5, 'STD', 200, 100, 20, 5270, 270, 0);
+CALL insertar_control('996-13800242-5SM20X250', '2025-05-26', '996-13800242', null, 5, 'SM', 100, 50, 20, 5208, 208, 0);
+CALL insertar_control('996-13800242-5SM20X250', '2025-05-26', '996-13800242', null, 5, 'SM', 0, 50, 20, 5154, 154, 0);
+CALL insertar_control('075-66528523-5SM20X250', '2025-05-29', '075-66528523', null, 5, 'SM', 150, 100, 20, 5340, 340, 0);
+CALL insertar_control('075-66528523-5SM20X250', '2025-05-29', '075-66528523', null, 5, 'SM', 0, 50, 20, 5518, 518, 0);
+CALL insertar_control('145-90993276-5STD20X250', '2025-05-29', '145-90993276', null, 5, 'STD', 100, 100, 20, 5364, 364, 20);
+CALL insertar_control('145-90993276-5L17X300', '2025-05-29', '145-90993276', null, 5, 'L', 200, 100, 17, 5350, 350, 140);
+CALL insertar_control('145-90993276-5L17X300', '2025-05-29', '145-90993276', null, 5, 'L', 0, 100, 17, 5440, 440, 46);
+CALL insertar_control('145-90690644-5L17X300', '2025-05-30', '145-90690644', null, 5, 'L', 100, 100, 17, 5244, 244, 184);
+CALL insertar_control('145-90690644-5STD20X250', '2025-05-30', '145-90690644', null, 5, 'STD', 150, 100, 20, 5272, 272, 0);
+CALL insertar_control('145-90690644-5STD20X250', '2025-05-30', '145-90690644', null, 5, 'STD', 0, 50, 20, 5328, 328, 0);
+CALL insertar_control('145-90690644-5L17X300', '2025-05-30', '145-90690644', null, 5, 'L', 0, 100, 17, 5320, 320, 0);
+CALL insertar_control('145-90690806-5STD20X250', '2025-05-31', '145-90690806', null, 5, 'STD', 100, 50, 20, 5260, 260, 400);
+CALL insertar_control('145-90690806-5STD20X250', '2025-05-31', '145-90690806', null, 5, 'STD', 0, 50, 20, 5360, 360, 348);
+CALL insertar_control('075-66528615-5SM20X250', '2025-06-02', '075-66528615', null, 5, 'SM', 200, 100, 20, 5394, 394, 0);
+CALL insertar_control('075-66528615-5SM20X250', '2025-06-02', '075-66528615', null, 5, 'SM', 0, 100, 20, 5322, 322, 0);
+CALL insertar_control('075-66528641-15STD20X250', '2025-06-02', '075-66528641', 1, 5, 'STD', 200, 100, 20, 5222, 222, 130);
+CALL insertar_control('075-66528641-25STD20X250', '2025-06-02', '075-66528641', 2, 5, 'STD', 0, 50, 20, 5306, 306, 532);
+CALL insertar_control('075-66528641-25STD20X250', '2025-06-02', '075-66528641', 2, 5, 'STD', 0, 50, 20, 5266, 266, 0);
+CALL insertar_control('075-66528696-5SM20X250', '2025-06-02', '075-66528696', null, 5, 'SM', 200, 100, 20, 5552, 552, 0);
+CALL insertar_control('075-66528696-5SM20X250', '2025-06-02', '075-66528696', null, 5, 'SM', 0, 100, 20, 5809, 809, 0);
+CALL insertar_control('145-11714813-5XL12X420', '2025-06-02', '145-11714813', null, 5, 'XL', 50, 50, 12, 5308, 308, 454);
+CALL insertar_control('145-11714813-5SM20X250', '2025-06-02', '145-11714813', null, 5, 'SM', 100, 100, 20, 5296, 296, 0);
+CALL insertar_control('145-11714813-5L17X300', '2025-06-02', '145-11714813', null, 5, 'L', 100, 100, 17, 5308, 308, 258);
+CALL insertar_control('145-11714813-5STD20X250', '2025-06-02', '145-11714813', null, 5, 'STD', 150, 100, 20, 5232, 232, 8);
+CALL insertar_control('145-11714861-5L17X300', '2025-06-02', '145-11714861', null, 5, 'L', 100, 100, 17, 5340, 340, 184);
+CALL insertar_control('145-11714861-5L17X300', '2025-06-02', '145-11714861', null, 5, 'L', 0, 100, 17, 5378, 378, 3446);
+CALL insertar_control('145-11714861-5XL12X420', '2025-06-02', '145-11714861', null, 5, 'XL', 50, 50, 12, 5524, 524, 790);
+CALL insertar_control('145-11714861-5SM20X250', '2025-06-02', '145-11714861', null, 5, 'SM', 100, 100, 20, 5308, 308, 0);
+CALL insertar_control('145-11714861-5STD20X250', '2025-06-02', '145-11714861', null, 5, 'STD', 150, 100, 20, 5328, 328, 0);
+CALL insertar_control('145-11714861-5STD20X250', '2025-06-02', '145-11714861', null, 5, 'STD', 0, 50, 20, 5152, 152, 0);
+CALL insertar_control('663-00296236-5SM20X250', '2025-06-02', '663-00296236', null, 5, 'SM', 100, 100, 20, 4956, -44, 0);
+CALL insertar_control('075-66528652-5SM20X250', '2025-06-03', '075-66528652', null, 5, 'SM', 200, 100, 20, 5356, 356, 0);
+CALL insertar_control('075-66528652-5SM20X250', '2025-06-03', '075-66528652', null, 5, 'SM', 0, 100, 20, 5412, 412, 0);
+CALL insertar_control('075-66528652-5L17X300', '2025-06-03', '075-66528652', null, 5, 'L', 100, 100, 17, 5316, 316, 386);
+CALL insertar_control('075-66528652-5L17X300', '2025-06-03', '075-66528652', null, 5, 'L', 0, 100, 17, 5276, 276, 808);
+CALL insertar_control('075-66528652-5STD20X250', '2025-06-03', '075-66528652', null, 5, 'STD', 50, 50, 20, 5314, 314, 42);
+CALL insertar_control('075-66528685-5L17X300', '2025-06-04', '075-66528685', null, 5, 'L', 100, 50, 17, 5560, 560, 1572);
+CALL insertar_control('075-66528685-5SM20X250', '2025-06-04', '075-66528685', null, 5, 'SM', 200, 100, 20, 5302, 302, 0);
+CALL insertar_control('075-66528685-5L17X300', '2025-06-04', '075-66528685', null, 5, 'L', 0, 50, 17, 5352, 352, 730);
+CALL insertar_control('075-66528685-5SM20X250', '2025-06-04', '075-66528685', null, 5, 'SM', 0, 100, 20, 4962, -38, 0);
+CALL insertar_control('075-66528685-5STD20X250', '2025-06-04', '075-66528685', null, 5, 'STD', 50, 50, 20, 5434, 434, 0);
+CALL insertar_control('145-11714776-5STD20X250', '2025-06-04', '145-11714776', null, 5, 'STD', 150, 100, 20, 5366, 366, 40);
+CALL insertar_control('145-11714776-5L17X300', '2025-06-04', '145-11714776', null, 5, 'L', 100, 100, 17, 5398, 398, 148);
+CALL insertar_control('145-11714776-5STD20X250', '2025-06-04', '145-11714776', null, 5, 'STD', 0, 50, 20, 5124, 124, 0);
+CALL insertar_control('145-11714776-5SM20X250', '2025-06-04', '145-11714776', null, 5, 'SM', 250, 100, 20, 5370, 370, 0);
+CALL insertar_control('145-11714776-5SM20X250', '2025-06-04', '145-11714776', null, 5, 'SM', 0, 100, 20, 5138, 138, 0);
+CALL insertar_control('145-11714802-5STD20X250', '2025-06-04', '145-11714802', null, 5, 'STD', 150, 100, 20, 5236, 236, 0);
+CALL insertar_control('145-11714802-5L17X300', '2025-06-04', '145-11714802', null, 5, 'L', 100, 100, 17, 5462, 462, 2632);
+CALL insertar_control('145-11714802-5SM20X250', '2025-06-04', '145-11714802', null, 5, 'SM', 250, 100, 20, 5398, 398, 0);
+CALL insertar_control('145-11714802-5SM20X250', '2025-06-04', '145-11714802', null, 5, 'SM', 0, 100, 20, 5338, 338, 0);
+CALL insertar_control('145-11714802-5STD20X250', '2025-06-04', '145-11714802', null, 5, 'STD', 0, 50, 20, 5312, 312, 0);
+CALL insertar_control('145-90690504-5SM20X250', '2025-06-04', '145-90690504', null, 5, 'SM', 500, 100, 20, 5080, 80, 0);
+CALL insertar_control('145-90690504-5SM20X250', '2025-06-04', '145-90690504', null, 5, 'SM', 0, 100, 20, 5394, 394, 0);
+CALL insertar_control('145-90690504-5SM20X250', '2025-06-04', '145-90690504', null, 5, 'SM', 0, 100, 20, 5192, 192, 0);
+CALL insertar_control('075-66530085-5XL12X420', '2025-06-06', '075-66530085', null, 5, 'XL', 100, 100, 12, 5372, 372, 926);
+CALL insertar_control('075-66530085-5STD20X250', '2025-06-06', '075-66530085', null, 5, 'STD', 150, 100, 20, 5348, 348, 46);
+CALL insertar_control('075-66530085-5SM20X250', '2025-06-06', '075-66530085', null, 5, 'SM', 250, 100, 20, 5520, 520, 0);
+CALL insertar_control('075-66530085-5SM20X250', '2025-06-06', '075-66530085', null, 5, 'SM', 0, 100, 20, 5450, 450, 0);
+CALL insertar_control('075-66528663-15STD20X250', '2025-06-07', '075-66528663', 1, 5, 'STD', 200, 100, 20, 5274, 274, 238);
+CALL insertar_control('075-66528663-5SM20X250', '2025-06-07', '075-66528663', null, 5, 'SM', 300, 100, 20, 5520, 520, 0);
+CALL insertar_control('075-66528663-25STD20X250', '2025-06-07', '075-66528663', 2, 5, 'STD', 0, 100, 20, 5312, 312, 0);
+CALL insertar_control('075-66528663-25STD20X250', '2025-06-07', '075-66528663', 2, 5, 'STD', 0, 100, 20, 5138, 138, 0);
+CALL insertar_control('145-11714986-5L17X300', '2025-06-07', '145-11714986', null, 5, 'L', 100, 50, 17, 5526, 526, 2180);
+CALL insertar_control('145-11714986-5STD20X250', '2025-06-07', '145-11714986', null, 5, 'STD', 200, 100, 20, 5344, 344, 0);
+CALL insertar_control('145-11714986-5L17X300', '2025-06-07', '145-11714986', null, 5, 'L', 0, 50, 17, 5316, 316, 552);
+CALL insertar_control('145-11714986-5SM20X250', '2025-06-07', '145-11714986', null, 5, 'SM', 100, 100, 20, 5362, 362, 0);
+CALL insertar_control('145-11714986-5STD20X250', '2025-06-07', '145-11714986', null, 5, 'STD', 0, 100, 20, 5300, 300, 36);
+CALL insertar_control('145-11715001-5L17X300', '2025-06-07', '145-11715001', null, 5, 'L', 100, 100, 17, 5292, 292, 456);
+CALL insertar_control('145-11715001-5SM20X250', '2025-06-07', '145-11715001', null, 5, 'SM', 177, 100, 20, 5320, 320, 0);
+CALL insertar_control('145-11715001-5STD20X250', '2025-06-07', '145-11715001', null, 5, 'STD', 200, 100, 20, 5388, 388, 0);
+CALL insertar_control('145-11715001-5STD20X250', '2025-06-07', '145-11715001', null, 5, 'STD', 0, 100, 20, 5296, 296, 0);
+CALL insertar_control('145-11715001-5SM20X250', '2025-06-07', '145-11715001', null, 5, 'SM', 0, 77, 20, 5092, 92, 0);
+CALL insertar_control('075-66530052-5STD20X250', '2025-06-08', '075-66530052', null, 5, 'STD', 150, 100, 20, 5340, 340, 0);
+CALL insertar_control('075-66530052-5STD20X250', '2025-06-08', '075-66530052', null, 5, 'STD', 0, 50, 20, 5460, 460, 0);
+CALL insertar_control('075-66530052-5SM20X250', '2025-06-08', '075-66530052', null, 5, 'SM', 100, 100, 20, 5324, 324, 0);
+CALL insertar_control('075-66530052-5L17X300', '2025-06-08', '075-66530052', null, 5, 'L', 100, 50, 17, 5172, 172, 474);
+CALL insertar_control('075-66530052-5L17X300', '2025-06-08', '075-66530052', null, 5, 'L', 0, 50, 17, 5374, 374, 828);
+CALL insertar_control('075-66530122-5SM20X250', '2025-06-08', '075-66530122', null, 5, 'SM', 200, 100, 20, 5156, 156, 0);
+CALL insertar_control('075-66530122-5SM20X250', '2025-06-08', '075-66530122', null, 5, 'SM', 0, 100, 20, 5126, 126, 0);
+CALL insertar_control('145-11715012-5SM20X250', '2025-06-08', '145-11715012', null, 5, 'SM', 115, 100, 20, 5250, 250, 0);
+CALL insertar_control('145-11715012-5XL12X420', '2025-06-08', '145-11715012', null, 5, 'XL', 50, 50, 12, 5296, 296, 70);
+CALL insertar_control('145-11715012-5SM20X250', '2025-06-08', '145-11715012', null, 5, 'SM', 0, 15, 20, 5256, 256, 0);
+CALL insertar_control('145-11715012-5STD20X250', '2025-06-08', '145-11715012', null, 5, 'STD', 150, 100, 20, 5074, 74, 0);
+CALL insertar_control('145-11715012-5L17X300', '2025-06-08', '145-11715012', null, 5, 'L', 85, 85, 17, 5408, 408, 576);
+CALL insertar_control('663-00296214-5SM20X250', '2025-06-08', '663-00296214', null, 5, 'SM', 200, 100, 20, 5026, 26, 0);
+CALL insertar_control('663-00296214-5SM20X250', '2025-06-08', '663-00296214', null, 5, 'SM', 0, 100, 20, 4764, -236, 0);
+CALL insertar_control('075-66530144-5SM20X250', '2025-06-09', '075-66530144', null, 5, 'SM', 200, 100, 20, 5128, 128, 0);
+CALL insertar_control('075-66530144-5SM20X250', '2025-06-09', '075-66530144', null, 5, 'SM', 0, 100, 20, 5292, 292, 0);
+CALL insertar_control('075-66530111-15STD20X250', '2025-06-09', '075-66530111', 1, 5, 'STD', 200, 50, 20, 5298, 298, 72);
+CALL insertar_control('075-66530111-5SM20X250', '2025-06-09', '075-66530111', null, 5, 'SM', 300, 100, 20, 5386, 386, 0);
+CALL insertar_control('075-66530111-15STD20X250', '2025-06-09', '075-66530111', 1, 5, 'STD', 0, 50, 20, 5362, 362, 252);
+CALL insertar_control('075-66530111-25STD20X250', '2025-06-09', '075-66530111', 2, 5, 'STD', 0, 100, 20, 5376, 376, 164);
+CALL insertar_control('145-11715023-5SM20X250', '2025-06-09', '145-11715023', null, 5, 'SM', 200, 100, 20, 5354, 354, 0);
+CALL insertar_control('145-11715023-5STD20X250', '2025-06-09', '145-11715023', null, 5, 'STD', 200, 100, 20, 5298, 298, 246);
+CALL insertar_control('145-11715023-5SM20X250', '2025-06-09', '145-11715023', null, 5, 'SM', 0, 100, 20, 5450, 450, 0);
+CALL insertar_control('145-11715023-5L20X250', '2025-06-09', '145-11715023', null, 5, 'L', 100, 100, 20, 5532, 532, 172);
+CALL insertar_control('145-11715023-5STD20X250', '2025-06-09', '145-11715023', null, 5, 'STD', 0, 100, 20, 5322, 322, 112);
+CALL insertar_control('663-00296240-5SM20X250', '2025-06-09', '663-00296240', null, 5, 'SM', 160, 100, 20, 5628, 628, 0);
+CALL insertar_control('663-00296240-5SM20X250', '2025-06-09', '663-00296240', null, 5, 'SM', 0, 60, 20, 5124, 124, 0);
+CALL insertar_control('075-66530063-5SM20X250', '2025-06-10', '075-66530063', null, 5, 'SM', 400, 100, 20, 5324, 324, 0);
+CALL insertar_control('075-66530063-5SM20X250', '2025-06-10', '075-66530063', null, 5, 'SM', 0, 100, 20, 5384, 384, 0);
+CALL insertar_control('075-66530063-5SM20X250', '2025-06-10', '075-66530063', null, 5, 'SM', 0, 100, 20, 5368, 368, 0);
+CALL insertar_control('075-66530063-5SM20X250', '2025-06-10', '075-66530063', null, 5, 'SM', 0, 100, 20, 5194, 194, 0);
+CALL insertar_control('075-66530074-5XL12X420', '2025-06-10', '075-66530074', null, 5, 'XL', 100, 100, 12, 5306, 306, 74);
+CALL insertar_control('075-66530074-5STD20X250', '2025-06-10', '075-66530074', null, 5, 'STD', 200, 100, 20, 5330, 330, 30);
+CALL insertar_control('075-66530074-5L17X300', '2025-06-10', '075-66530074', null, 5, 'L', 50, 50, 17, 5490, 490, 1088);
+CALL insertar_control('075-66530074-5STD20X250', '2025-06-10', '075-66530074', null, 5, 'STD', 0, 100, 20, 5670, 670, 0);
+CALL insertar_control('075-66530074-5SM20X250', '2025-06-10', '075-66530074', null, 5, 'SM', 150, 100, 20, 4960, -40, 0);
+CALL insertar_control('145-11715045-5SM20X250', '2025-06-10', '145-11715045', null, 5, 'SM', 98, 90, 20, 3048, -1952, 0);
+CALL insertar_control('145-11715045-5SM20X250', '2025-06-10', '145-11715045', null, 5, 'SM', 0, 8, 20, 5114, 114, 0);
+CALL insertar_control('145-11715056-5SM20X250', '2025-06-10', '145-11715056', null, 5, 'SM', 500, 100, 20, 5168, 168, 0);
+CALL insertar_control('145-11715056-5SM20X250', '2025-06-10', '145-11715056', null, 5, 'SM', 0, 100, 20, 5060, 60, 0);
+CALL insertar_control('145-11715056-5SM20X250', '2025-06-10', '145-11715056', null, 5, 'SM', 0, 100, 20, 5014, 14, 0);
+CALL insertar_control('145-11715056-5SM20X250', '2025-06-10', '145-11715056', null, 5, 'SM', 0, 100, 20, 5452, 452, 0);
+CALL insertar_control('145-11715056-5SM20X250', '2025-06-10', '145-11715056', null, 5, 'SM', 0, 100, 20, 5452, 452, 0);
+CALL insertar_control('075-66530155-5SM20X250', '2025-06-11', '075-66530155', null, 5, 'SM', 300, 100, 20, 5386, 386, 0);
+CALL insertar_control('145-11715082-5L17X300', '2025-06-11', '145-11715082', null, 5, 'L', 192, 100, 17, 5562, 562, 86);
+CALL insertar_control('145-11715082-5STD20X250', '2025-06-11', '145-11715082', null, 5, 'STD', 192, 100, 20, 5494, 494, 16);
+CALL insertar_control('145-11715082-5L17X300', '2025-06-11', '145-11715082', null, 5, 'L', 0, 92, 17, 5522, 522, 24);
+CALL insertar_control('145-11715082-5STD20X250', '2025-06-11', '145-11715082', null, 5, 'STD', 0, 92, 20, 5596, 596, 40);
+CALL insertar_control('145-99777226-5SM20X250', '2025-06-12', '145-99777226', null, 5, 'SM', 400, 100, 20, 5388, 388, 0);
+CALL insertar_control('145-99777226-5SM20X250', '2025-06-12', '145-99777226', null, 5, 'SM', 0, 100, 20, 5316, 316, 0);
+CALL insertar_control('075-66530192-5SM20X250', '2025-06-13', '075-66530192', null, 5, 'SM', 200, 100, 20, 5066, 66, 0);
+CALL insertar_control('075-66530192-5STD20X250', '2025-06-13', '075-66530192', null, 5, 'STD', 150, 100, 20, 5460, 460, 0);
+CALL insertar_control('075-66530192-5STD20X250', '2025-06-13', '075-66530192', null, 5, 'STD', 0, 50, 20, 5090, 90, 66);
+CALL insertar_control('075-66530192-5L17X300', '2025-06-13', '075-66530192', null, 5, 'L', 100, 100, 17, 5474, 474, 510);
+CALL insertar_control('075-66530203-5STD20X250', '2025-06-13', '075-66530203', null, 5, 'STD', 192, 100, 20, 5562, 562, 0);
+CALL insertar_control('075-66530203-5L20X250', '2025-06-13', '075-66530203', null, 5, 'L', 192, 100, 20, 5448, 448, 298);
+CALL insertar_control('075-66530203-5L20X250', '2025-06-13', '075-66530203', null, 5, 'L', 0, 92, 20, 5254, 254, 238);
+CALL insertar_control('145-11715071-5STD20X250', '2025-06-13', '145-11715071', null, 5, 'STD', 150, 100, 20, 5300, 300, 0);
+CALL insertar_control('145-11715071-5L17X300', '2025-06-13', '145-11715071', null, 5, 'L', 100, 100, 17, 5394, 394, 314);
+CALL insertar_control('145-11715071-5SM20X250', '2025-06-13', '145-11715071', null, 5, 'SM', 200, 100, 20, 5366, 366, 0);
+CALL insertar_control('145-11715071-5SM20X250', '2025-06-13', '145-11715071', null, 5, 'SM', 0, 100, 20, 5200, 200, 0);
+CALL insertar_control('145-99777263-5SM20X250', '2025-06-13', '145-99777263', null, 5, 'SM', 200, 100, 20, 5244, 244, 0);
+CALL insertar_control('145-99777263-5SM20X250', '2025-06-13', '145-99777263', null, 5, 'SM', 0, 100, 20, 4950, -50, 0);
+CALL insertar_control('145-99777274-5SM20X250', '2025-06-13', '145-99777274', null, 5, 'SM', 300, 100, 20, 5398, 398, 0);
+CALL insertar_control('145-99777274-5SM20X250', '2025-06-13', '145-99777274', null, 5, 'SM', 0, 100, 20, 5430, 430, 0);
+CALL insertar_control('145-99777300-5STD20X250', '2025-06-14', '145-99777300', null, 5, 'STD', 100, 100, 20, 5108, 108, 0);
+CALL insertar_control('145-99777300-5SM20X250', '2025-06-14', '145-99777300', null, 5, 'SM', 300, 100, 20, 5166, 166, 0);
+CALL insertar_control('145-99777300-5SM20X250', '2025-06-14', '145-99777300', null, 5, 'SM', 0, 100, 20, 5142, 142, 0);
+CALL insertar_control('145-99777300-5L12X420', '2025-06-14', '145-99777300', null, 5, 'L', 100, 100, 12, 5120, 120, 0);
+CALL insertar_control('145-99777300-5SM20X250', '2025-06-14', '145-99777300', null, 5, 'SM', 0, 100, 20, 5156, 156, 0);
+CALL insertar_control('145-11750992-5SM20X250', '2025-06-15', '145-11750992', null, 5, 'SM', 200, 100, 20, 5096, 96, 0);
+CALL insertar_control('145-11750992-5SM20X250', '2025-06-15', '145-11750992', null, 5, 'SM', 0, 100, 20, 5026, 26, 0);
+CALL insertar_control('075-66530763-5SM20X250', '2025-06-15', '075-66530763', null, 5, 'SM', 300, 100, 20, 5270, 270, 0);
+CALL insertar_control('075-66530763-5SM20X250', '2025-06-15', '075-66530763', null, 5, 'SM', 0, 100, 20, 5246, 246, 0);
+CALL insertar_control('075-66530763-5SM20X250', '2025-06-15', '075-66530763', null, 5, 'SM', 0, 100, 20, 5490, 490, 0);
+CALL insertar_control('075-66530774-5STD20X250', '2025-06-15', '075-66530774', null, 5, 'STD', 152, 100, 20, 5198, 198, 0);
+CALL insertar_control('075-66530774-5SM20X250', '2025-06-15', '075-66530774', null, 5, 'SM', 48, 48, 20, 5410, 410, 0);
+CALL insertar_control('145-11751003-5SM20X250', '2025-06-15', '145-11751003', null, 5, 'SM', 200, 100, 20, 5094, 94, 0);
+CALL insertar_control('145-11751003-5SM20X250', '2025-06-15', '145-11751003', null, 5, 'SM', 0, 100, 20, 5094, 94, 0);
+CALL insertar_control('145-99777296-5XL12X420', '2025-06-15', '145-99777296', null, 5, 'XL', 50, 50, 12, 5146, 146, 0);
+CALL insertar_control('145-99777296-5STD20X250', '2025-06-15', '145-99777296', null, 5, 'STD', 150, 100, 20, 5484, 484, 0);
+CALL insertar_control('145-99777296-5SM20X250', '2025-06-15', '145-99777296', null, 5, 'SM', 200, 100, 20, 5428, 428, 0);
+CALL insertar_control('145-99777296-5SM20X250', '2025-06-15', '145-99777296', null, 5, 'SM', 0, 100, 20, 5400, 400, 0);
+CALL insertar_control('145-99777296-5L17X300', '2025-06-15', '145-99777296', null, 5, 'L', 100, 100, 17, 5393, 393, 0);
+CALL insertar_control('145-99777311-5STD20X250', '2025-06-15', '145-99777311', null, 5, 'STD', 200, 100, 20, 5090, 90, 0);
+CALL insertar_control('145-99777311-5STD20X250', '2025-06-15', '145-99777311', null, 5, 'STD', 0, 100, 20, 5252, 252, 0);
+CALL insertar_control('145-99777311-5L20X250', '2025-06-15', '145-99777311', null, 5, 'L', 100, 100, 20, 5096, 96, 0);
+CALL insertar_control('145-99777311-5SM20X250', '2025-06-15', '145-99777311', null, 5, 'SM', 200, 100, 20, 5244, 244, 0);
+CALL insertar_control('145-99777311-5SM20X250', '2025-06-15', '145-99777311', null, 5, 'SM', 0, 100, 20, 5220, 220, 0);
+CALL insertar_control('996-13800286-15STD20X250', '2025-06-15', '996-13800286', 1, 5, 'STD', 200, 50, 20, 5218, 218, 0);
+CALL insertar_control('996-13800286-15STD20X250', '2025-06-15', '996-13800286', 1, 5, 'STD', 0, 50, 20, 5100, 100, 0);
+CALL insertar_control('996-13800286-5SM20X250', '2025-06-15', '996-13800286', null, 5, 'SM', 300, 100, 20, 5078, 78, 0);
+CALL insertar_control('996-13800286-5SM20X250', '2025-06-15', '996-13800286', null, 5, 'SM', 0, 100, 20, 5034, 34, 0);
+CALL insertar_control('996-13800286-5SM20X250', '2025-06-15', '996-13800286', null, 5, 'SM', 0, 100, 20, 5230, 230, 0);
+CALL insertar_control('996-13800286-25STD20X250', '2025-06-15', '996-13800286', 2, 5, 'STD', 0, 100, 20, 5024, 24, 0);
+CALL insertar_control('996-13800290-5L20X250', '2025-06-15', '996-13800290', null, 5, 'L', 288, 100, 20, 5268, 268, 0);
+CALL insertar_control('996-13800290-5L20X250', '2025-06-15', '996-13800290', null, 5, 'L', 0, 100, 20, 5282, 282, 520);
+CALL insertar_control('996-13800290-5L20X250', '2025-06-15', '996-13800290', null, 5, 'L', 0, 88, 20, 5336, 336, 702);
+CALL insertar_control('996-13800290-5STD20X250', '2025-06-15', '996-13800290', null, 5, 'STD', 192, 100, 20, 5186, 186, 0);
+CALL insertar_control('996-13800290-5STD20X250', '2025-06-15', '996-13800290', null, 5, 'STD', 0, 92, 20, 5386, 386, 0);
+CALL insertar_control('075-66530785-5L12X420', '2025-06-16', '075-66530785', null, 5, 'L', 100, 100, 12, 5298, 298, 206);
+CALL insertar_control('075-66530785-5SM20X250', '2025-06-16', '075-66530785', null, 5, 'SM', 300, 100, 20, 5060, 60, 0);
+CALL insertar_control('075-66530785-5SM20X250', '2025-06-16', '075-66530785', null, 5, 'SM', 0, 100, 20, 4964, -36, 0);
+CALL insertar_control('075-66530785-5STD20X250', '2025-06-16', '075-66530785', null, 5, 'STD', 100, 100, 20, 5126, 126, 0);
+CALL insertar_control('075-66530785-5SM20X250', '2025-06-16', '075-66530785', null, 5, 'SM', 0, 100, 20, 5146, 146, 0);
+CALL insertar_control('075-66530811-5STD20X250', '2025-06-16', '075-66530811', null, 5, 'STD', 200, 100, 20, 5104, 104, 108);
+CALL insertar_control('075-66530811-5STD20X250', '2025-06-16', '075-66530811', null, 5, 'STD', 0, 100, 20, 5188, 188, 0);
+CALL insertar_control('075-66530811-5SM20X250', '2025-06-16', '075-66530811', null, 5, 'SM', 300, 100, 20, 5254, 254, 0);
+CALL insertar_control('145-11747105-5SM20X250', '2025-06-16', '145-11747105', null, 5, 'SM', 400, 100, 20, 5386, 386, 0);
+CALL insertar_control('145-11747105-5SM20X250', '2025-06-16', '145-11747105', null, 5, 'SM', 0, 100, 20, 5268, 268, 0);
+CALL insertar_control('145-11747105-5SM20X250', '2025-06-16', '145-11747105', null, 5, 'SM', 0, 100, 20, 5414, 414, 0);
+CALL insertar_control('145-11747105-5SM20X250', '2025-06-16', '145-11747105', null, 5, 'SM', 0, 100, 20, 5528, 528, 0);
+CALL insertar_control('145-99777591-5TIP25X160', '2025-06-16', '145-99777591', null, 5, 'TIP', 140, 100, 25, 5008, 8, 0);
+CALL insertar_control('145-99777591-5SM20X250', '2025-06-16', '145-99777591', null, 5, 'SM', 100, 100, 20, 5300, 300, 0);
+CALL insertar_control('145-99777591-5L20X250', '2025-06-16', '145-99777591', null, 5, 'L', 100, 100, 20, 5098, 98, 304);
+CALL insertar_control('996-13802110-5L17X300', '2025-06-16', '996-13802110', null, 5, 'L', 200, 100, 17, 5354, 354, 986);
+CALL insertar_control('996-13802110-5STD20X250', '2025-06-16', '996-13802110', null, 5, 'STD', 100, 100, 20, 5252, 252, 0);
+CALL insertar_control('996-13802110-5L17X300', '2025-06-16', '996-13802110', null, 5, 'L', 0, 100, 17, 5188, 188, 426);
+CALL insertar_control('075-66517430-5L17X300', '2025-06-17', '075-66517430', null, 5, 'L', 100, 100, 17, 5296, 296, 0);
+CALL insertar_control('075-66517430-5SM20X250', '2025-06-17', '075-66517430', null, 5, 'SM', 200, 100, 20, 5334, 334, 0);
+CALL insertar_control('075-66517430-5SM20X250', '2025-06-17', '075-66517430', null, 5, 'SM', 0, 100, 20, 5424, 424, 0);
+CALL insertar_control('075-66517430-5STD20X250', '2025-06-17', '075-66517430', null, 5, 'STD', 200, 100, 20, 5188, 188, 0);
+CALL insertar_control('075-66517430-5STD20X250', '2025-06-17', '075-66517430', null, 5, 'STD', 0, 100, 20, 5260, 260, 0);
+CALL insertar_control('075-66530822-5L17X300', '2025-06-17', '075-66530822', null, 5, 'L', 129, 50, 17, 5860, 860, 1300);
+CALL insertar_control('075-66530822-5STD20X250', '2025-06-17', '075-66530822', null, 5, 'STD', 248, 100, 20, 5276, 276, 0);
+CALL insertar_control('075-66530822-5L17X300', '2025-06-17', '075-66530822', null, 5, 'L', 0, 50, 17, 5124, 124, 436);
+CALL insertar_control('075-66530822-5L17X300', '2025-06-17', '075-66530822', null, 5, 'L', 0, 29, 17, 5120, 120, 0);
+CALL insertar_control('145-11747094-5SM20X250', '2025-06-17', '145-11747094', null, 5, 'SM', 200, 100, 20, 5450, 450, 0);
+CALL insertar_control('145-11747094-5SM20X250', '2025-06-17', '145-11747094', null, 5, 'SM', 0, 100, 20, 5416, 416, 0);
+CALL insertar_control('145-99777355-5L17X300', '2025-06-17', '145-99777355', null, 5, 'L', 200, 100, 17, 5418, 418, 352);
+CALL insertar_control('145-99777355-5L17X300', '2025-06-17', '145-99777355', null, 5, 'L', 0, 100, 17, 5432, 432, 536);
+CALL insertar_control('145-99777355-5XL12X420', '2025-06-17', '145-99777355', null, 5, 'XL', 100, 100, 12, 5328, 328, 0);
+CALL insertar_control('145-99777355-5STD20X250', '2025-06-17', '145-99777355', null, 5, 'STD', 200, 100, 20, 5324, 324, 0);
+CALL insertar_control('145-99777355-5STD20X250', '2025-06-17', '145-99777355', null, 5, 'STD', 0, 100, 20, 5274, 274, 0);
+CALL insertar_control('075-66530844-5SM20X250', '2025-06-18', '075-66530844', null, 5, 'SM', 500, 100, 20, 5212, 212, 0);
+CALL insertar_control('075-66530844-5SM20X250', '2025-06-18', '075-66530844', null, 5, 'SM', 0, 100, 20, 5202, 202, 0);
+CALL insertar_control('075-66530844-5SM20X250', '2025-06-18', '075-66530844', null, 5, 'SM', 0, 100, 20, 5096, 96, 0);
+CALL insertar_control('075-66530844-5SM20X250', '2025-06-18', '075-66530844', null, 5, 'SM', 0, 100, 20, 4844, -156, 0);
+CALL insertar_control('145-99777366-5L20X250', '2025-06-18', '145-99777366', null, 5, 'L', 200, 100, 20, 5396, 396, 386);
+CALL insertar_control('145-99777366-5SM20X250', '2025-06-18', '145-99777366', null, 5, 'SM', 200, 100, 20, 5292, 292, 0);
+CALL insertar_control('145-99777366-5STD20X250', '2025-06-18', '145-99777366', null, 5, 'STD', 100, 100, 20, 5228, 228, 0);
+CALL insertar_control('145-99777366-5SM20X250', '2025-06-18', '145-99777366', null, 5, 'SM', 0, 100, 20, 5170, 170, 0);
+CALL insertar_control('145-99777366-5L20X250', '2025-06-18', '145-99777366', null, 5, 'L', 0, 100, 20, 4950, -50, 330);
+CALL insertar_control('996-13798956-5SM20X250', '2025-06-18', '996-13798956', null, 5, 'SM', 200, 100, 20, 5394, 394, 0);
+CALL insertar_control('996-13798956-5STD20X250', '2025-06-18', '996-13798956', null, 5, 'STD', 200, 100, 20, 5184, 184, 0);
+CALL insertar_control('996-13798956-5L17X300', '2025-06-18', '996-13798956', null, 5, 'L', 100, 100, 17, 5444, 444, 172);
+CALL insertar_control('996-13798956-5SM20X250', '2025-06-18', '996-13798956', null, 5, 'SM', 0, 100, 20, 5294, 294, 0);
+CALL insertar_control('996-13798956-5STD20X250', '2025-06-18', '996-13798956', null, 5, 'STD', 0, 100, 20, 5164, 164, 0);
+CALL insertar_control('145-11160612-5SM20X250', '2025-06-19', '145-11160612', null, 5, 'SM', 300, 100, 20, 5620, 620, 0);
+CALL insertar_control('145-11160612-5SM20X250', '2025-06-19', '145-11160612', null, 5, 'SM', 0, 100, 20, 5416, 416, 0);
+CALL insertar_control('145-11160612-5SM20X250', '2025-06-19', '145-11160612', null, 5, 'SM', 0, 100, 20, 5374, 374, 0);
+CALL insertar_control('145-11747142-5SM20X250', '2025-06-19', '145-11747142', null, 5, 'SM', 200, 100, 20, 5264, 264, 0);
+CALL insertar_control('145-11747142-5SM20X250', '2025-06-19', '145-11747142', null, 5, 'SM', 0, 100, 20, 5314, 314, 0);
+CALL insertar_control('145-11747186-5SM20X250', '2025-06-19', '145-11747186', null, 5, 'SM', 200, 100, 20, 5142, 142, 0);
+CALL insertar_control('145-99777370-5SM20X250', '2025-06-19', '145-99777370', null, 5, 'SM', 400, 100, 20, 5354, 354, 0);
+CALL insertar_control('145-99777370-5SM20X250', '2025-06-19', '145-99777370', null, 5, 'SM', 0, 100, 20, 5376, 376, 0);
+CALL insertar_control('075-66530866-5L17X300', '2025-06-20', '075-66530866', null, 5, 'L', 200, 100, 17, 5410, 410, 0);
+CALL insertar_control('075-66530866-5STD20X250', '2025-06-20', '075-66530866', null, 5, 'STD', 200, 100, 20, 5358, 358, 0);
+CALL insertar_control('075-66530866-5SM20X250', '2025-06-20', '075-66530866', null, 5, 'SM', 100, 100, 20, 5286, 286, 0);
+CALL insertar_control('075-66530866-5L17X300', '2025-06-20', '075-66530866', null, 5, 'L', 0, 100, 17, 5220, 220, 0);
+CALL insertar_control('075-66530866-5STD20X250', '2025-06-20', '075-66530866', null, 5, 'STD', 0, 100, 20, 5332, 332, 72);
+CALL insertar_control('145-11160741-5STD20X250', '2025-06-20', '145-11160741', null, 5, 'STD', 200, 100, 20, 5450, 450, 0);
+CALL insertar_control('145-11160741-5STD20X250', '2025-06-20', '145-11160741', null, 5, 'STD', 0, 100, 20, 5234, 234, 0);
+CALL insertar_control('145-11160741-5XL12X420', '2025-06-20', '145-11160741', null, 5, 'XL', 100, 100, 12, 5326, 326, 0);
+CALL insertar_control('145-11160741-5L17X300', '2025-06-20', '145-11160741', null, 5, 'L', 200, 100, 17, 5438, 438, 444);
+CALL insertar_control('145-11160741-5L17X300', '2025-06-20', '145-11160741', null, 5, 'L', 0, 100, 17, 5276, 276, 502);
+CALL insertar_control('145-11163412-5L17X300', '2025-06-20', '145-11163412', null, 5, 'L', 131, 100, 17, 5538, 538, 558);
+CALL insertar_control('145-11163412-5STD20X250', '2025-06-20', '145-11163412', null, 5, 'STD', 144, 100, 20, 5040, 40, 446);
+CALL insertar_control('145-11163412-5STD20X250', '2025-06-20', '145-11163412', null, 5, 'STD', 0, 44, 20, 5020, 20, 446);
+CALL insertar_control('145-11163423-5SM20X250', '2025-06-20', '145-11163423', null, 5, 'SM', 200, 100, 20, 5064, 64, 0);
+CALL insertar_control('145-11163423-5SM20X250', '2025-06-20', '145-11163423', null, 5, 'SM', 0, 100, 20, 5072, 72, 0);
+CALL insertar_control('145-90650781-15STD20X250', '2025-06-20', '145-90650781', 1, 5, 'STD', 192, 100, 20, 5636, 636, 0);
+CALL insertar_control('145-90650781-5L20X250', '2025-06-20', '145-90650781', null, 5, 'L', 96, 96, 20, 5626, 626, 0);
+CALL insertar_control('145-90650781-25STD20X250', '2025-06-20', '145-90650781', 2, 5, 'STD', 96, 96, 20, 5562, 562, 78);
+CALL insertar_control('145-90650781-15STD20X250', '2025-06-20', '145-90650781', 1, 5, 'STD', 0, 92, 20, 5526, 526, 0);
+CALL insertar_control('145-91032756-5SM20X250', '2025-06-20', '145-91032756', null, 5, 'SM', 400, 100, 20, 5382, 382, 0);
+CALL insertar_control('145-91032756-5SM20X250', '2025-06-20', '145-91032756', null, 5, 'SM', 0, 100, 20, 5268, 268, 0);
+CALL insertar_control('145-91032756-5SM20X250', '2025-06-20', '145-91032756', null, 5, 'SM', 0, 100, 20, 5278, 278, 0);
+CALL insertar_control('145-99777436-5SM20X250', '2025-06-20', '145-99777436', null, 5, 'SM', 49, 49, 20, 5236, 236, 0);
+CALL insertar_control('145-99777436-5STD20X250', '2025-06-20', '145-99777436', null, 5, 'STD', 151, 100, 20, 5150, 150, 0);
+CALL insertar_control('145-99777440-5L20X250', '2025-06-20', '145-99777440', null, 5, 'L', 192, 100, 20, 5350, 350, 0);
+CALL insertar_control('145-99777440-5L20X250', '2025-06-20', '145-99777440', null, 5, 'L', 0, 92, 20, 5480, 480, 0);
+CALL insertar_control('145-99777440-5STD20X250', '2025-06-20', '145-99777440', null, 5, 'STD', 288, 100, 20, 5420, 420, 114);
+CALL insertar_control('145-99777440-5STD20X250', '2025-06-20', '145-99777440', null, 5, 'STD', 0, 100, 20, 5480, 480, 0);
+CALL insertar_control('145-99777440-5STD20X250', '2025-06-20', '145-99777440', null, 5, 'STD', 0, 88, 20, 5556, 556, 74);
+CALL insertar_control('145-99777543-5SM20X250', '2025-06-20', '145-99777543', null, 5, 'SM', 300, 100, 20, 5500, 500, 0);
+CALL insertar_control('145-99777543-5SM20X250', '2025-06-20', '145-99777543', null, 5, 'SM', 0, 100, 20, 5578, 578, 0);
+CALL insertar_control('145-99777543-5SM20X250', '2025-06-20', '145-99777543', null, 5, 'SM', 0, 100, 20, 5298, 298, 0);
+CALL insertar_control('145-99777624-5L12X420', '2025-06-20', '145-99777624', null, 5, 'L', 500, 100, 12, 5258, 258, 0);
+CALL insertar_control('145-99777624-5L12X420', '2025-06-20', '145-99777624', null, 5, 'L', 0, 100, 12, 5130, 130, 512);
+CALL insertar_control('145-99777624-5L12X420', '2025-06-20', '145-99777624', null, 5, 'L', 0, 100, 12, 5166, 166, 0);
+CALL insertar_control('145-99777624-5L12X420', '2025-06-20', '145-99777624', null, 5, 'L', 0, 100, 12, 5136, 136, 0);
+CALL insertar_control('145-99777624-5L12X420', '2025-06-20', '145-99777624', null, 5, 'L', 0, 100, 12, 5138, 138, 0);
+CALL insertar_control('996-13801922-5SM20X250', '2025-06-20', '996-13801922', null, 5, 'SM', 400, 100, 20, 5428, 428, 0);
+CALL insertar_control('996-13801922-5SM20X250', '2025-06-20', '996-13801922', null, 5, 'SM', 0, 100, 20, 5316, 316, 0);
+CALL insertar_control('996-13801922-5SM20X250', '2025-06-20', '996-13801922', null, 5, 'SM', 0, 100, 20, 5294, 294, 0);
+CALL insertar_control('996-13801922-5SM20X250', '2025-06-20', '996-13801922', null, 5, 'SM', 0, 100, 20, 5270, 270, 0);
+CALL insertar_control('145-99777554-5L12X420', '2025-06-21', '145-99777554', null, 5, 'L', 100, 100, 12, 5206, 206, 0);
+CALL insertar_control('145-99777554-5SM20X250', '2025-06-21', '145-99777554', null, 5, 'SM', 200, 100, 20, 5206, 206, 0);
+CALL insertar_control('145-99777554-5SM20X250', '2025-06-21', '145-99777554', null, 5, 'SM', 0, 100, 20, 5340, 340, 0);
+CALL insertar_control('145-99777565-5L20X250', '2025-06-21', '145-99777565', null, 5, 'L', 200, 100, 20, 5458, 458, 0);
+CALL insertar_control('145-99777565-5L20X250', '2025-06-21', '145-99777565', null, 5, 'L', 0, 100, 20, 5378, 378, 0);
+CALL insertar_control('996-13801933-5L17X300', '2025-06-21', '996-13801933', null, 5, 'L', 200, 100, 17, 5106, 106, 1282);
+CALL insertar_control('996-13801933-5SM20X250', '2025-06-21', '996-13801933', null, 5, 'SM', 200, 100, 20, 5414, 414, 0);
+CALL insertar_control('996-13801933-5SM20X250', '2025-06-21', '996-13801933', null, 5, 'SM', 0, 100, 20, 4822, -178, 0);
+CALL insertar_control('996-13801933-5L17X300', '2025-06-21', '996-13801933', null, 5, 'L', 0, 100, 17, 5366, 366, 198);
+CALL insertar_control('996-13801933-5STD20X250', '2025-06-21', '996-13801933', null, 5, 'STD', 50, 50, 20, 5434, 434, 0);
+CALL insertar_control('996-13802121-5SM20X250', '2025-06-21', '996-13802121', null, 5, 'SM', 400, 100, 20, 5200, 200, 0);
+CALL insertar_control('996-13802121-5SM20X250', '2025-06-21', '996-13802121', null, 5, 'SM', 0, 100, 20, 4992, -8, 0);
+CALL insertar_control('996-13802121-5L17X300', '2025-06-21', '996-13802121', null, 5, 'L', 100, 100, 17, 5288, 288, 0);
+CALL insertar_control('996-13802121-5SM20X250', '2025-06-21', '996-13802121', null, 5, 'SM', 0, 100, 20, 5292, 292, 0);
+CALL insertar_control('075-66530903-5SM20X250', '2025-06-22', '075-66530903', null, 5, 'SM', 400, 100, 20, 5418, 418, 0);
+CALL insertar_control('075-66530903-5SM20X250', '2025-06-22', '075-66530903', null, 5, 'SM', 0, 100, 20, 5358, 358, 0);
+CALL insertar_control('075-66530903-5SM20X250', '2025-06-22', '075-66530903', null, 5, 'SM', 0, 100, 20, 5358, 358, 0);
+CALL insertar_control('075-66530903-5SM20X250', '2025-06-22', '075-66530903', null, 5, 'SM', 0, 100, 20, 5314, 314, 0);
+CALL insertar_control('145-99777576-5L17X300', '2025-06-22', '145-99777576', null, 5, 'L', 200, 100, 17, 5400, 400, 1070);
+CALL insertar_control('145-99777576-5STD20X250', '2025-06-22', '145-99777576', null, 5, 'STD', 50, 20, 20, 5238, 238, 0);
+CALL insertar_control('145-99777576-5STD20X250', '2025-06-22', '145-99777576', null, 5, 'STD', 0, 20, 20, 5228, 228, 0);
+CALL insertar_control('145-99777576-5L17X300', '2025-06-22', '145-99777576', null, 5, 'L', 0, 100, 17, 5412, 412, 276);
+CALL insertar_control('145-99777576-5STD20X250', '2025-06-22', '145-99777576', null, 5, 'STD', 0, 10, 20, 5278, 278, 0);
+CALL insertar_control('145-11751106-5L17X300', '2025-06-23', '145-11751106', null, 5, 'L', 300, 100, 17, 5366, 366, 1208);
+CALL insertar_control('145-11751106-5L17X300', '2025-06-23', '145-11751106', null, 5, 'L', 0, 100, 17, 5180, 180, 712);
+CALL insertar_control('145-11751106-5SM20X250', '2025-06-23', '145-11751106', null, 5, 'SM', 100, 100, 20, 5044, 44, 0);
+CALL insertar_control('145-11751106-5STD20X250', '2025-06-23', '145-11751106', null, 5, 'STD', 100, 100, 20, 4906, -94, 0);
+CALL insertar_control('145-11751106-5L17X300', '2025-06-23', '145-11751106', null, 5, 'L', 0, 100, 17, 5072, 72, 1266);
+CALL insertar_control('145-11753652-5STD20X250', '2025-06-23', '145-11753652', null, 5, 'STD', 50, 20, 20, 5226, 226, 0);
+CALL insertar_control('145-11753652-5L17X300', '2025-06-23', '145-11753652', null, 5, 'L', 200, 100, 17, 5600, 600, 0);
+CALL insertar_control('145-11753652-5STD20X250', '2025-06-23', '145-11753652', null, 5, 'STD', 0, 20, 20, 5216, 216, 0);
+CALL insertar_control('145-11753652-5L17X300', '2025-06-23', '145-11753652', null, 5, 'L', 0, 100, 17, 5332, 332, 0);
+CALL insertar_control('145-11753652-5STD20X250', '2025-06-23', '145-11753652', null, 5, 'STD', 0, 10, 20, 5230, 230, 0);
+CALL insertar_control('145-11753685-5L20X250', '2025-06-24', '145-11753685', null, 5, 'L', 288, 100, 20, 5570, 570, 166);
+CALL insertar_control('996-13800776-5SM20X250', '2025-06-24', '996-13800776', null, 5, 'SM', 400, 100, 20, 5136, 136, 0);
+CALL insertar_control('996-13800776-5SM20X250', '2025-06-24', '996-13800776', null, 5, 'SM', 0, 100, 20, 5240, 240, 0);
+CALL insertar_control('996-13800776-5SM20X250', '2025-06-24', '996-13800776', null, 5, 'SM', 0, 100, 20, 5266, 266, 0);
+CALL insertar_control('996-13800776-5SM20X250', '2025-06-24', '996-13800776', null, 5, 'SM', 0, 100, 20, 5270, 270, 0);
+CALL insertar_control('996-13800776-5L17X300', '2025-06-24', '996-13800776', null, 5, 'L', 100, 100, 17, 5078, 78, 0);
+
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL001', 'CZRT', 140),('CDDCTRL001', 'DECY', 64);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL002', 'CZRT', 230);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL003', 'CZRT', 92),('CDDCTRL003', 'CTSG', 6);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL004', 'CZRT', 136),('CDDCTRL004', 'CTSG', 28),('CDDCTRL004', 'BSBL', 48);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL005', 'CZRT', 118),('CDDCTRL005', 'CTSG', 44),('CDDCTRL005', 'DXPG', 204),('CDDCTRL005', 'TNTD', 60);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL006', 'CZRT', 248),('CDDCTRL006', 'DSHT', 56),('CDDCTRL006', 'CTSG', 52),('CDDCTRL006', 'DXPG', 16);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL007', 'CZRT', 218),('CDDCTRL007', 'CTSG', 10),('CDDCTRL007', 'DECY', 540);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL008', 'CZRT', 236),('CDDCTRL008', 'SPGD', 62),('CDDCTRL008', 'CTSG', 58),('CDDCTRL008', 'BSBL', 40),('CDDCTRL008', 'DECY', 462);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL009', 'CZRT', 178),('CDDCTRL009', 'DSHT', 18),('CDDCTRL009', 'SPGD', 10),('CDDCTRL009', 'CTSG', 10),('CDDCTRL009', 'BSBL', 32);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL010', 'CZRT', 162),('CDDCTRL010', 'CTSG', 96),('CDDCTRL010', 'BSBL', 74),('CDDCTRL010', 'DECY', 490);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL011', 'CZRT', 368),('CDDCTRL011', 'CTSG', 6);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL012', 'CZRT', 244),('CDDCTRL012', 'CTSG', 18),('CDDCTRL012', 'DECY', 310);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL013', 'CZRT', 92),('CDDCTRL013', 'CTSG', 18),('CDDCTRL013', 'DXPG', 46),('CDDCTRL013', 'DECY', 28);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL014', 'CZRT', 118),('CDDCTRL014', 'CTSG', 14),('CDDCTRL014', 'DECY', 300);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL015', 'CZRT', 190),('CDDCTRL015', 'SPGD', 548),('CDDCTRL015', 'CTSG', 138),('CDDCTRL015', 'BSBL', 496),('CDDCTRL015', 'DECY', 262);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL016', 'CZRT', 182),('CDDCTRL016', 'CTSG', 128),('CDDCTRL016', 'DXPG', 98),('CDDCTRL016', 'BSBL', 96);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL017', 'CZRT', 196),('CDDCTRL017', 'SPGD', 20),('CDDCTRL017', 'CTSG', 14),('CDDCTRL017', 'DECY', 184);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL018', 'CZRT', 202),('CDDCTRL018', 'CTSG', 442),('CDDCTRL018', 'DXPG', 106),('CDDCTRL018', 'BSBL', 132),('CDDCTRL018', 'DECY', 48);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL019', 'CZRT', 346),('CDDCTRL019', 'CTSG', 118),('CDDCTRL019', 'BSBL', 46),('CDDCTRL019', 'DECY', 124);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL020', 'CZRT', 194);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL021', 'CZRT', 334),('CDDCTRL021', 'CTSG', 28);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL022', 'CZRT', 512),('CDDCTRL022', 'CTSG', 10);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL023', 'CZRT', 178),('CDDCTRL023', 'DSHT', 204),('CDDCTRL023', 'SPGD', 188),('CDDCTRL023', 'CTSG', 4),('CDDCTRL023', 'DECY', 822);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL024', 'CZRT', 292),('CDDCTRL024', 'DSHT', 40),('CDDCTRL024', 'CTSG', 16),('CDDCTRL024', 'BSBL', 26);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL025', 'CZRT', 416),('CDDCTRL025', 'SPGD', 34),('CDDCTRL025', 'CTSG', 58),('CDDCTRL025', 'BSBL', 56),('CDDCTRL025', 'DECY', 94);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL026', 'PDRD', 18),('CDDCTRL026', 'CZRT', 150);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL027', 'CZRT', 230),('CDDCTRL027', 'CTSG', 6),('CDDCTRL027', 'BSBL', 4);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL028', 'CZRT', 184),('CDDCTRL028', 'CTSG', 112),('CDDCTRL028', 'DXPG', 96),('CDDCTRL028', 'BSBL', 184);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL029', 'CZRT', 210),('CDDCTRL029', 'CTSG', 290),('CDDCTRL029', 'BSBL', 172);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL030', 'CZRT', 342),('CDDCTRL030', 'CTSG', 190),('CDDCTRL030', 'DXPG', 50),('CDDCTRL030', 'BSBL', 30);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL031', 'CZRT', 152),('CDDCTRL031', 'CTSG', 294),('CDDCTRL031', 'DXPG', 78),('CDDCTRL031', 'BSBL', 32);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL032', 'CZRT', 198),('CDDCTRL032', 'SPGD', 50),('CDDCTRL032', 'CTSG', 150),('CDDCTRL032', 'BSBL', 18);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL033', 'CZRT', 120),('CDDCTRL033', 'SPGD', 20),('CDDCTRL033', 'CTSG', 80),('CDDCTRL033', 'DXPG', 28),('CDDCTRL033', 'DECY', 44);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL034', 'CZRT', 122),('CDDCTRL034', 'CTSG', 92),('CDDCTRL034', 'DXPG', 56),('CDDCTRL034', 'BSBL', 124),('CDDCTRL034', 'DECY', 50);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL035', 'CZRT', 156),('CDDCTRL035', 'SPGD', 58),('CDDCTRL035', 'CTSG', 112),('CDDCTRL035', 'DXPG', 140),('CDDCTRL035', 'BSBL', 52);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL036', 'CZRT', 150),('CDDCTRL036', 'CTSG', 16);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL037', 'CZRT', 184),('CDDCTRL037', 'CTSG', 30),('CDDCTRL037', 'DECY', 58);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL038', 'CZRT', 196),('CDDCTRL038', 'CTSG', 98),('CDDCTRL038', 'DXPG', 144),('CDDCTRL038', 'BSBL', 162);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL039', 'CZRT', 140),('CDDCTRL039', 'SPGD', 56),('CDDCTRL039', 'CTSG', 76),('CDDCTRL039', 'DXPG', 86),('CDDCTRL039', 'BSBL', 62);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL040', 'CZRT', 204),('CDDCTRL040', 'CTSG', 4),('CDDCTRL040', 'BSBL', 6);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL041', 'CZRT', 248),('CDDCTRL041', 'DXPG', 30),('CDDCTRL041', 'DECY', 50);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL042', 'CZRT', 134),('CDDCTRL042', 'SPGD', 14),('CDDCTRL042', 'CTSG', 14);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL043', 'CZRT', 168),('CDDCTRL043', 'SPGD', 28),('CDDCTRL043', 'CTSG', 640),('CDDCTRL043', 'DXPG', 28),('CDDCTRL043', 'BSBL', 1290);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL044', 'CZRT', 326),('CDDCTRL044', 'SPGD', 488),('CDDCTRL044', 'CTSG', 124),('CDDCTRL044', 'BSBL', 258),('CDDCTRL044', 'TNQD', 12),('CDDCTRL044', 'DECY', 690);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL045', 'CZRT', 116),('CDDCTRL045', 'SPGD', 80),('CDDCTRL045', 'CTSG', 336),('CDDCTRL045', 'DXPG', 240),('CDDCTRL045', 'BSBL', 214),('CDDCTRL045', 'DECY', 60);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL046', 'CZRT', 166),('CDDCTRL046', 'TNCD', 12),('CDDCTRL046', 'BSBL', 18),('CDDCTRL046', 'DECY', 18);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL047', 'CZRT', 118),('CDDCTRL047', 'CTSG', 316),('CDDCTRL047', 'BSBL', 1206);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL048', 'CZRT', 398),('CDDCTRL048', 'SPGD', 210),('CDDCTRL048', 'CTSG', 166),('CDDCTRL048', 'DXPG', 86),('CDDCTRL048', 'BSBL', 306),('CDDCTRL048', 'DECY', 74);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL049', 'CZRT', 218),('CDDCTRL049', 'CTSG', 86),('CDDCTRL049', 'DXPG', 150),('CDDCTRL049', 'BSBL', 32),('CDDCTRL049', 'DECY', 70);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL050', 'CZRT', 216),('CDDCTRL050', 'CTSG', 12),('CDDCTRL050', 'DECY', 154);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL051', 'PDRD', 12),('CDDCTRL051', 'CZRT', 98),('CDDCTRL051', 'CTSG', 40),('CDDCTRL051', 'BSBL', 16);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL052', 'CZRT', 278),('CDDCTRL052', 'CTSG', 46),('CDDCTRL052', 'BSBL', 42);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL053', 'CZRT', 356),('CDDCTRL053', 'DSHT', 30),('CDDCTRL053', 'DECY', 530);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL054', 'CZRT', 458),('CDDCTRL054', 'SPGD', 924),('CDDCTRL054', 'CTSG', 56),('CDDCTRL054', 'DXPG', 52),('CDDCTRL054', 'BSBL', 172),('CDDCTRL054', 'DECY', 338);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL055', 'CZRT', 172),('CDDCTRL055', 'CTSG', 36),('CDDCTRL055', 'DXPG', 34),('CDDCTRL055', 'DECY', 322);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL056', 'CZRT', 246),('CDDCTRL056', 'SPGD', 132),('CDDCTRL056', 'BSBL', 460),('CDDCTRL056', 'DECY', 116);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL057', 'CZRT', 380),('CDDCTRL057', 'SPGD', 162),('CDDCTRL057', 'CTSG', 276),('CDDCTRL057', 'BSBL', 738),('CDDCTRL057', 'DECY', 302);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL058', 'CZRT', 152),('CDDCTRL058', 'SPGD', 108),('CDDCTRL058', 'CTSG', 156),('CDDCTRL058', 'DXPG', 64),('CDDCTRL058', 'BSBL', 230),('CDDCTRL058', 'DECY', 58);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL059', 'CZRT', 136),('CDDCTRL059', 'SPGD', 364),('CDDCTRL059', 'CTSG', 120),('CDDCTRL059', 'BSBL', 596);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL060', 'CZRT', 242),('CDDCTRL060', 'CTSG', 78),('CDDCTRL060', 'DXPG', 76),('CDDCTRL060', 'DECY', 632);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL061', 'CZRT', 196),('CDDCTRL061', 'DECY', 30);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL062', 'CZRT', 346),('CDDCTRL062', 'CTSG', 2),('CDDCTRL062', 'BSBL', 140),('CDDCTRL062', 'DECY', 164);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL063', 'CZRT', 112),('CDDCTRL063', 'CTSG', 22),('CDDCTRL063', 'BSBL', 42);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL064', 'CZRT', 218),('CDDCTRL064', 'CTSG', 584),('CDDCTRL064', 'DXPG', 50),('CDDCTRL064', 'BSBL', 438);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL065', 'CZRT', 286),('CDDCTRL065', 'CTSG', 126),('CDDCTRL065', 'BSBL', 296);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL066', 'CZRT', 136),('CDDCTRL066', 'CTSG', 18),('CDDCTRL066', 'BSBL', 96),('CDDCTRL066', 'DECY', 14);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL067', 'CZRT', 400),('CDDCTRL067', 'CTSG', 24),('CDDCTRL067', 'BSBL', 76);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL068', 'CZRT', 264),('CDDCTRL068', 'CTSG', 4),('CDDCTRL068', 'BSBL', 26);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL069', 'CZRT', 324),('CDDCTRL069', 'CTSG', 186),('CDDCTRL069', 'DXPG', 32),('CDDCTRL069', 'BSBL', 416);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL070', 'CZRT', 398),('CDDCTRL070', 'CTSG', 140),('CDDCTRL070', 'BSBL', 124);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL071', 'CZRT', 322),('CDDCTRL071', 'SPGD', 74),('CDDCTRL071', 'CTSG', 28),('CDDCTRL071', 'DXPG', 62),('CDDCTRL071', 'BSBL', 30),('CDDCTRL071', 'DECY', 334);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL072', 'CZRT', 564),('CDDCTRL072', 'CTSG', 408),('CDDCTRL072', 'DXPG', 56),('CDDCTRL072', 'BSBL', 86),('CDDCTRL072', 'DECY', 294);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL073', 'CZRT', 82),('CDDCTRL073', 'CTSG', 18),('CDDCTRL073', 'BSBL', 30);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL074', 'CZRT', 290),('CDDCTRL074', 'CTSG', 20),('CDDCTRL074', 'DECY', 1092);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL075', 'CZRT', 386),('CDDCTRL075', 'CTSG', 24),('CDDCTRL075', 'DECY', 300);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL076', 'CZRT', 290),('CDDCTRL076', 'CTSG', 18),('CDDCTRL076', 'DXPG', 52),('CDDCTRL076', 'DECY', 242);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL077', 'CZRT', 124),('CDDCTRL077', 'DXPG', 64);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL078', 'CZRT', 270),('CDDCTRL078', 'SPGD', 116),('CDDCTRL078', 'DXPG', 32),('CDDCTRL078', 'DECY', 174);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL079', 'CZRT', 426),('CDDCTRL079', 'SPGD', 128),('CDDCTRL079', 'DECY', 98);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL080', 'CZRT', 254),('CDDCTRL080', 'CTSG', 48),('CDDCTRL080', 'BSBL', 16),('CDDCTRL080', 'DECY', 148);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL081', 'CZRT', 90),('CDDCTRL081', 'SPGD', 226),('CDDCTRL081', 'DECY', 178);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL082', 'CZRT', 112),('CDDCTRL082', 'CTSG', 6);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL083', 'CZRT', 132),('CDDCTRL083', 'CTSG', 6),('CDDCTRL083', 'BSBL', 28),('CDDCTRL083', 'DECY', 104);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL084', 'CZRT', 138),('CDDCTRL084', 'CTSG', 6),('CDDCTRL084', 'BSBL', 30);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL085', 'CZRT', 152);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL086', 'CZRT', 234),('CDDCTRL086', 'SPGD', 74),('CDDCTRL086', 'DECY', 96);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL087', 'CZRT', 260),('CDDCTRL087', 'SPGD', 82);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL088', 'CZRT', 688),('CDDCTRL088', 'DECY', 290);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL089', 'CZRT', 182),('CDDCTRL089', 'SPGD', 188),('CDDCTRL089', 'DECY', 226);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL090', 'CZRT', 266),('CDDCTRL090', 'CTSG', 24),('CDDCTRL090', 'BSBL', 46);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL091', 'CZRT', 262),('CDDCTRL091', 'CTSG', 12),('CDDCTRL091', 'BSBL', 34);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL092', 'CZRT', 270),('CDDCTRL092', 'CTSG', 16),('CDDCTRL092', 'BSBL', 18);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL093', 'CZRT', 148),('CDDCTRL093', 'CTSG', 6),('CDDCTRL093', 'BSBL', 34);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL094', 'CZRT', 212),('CDDCTRL094', 'CTSG', 4),('CDDCTRL094', 'BSBL', 14);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL095', 'CZRT', 214),('CDDCTRL095', 'CTSG', 20),('CDDCTRL095', 'BSBL', 12);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL096', 'CZRT', 190),('CDDCTRL096', 'CTSG', 14),('CDDCTRL096', 'BSBL', 10);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL097', 'CZRT', 196),('CDDCTRL097', 'SPGD', 34),('CDDCTRL097', 'CTSG', 50),('CDDCTRL097', 'TNTD', 12),('CDDCTRL097', 'DECY', 34);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL098', 'CZRT', 88),('CDDCTRL098', 'CTSG', 6),('CDDCTRL098', 'BSBL', 308);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL099', 'CZRT', 200),('CDDCTRL099', 'CTSG', 34),('CDDCTRL099', 'BSBL', 34);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL100', 'CZRT', 116),('CDDCTRL100', 'DECY', 28);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL101', 'CZRT', 104),('CDDCTRL101', 'CTSG', 12),('CDDCTRL101', 'DXPG', 34),('CDDCTRL101', 'DECY', 86);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL102', 'CZRT', 194),('CDDCTRL102', 'CTSG', 58),('CDDCTRL102', 'BCPM', 24),('CDDCTRL102', 'DECY', 112);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL103', 'CZRT', 190),('CDDCTRL103', 'CTSG', 46),('CDDCTRL103', 'BSBL', 6);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL104', 'CZRT', 364),('CDDCTRL104', 'CTSG', 18),('CDDCTRL104', 'BSBL', 12);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL105', 'CZRT', 202),('CDDCTRL105', 'CTSG', 18),('CDDCTRL105', 'BSBL', 50);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL106', 'CZRT', 96),('CDDCTRL106', 'CTSG', 36);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL107', 'CZRT', 204),('CDDCTRL107', 'CTSG', 2),('CDDCTRL107', 'BSBL', 12);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL108', 'CZRT', 414),('CDDCTRL108', 'CTSG', 20),('CDDCTRL108', 'BSBL', 138),('CDDCTRL108', 'DECY', 118);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL109', 'CZRT', 226),('CDDCTRL109', 'CTSG', 6),('CDDCTRL109', 'BSBL', 2);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL110', 'CZRT', 276),('CDDCTRL110', 'SPGD', 564),('CDDCTRL110', 'DECY', 148);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL111', 'CZRT', 220),('CDDCTRL111', 'SPGD', 42),('CDDCTRL111', 'DXPG', 82),('CDDCTRL111', 'DECY', 42);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL112', 'CZRT', 134),('CDDCTRL112', 'SPGD', 18),('CDDCTRL112', 'CTSG', 12),('CDDCTRL112', 'DXPG', 12),('CDDCTRL112', 'TNTD', 12),('CDDCTRL112', 'TNQD', 30);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL113', 'CZRT', 138),('CDDCTRL113', 'SPGD', 42),('CDDCTRL113', 'DECY', 36);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL114', 'CZRT', 92),('CDDCTRL114', 'DXPG', 58),('CDDCTRL114', 'DECY', 82);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL115', 'CZRT', 138),('CDDCTRL115', 'SPGD', 88),('CDDCTRL115', 'DECY', 120);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL116', 'CZRT', 134),('CDDCTRL116', 'SPGD', 290);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL117', 'CZRT', 254),('CDDCTRL117', 'CTSG', 14),('CDDCTRL117', 'DECY', 40);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL118', 'CZRT', 142),('CDDCTRL118', 'SPGD', 106);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL119', 'CZRT', 172),('CDDCTRL119', 'DXPG', 80);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL120', 'CZRT', 150),('CDDCTRL120', 'CTSG', 10),('CDDCTRL120', 'BSBL', 4);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL121', 'CZRT', 322),('CDDCTRL121', 'DSHT', 140),('CDDCTRL121', 'DECY', 128);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL122', 'CZRT', 276),('CDDCTRL122', 'SPGD', 188),('CDDCTRL122', 'CTSG', 2),('CDDCTRL122', 'DXPG', 16),('CDDCTRL122', 'TNTD', 10);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL123', 'CZRT', 286);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL124', 'CZRT', 232),('CDDCTRL124', 'TNCD', 154),('CDDCTRL124', 'DECY', 28);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL125', 'CZRT', 242),('CDDCTRL125', 'CTSG', 20);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL126', 'CZRT', 102),('CDDCTRL126', 'DECY', 140);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL127', 'CZRT', 230),('CDDCTRL127', 'DXPG', 42),('CDDCTRL127', 'DECY', 66);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL128', 'CZRT', 230);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL129', 'CZRT', 190),('CDDCTRL129', 'CTSG', 12),('CDDCTRL129', 'BSBL', 26),('CDDCTRL129', 'DECY', 52);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL130', 'PDRD', 578),('CDDCTRL130', 'CZRT', 78),('CDDCTRL130', 'CTSG', 26),('CDDCTRL130', 'BSBL', 32);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL131', 'CZRT', 140),('CDDCTRL131', 'CTSG', 28),('CDDCTRL131', 'BSBL', 4),('CDDCTRL131', 'DECY', 180);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL132', 'CZRT', 120),('CDDCTRL132', 'CTSG', 56),('CDDCTRL132', 'BSBL', 108),('CDDCTRL132', 'DECY', 480);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL133', 'CZRT', 210),('CDDCTRL133', 'CTSG', 10),('CDDCTRL133', 'DECY', 112);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL134', 'CZRT', 226),('CDDCTRL134', 'DSHT', 34),('CDDCTRL134', 'CTSG', 34),('CDDCTRL134', 'DECY', 218);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL135', 'DSHT', 170),('CDDCTRL135', 'CTSG', 6),('CDDCTRL135', 'DECY', 642);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL136', 'CZRT', 232),('CDDCTRL136', 'CTSG', 6),('CDDCTRL136', 'DECY', 568);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL137', 'PDRD', 174),('CDDCTRL137', 'CTSG', 6),('CDDCTRL137', 'BSBL', 50),('CDDCTRL137', 'DECY', 638);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL138', 'CZRT', 158),('CDDCTRL138', 'CTSG', 14);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL139', 'CZRT', 250),('CDDCTRL139', 'DXPG', 36);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL140', 'CZRT', 288),('CDDCTRL140', 'CTSG', 26),('CDDCTRL140', 'BSBL', 162),('CDDCTRL140', 'DECY', 32);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL141', 'CZRT', 134),('CDDCTRL141', 'CTSG', 224),('CDDCTRL141', 'BSBL', 56);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL142', 'CZRT', 300),('CDDCTRL142', 'CTSG', 110),('CDDCTRL142', 'DXPG', 72),('CDDCTRL142', 'DECY', 34);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL143', 'CZRT', 162),('CDDCTRL143', 'CTSG', 32);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL144', 'CZRT', 102),('CDDCTRL144', 'CTSG', 30),('CDDCTRL144', 'BSBL', 10);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL145', 'CZRT', 162),('CDDCTRL145', 'CTSG', 70),('CDDCTRL145', 'DECY', 96);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL146', 'PDRD', 526),('CDDCTRL146', 'CZRT', 150),('CDDCTRL146', 'TNCD', 20),('CDDCTRL146', 'CTSG', 58),('CDDCTRL146', 'BSBL', 18);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL147', 'CZRT', 370),('CDDCTRL147', 'DECY', 474);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL148', 'CZRT', 60),('CDDCTRL148', 'DECY', 62);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL149', 'CZRT', 352),('CDDCTRL149', 'CTSG', 74),('CDDCTRL149', 'BSBL', 12);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL150', 'CZRT', 60),('CDDCTRL150', 'CTSG', 16),('CDDCTRL150', 'BSBL', 30),('CDDCTRL150', 'TNQD', 64),('CDDCTRL150', 'DECY', 120);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL151', 'CZRT', 78),('CDDCTRL151', 'CTSG', 40),('CDDCTRL151', 'BSBL', 140),('CDDCTRL151', 'DECY', 262);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL152', 'CZRT', 30),('CDDCTRL152', 'CTSG', 42),('CDDCTRL152', 'BSBL', 18),('CDDCTRL152', 'DECY', 52);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL153', 'CZRT', 324),('CDDCTRL153', 'DECY', 298);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL154', 'CZRT', 212),('CDDCTRL154', 'DECY', 568);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL155', 'CZRT', 218),('CDDCTRL155', 'CTSG', 66),('CDDCTRL155', 'BSBL', 12),('CDDCTRL155', 'DECY', 398);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL156', 'CZRT', 174),('CDDCTRL156', 'CTSG', 10),('CDDCTRL156', 'BSBL', 24),('CDDCTRL156', 'DECY', 60);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL157', 'PDRD', 458),('CDDCTRL157', 'CZRT', 136),('CDDCTRL157', 'CTSG', 26),('CDDCTRL157', 'DECY', 216);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL158', 'CZRT', 124),('CDDCTRL158', 'CTSG', 26),('CDDCTRL158', 'DECY', 70),('CDDCTRL158', 'TNCT', 430);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL159', 'CZRT', 264),('CDDCTRL159', 'CTSG', 14),('CDDCTRL159', 'DECY', 184);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL160', 'CZRT', 116),('CDDCTRL160', 'CTSG', 12),('CDDCTRL160', 'DXPG', 10);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL161', 'CZRT', 326),('CDDCTRL161', 'CTSG', 2),('CDDCTRL161', 'DXPG', 4),('CDDCTRL161', 'BSBL', 4),('CDDCTRL161', 'DECY', 42);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL162', 'CZRT', 274),('CDDCTRL162', 'SPGD', 298),('CDDCTRL162', 'DECY', 108);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL163', 'CZRT', 46);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL164', 'PDRD', 374),('CDDCTRL164', 'CZRT', 200),('CDDCTRL164', 'CTSG', 12);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL165', 'CZRT', 318),('CDDCTRL165', 'BSBL', 12),('CDDCTRL165', 'DECY', 370);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL166', 'CZRT', 196),('CDDCTRL166', 'BSBL', 26),('CDDCTRL166', 'DECY', 106);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL167', 'CZRT', 120);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL168', 'CZRT', 168),('CDDCTRL168', 'DECY', 102);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL169', 'CZRT', 156),('CDDCTRL169', 'CTSG', 2),('CDDCTRL169', 'DECY', 30);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL170', 'CZRT', 244),('CDDCTRL170', 'CTSG', 20),('CDDCTRL170', 'BSBL', 36),('CDDCTRL170', 'DECY', 458);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL171', 'CZRT', 426),('CDDCTRL171', 'SPGD', 184),('CDDCTRL171', 'DECY', 554);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL172', 'CZRT', 236),('CDDCTRL172', 'BSBL', 16),('CDDCTRL172', 'DECY', 462);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL173', 'CZRT', 128),('CDDCTRL173', 'DECY', 150);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL174', 'CZRT', 200),('CDDCTRL174', 'BSBL', 148),('CDDCTRL174', 'DECY', 334);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL175', 'CZRT', 240),('CDDCTRL175', 'CTSG', 20),('CDDCTRL175', 'BSBL', 96),('CDDCTRL175', 'DECY', 366);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL176', 'CZRT', 270),('CDDCTRL176', 'CTSG', 10),('CDDCTRL176', 'BSBL', 12),('CDDCTRL176', 'DECY', 304);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL177', 'PDRD', 414),('CDDCTRL177', 'CZRT', 210),('CDDCTRL177', 'CTSG', 10),('CDDCTRL177', 'BSBL', 122);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL178', 'CZRT', 42);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL179', 'CZRT', 44),('CDDCTRL179', 'CTSG', 14),('CDDCTRL179', 'BSBL', 56);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL180', 'CZRT', 48),('CDDCTRL180', 'CTSG', 20),('CDDCTRL180', 'BSBL', 36),('CDDCTRL180', 'DECY', 90);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL181', 'CZRT', 20),('CDDCTRL181', 'CTSG', 12),('CDDCTRL181', 'BSBL', 62);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL182', 'CZRT', 48),('CDDCTRL182', 'CTSG', 4),('CDDCTRL182', 'BSBL', 12);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL183', 'CZRT', 16),('CDDCTRL183', 'CTSG', 2),('CDDCTRL183', 'BSBL', 32);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL184', 'CZRT', 90),('CDDCTRL184', 'CTSG', 4),('CDDCTRL184', 'BSBL', 20);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL185', 'CZRT', 60),('CDDCTRL185', 'CTSG', 2),('CDDCTRL185', 'BSBL', 16);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL186', 'CZRT', 112),('CDDCTRL186', 'DSHT', 12),('CDDCTRL186', 'BSBL', 40),('CDDCTRL186', 'DECY', 82);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL187', 'PDRD', 410),('CDDCTRL187', 'CZRT', 112),('CDDCTRL187', 'TNCD', 78),('CDDCTRL187', 'CTSG', 6);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL188', 'PDRD', 998),('CDDCTRL188', 'CZRT', 166),('CDDCTRL188', 'CTSG', 2);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL189', 'CZRT', 246),('CDDCTRL189', 'CTSG', 16),('CDDCTRL189', 'TNQD', 62),('CDDCTRL189', 'DECY', 196);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL190', 'CZRT', 168),('CDDCTRL190', 'CTSG', 36);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL191', 'CZRT', 332),('CDDCTRL191', 'CTSG', 16),('CDDCTRL191', 'BSBL', 20),('CDDCTRL191', 'DECY', 162);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL192', 'CZRT', 226),('CDDCTRL192', 'CTSG', 16),('CDDCTRL192', 'BSBL', 58),('CDDCTRL192', 'DECY', 262);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL193', 'CZRT', 140),('CDDCTRL193', 'CTSG', 64),('CDDCTRL193', 'DXPG', 34),('CDDCTRL193', 'DECY', 78);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL194', 'CZRT', 278),('CDDCTRL194', 'CTSG', 10),('CDDCTRL194', 'DXPG', 40),('CDDCTRL194', 'BSBL', 12),('CDDCTRL194', 'DECY', 228);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL195', 'PDRD', 90),('CDDCTRL195', 'CZRT', 382),('CDDCTRL195', 'CTSG', 6),('CDDCTRL195', 'DECY', 260);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL196', 'CZRT', 242),('CDDCTRL196', 'TNCD', 16),('CDDCTRL196', 'SPGD', 290),('CDDCTRL196', 'CTSG', 20),('CDDCTRL196', 'BSBL', 2),('CDDCTRL196', 'DECY', 340);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL197', 'CZRT', 432),('CDDCTRL197', 'SPGD', 162),('CDDCTRL197', 'DECY', 198);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL198', 'CZRT', 82),('CDDCTRL198', 'CTSG', 12),('CDDCTRL198', 'BSBL', 18);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL199', 'TNCD', 36),('CDDCTRL199', 'CTSG', 4),('CDDCTRL199', 'BSBL', 14),('CDDCTRL199', 'DECY', 20);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL200', 'CZRT', 86),('CDDCTRL200', 'CTSG', 10),('CDDCTRL200', 'DECY', 36);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL201', 'CZRT', 122),('CDDCTRL201', 'CTSG', 16);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL202', 'CZRT', 140);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL203', 'CZRT', 308),('CDDCTRL203', 'CTSG', 6),('CDDCTRL203', 'DXPG', 42);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL204', 'CZRT', 286),('CDDCTRL204', 'CTSG', 10);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL205', 'CZRT', 260),('CDDCTRL205', 'CTSG', 12);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL206', 'CZRT', 352),('CDDCTRL206', 'CTSG', 6),('CDDCTRL206', 'DECY', 16);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL207', 'PDRD', 74);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL208', 'CTSG', 12),('CDDCTRL208', 'BSBL', 32);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL209', 'CZRT', 286),('CDDCTRL209', 'CTSG', 10),('CDDCTRL209', 'BSBL', 188);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL210', 'CZRT', 36),('CDDCTRL210', 'SPGD', 18),('CDDCTRL210', 'CTSG', 4),('CDDCTRL210', 'DECY', 16);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL211', 'CZRT', 124),('CDDCTRL211', 'CTSG', 14);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL212', 'CZRT', 136),('CDDCTRL212', 'BSBL', 66);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL213', 'CZRT', 202),('CDDCTRL213', 'CTSG', 4),('CDDCTRL213', 'BSBL', 10),('CDDCTRL213', 'DECY', 320);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL214', 'CZRT', 56),('CDDCTRL214', 'CTSG', 16),('CDDCTRL214', 'BSBL', 6);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL215', 'DSHT', 276),('CDDCTRL215', 'CTSG', 18),('CDDCTRL215', 'BSBL', 26),('CDDCTRL215', 'DECY', 26);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL216', 'CZRT', 392),('CDDCTRL216', 'CTSG', 70),('CDDCTRL216', 'BSBL', 46),('CDDCTRL216', 'TNQD', 62),('CDDCTRL216', 'DECY', 840);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL217', 'CZRT', 34),('CDDCTRL217', 'CTSG', 10),('CDDCTRL217', 'BSBL', 12);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL218', 'CZRT', 304),('CDDCTRL218', 'CTSG', 40),('CDDCTRL218', 'BSBL', 34),('CDDCTRL218', 'DECY', 266);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL219', 'CZRT', 188),('CDDCTRL219', 'CTSG', 12),('CDDCTRL219', 'DECY', 386);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL220', 'CZRT', 210),('CDDCTRL220', 'BSBL', 44),('CDDCTRL220', 'DECY', 40);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL221', 'CZRT', 64),('CDDCTRL221', 'BSBL', 106),('CDDCTRL221', 'DECY', 194);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL222', 'CZRT', 78),('CDDCTRL222', 'CTSG', 2),('CDDCTRL222', 'BSBL', 46);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL223', 'CZRT', 136),('CDDCTRL223', 'CTSG', 2);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL224', 'CZRT', 194),('CDDCTRL224', 'CTSG', 14);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL225', 'CZRT', 262),('CDDCTRL225', 'CTSG', 44),('CDDCTRL225', 'BSBL', 52),('CDDCTRL225', 'DECY', 216);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL226', 'CZRT', 236),('CDDCTRL226', 'CTSG', 62),('CDDCTRL226', 'BSBL', 36);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL227', 'CZRT', 90),('CDDCTRL227', 'BSBL', 46),('CDDCTRL227', 'TNQD', 208),('CDDCTRL227', 'DECY', 342);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL228', 'CZRT', 40);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL229', 'CZRT', 478),('CDDCTRL229', 'DECY', 786);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL230', 'CZRT', 98),('CDDCTRL230', 'CTSG', 10),('CDDCTRL230', 'DECY', 218);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL231', 'CZRT', 76),('CDDCTRL231', 'CTSG', 28),('CDDCTRL231', 'DECY', 140);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL232', 'CZRT', 250),('CDDCTRL232', 'CTSG', 4),('CDDCTRL232', 'BSBL', 24),('CDDCTRL232', 'DECY', 292);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL233', 'CZRT', 138),('CDDCTRL233', 'SPGD', 28),('CDDCTRL233', 'CTSG', 34),('CDDCTRL233', 'BSBL', 18),('CDDCTRL233', 'DECY', 26);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL234', 'CZRT', 234),('CDDCTRL234', 'SPGD', 74),('CDDCTRL234', 'CTSG', 26),('CDDCTRL234', 'BSBL', 18),('CDDCTRL234', 'DECY', 30);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL235', 'DSHT', 164),('CDDCTRL235', 'CTSG', 10),('CDDCTRL235', 'BSBL', 66);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL236', 'CZRT', 288),('CDDCTRL236', 'CTSG', 30),('CDDCTRL236', 'BSBL', 6),('CDDCTRL236', 'DECY', 14);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL237', 'CZRT', 156),('CDDCTRL237', 'DECY', 236);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL238', 'CZRT', 304),('CDDCTRL238', 'DECY', 1728);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL239', 'PDRD', 150),('CDDCTRL239', 'CZRT', 112),('CDDCTRL239', 'CTSG', 18),('CDDCTRL239', 'BSBL', 78),('CDDCTRL239', 'TNQD', 220),('CDDCTRL239', 'DECY', 562);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL240', 'CTSG', 18),('CDDCTRL240', 'DECY', 66);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL241', 'PDRD', 74),('CDDCTRL241', 'CZRT', 110),('CDDCTRL241', 'SPGD', 74),('CDDCTRL241', 'CTSG', 4),('CDDCTRL241', 'BSBL', 6),('CDDCTRL241', 'TNQD', 14),('CDDCTRL241', 'DECY', 240);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL242', 'CZRT', 144),('CDDCTRL242', 'CTSG', 18),('CDDCTRL242', 'BSBL', 70),('CDDCTRL242', 'TNQD', 102),('CDDCTRL242', 'DECY', 162);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL243', 'CZRT', 116);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL244', 'CZRT', 138),('CDDCTRL244', 'DECY', 184);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL245', 'CZRT', 142),('CDDCTRL245', 'CTSG', 4),('CDDCTRL245', 'BSBL', 2);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL246', 'CZRT', 400),('CDDCTRL246', 'CTSG', 18);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL247', 'CZRT', 174),('CDDCTRL247', 'CTSG', 14);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL248', 'CZRT', 56),('CDDCTRL248', 'CTSG', 2),('CDDCTRL248', 'BSBL', 6),('CDDCTRL248', 'TNQD', 60),('CDDCTRL248', 'DECY', 228);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL249', 'CZRT', 220),('CDDCTRL249', 'CTSG', 2),('CDDCTRL249', 'BSBL', 12),('CDDCTRL249', 'DECY', 104);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL250', 'CZRT', 382),('CDDCTRL250', 'BSBL', 14),('CDDCTRL250', 'DECY', 822);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL251', 'CZRT', 180),('CDDCTRL251', 'CTSG', 6),('CDDCTRL251', 'BSBL', 32),('CDDCTRL251', 'DECY', 124);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL252', 'PDRD', 1886),('CDDCTRL252', 'CZRT', 254),('CDDCTRL252', 'CTSG', 18),('CDDCTRL252', 'BSBL', 28),('CDDCTRL252', 'TNQD', 458);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL253', 'PDRD', 1974),('CDDCTRL253', 'CZRT', 478),('CDDCTRL253', 'TNCD', 40),('CDDCTRL253', 'CTSG', 12),('CDDCTRL253', 'BSBL', 10);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL254', 'CZRT', 156),('CDDCTRL254', 'CTSG', 34);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL255', 'CZRT', 126),('CDDCTRL255', 'CTSG', 12),('CDDCTRL255', 'DECY', 40);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL256', 'PDRD', 2022),('CDDCTRL256', 'CZRT', 364),('CDDCTRL256', 'TNQD', 138);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL257', 'PDRD', 1854),('CDDCTRL257', 'CZRT', 336),('CDDCTRL257', 'TNQD', 184);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL258', 'CZRT', 138),('CDDCTRL258', 'CTSG', 4),('CDDCTRL258', 'DECY', 142);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL259', 'CZRT', 120),('CDDCTRL259', 'CTSG', 36),('CDDCTRL259', 'BSBL', 16),('CDDCTRL259', 'TNTD', 26);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL260', 'CZRT', 1864),('CDDCTRL260', 'CTSG', 18),('CDDCTRL260', 'DFCL', 44),('CDDCTRL260', 'BSBL', 40),('CDDCTRL260', 'DECY', 44);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL261', 'CZRT', 96),('CDDCTRL261', 'CTSG', 6),('CDDCTRL261', 'BSBL', 32),('CDDCTRL261', 'DECY', 80);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL262', 'CZRT', 122),('CDDCTRL262', 'SPGD', 44),('CDDCTRL262', 'CTSG', 16),('CDDCTRL262', 'BSBL', 10),('CDDCTRL262', 'DECY', 50);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL263', 'CZRT', 56),('CDDCTRL263', 'CTSG', 14);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL264', 'CZRT', 132),('CDDCTRL264', 'BSBL', 12),('CDDCTRL264', 'DECY', 88);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL265', 'CZRT', 210),('CDDCTRL265', 'DECY', 558);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL266', 'CZRT', 362),('CDDCTRL266', 'CTSG', 16);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL267', 'CZRT', 248),('CDDCTRL267', 'CTSG', 34),('CDDCTRL267', 'DECY', 116);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL268', 'CZRT', 72),('CDDCTRL268', 'TNCD', 16),('CDDCTRL268', 'CTSG', 10),('CDDCTRL268', 'TNTD', 24);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL269', 'CZRT', 282),('CDDCTRL269', 'SPGD', 30),('CDDCTRL269', 'DECY', 724);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL270', 'CZRT', 212),('CDDCTRL270', 'CTSG', 10),('CDDCTRL270', 'DECY', 108);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL271', 'CZRT', 532),('CDDCTRL271', 'SPGD', 260),('CDDCTRL271', 'DECY', 18);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL272', 'PDRD', 982),('CDDCTRL272', 'CZRT', 260);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL273', 'CZRT', 232),('CDDCTRL273', 'DSHT', 12),('CDDCTRL273', 'BSBL', 4),('CDDCTRL273', 'DECY', 530);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL274', 'PDRD', 46),('CDDCTRL274', 'CZRT', 258),('CDDCTRL274', 'DSHT', 92),('CDDCTRL274', 'SPGD', 230),('CDDCTRL274', 'CTSG', 76),('CDDCTRL274', 'BSBL', 76),('CDDCTRL274', 'DECY', 692);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL275', 'CZRT', 154),('CDDCTRL275', 'CTSG', 20),('CDDCTRL275', 'DECY', 208);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL276', 'CZRT', 88),('CDDCTRL276', 'CTSG', 28),('CDDCTRL276', 'BSBL', 14);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL277', 'CZRT', 186),('CDDCTRL277', 'DECY', 550);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL278', 'CZRT', 70),('CDDCTRL278', 'CTSG', 2),('CDDCTRL278', 'DECY', 178);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL279', 'PDRD', 32),('CDDCTRL279', 'CZRT', 228),('CDDCTRL279', 'CTSG', 36),('CDDCTRL279', 'DECY', 16);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL280', 'CZRT', 224),('CDDCTRL280', 'DECY', 122);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL281', 'CZRT', 200),('CDDCTRL281', 'SPGD', 172),('CDDCTRL281', 'DXPG', 30);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL282', 'CZRT', 144),('CDDCTRL282', 'DECY', 172);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL283', 'CZRT', 168),('CDDCTRL283', 'CTSG', 6),('CDDCTRL283', 'BSBL', 14),('CDDCTRL283', 'DECY', 658);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL284', 'CZRT', 116),('CDDCTRL284', 'DECY', 78);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL285', 'CZRT', 210),('CDDCTRL285', 'BSBL', 50);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL286', 'CZRT', 548),('CDDCTRL286', 'CTSG', 20),('CDDCTRL286', 'BSBL', 34),('CDDCTRL286', 'DECY', 260);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL287', 'CZRT', 106),('CDDCTRL287', 'CTSG', 4);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL288', 'CZRT', 378),('CDDCTRL288', 'DECY', 208);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL289', 'CZRT', 426),('CDDCTRL289', 'DECY', 1116);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL290', 'CZRT', 134),('CDDCTRL290', 'CTSG', 10),('CDDCTRL290', 'DECY', 44);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL291', 'CZRT', 564),('CDDCTRL291', 'TNCD', 722),('CDDCTRL291', 'CTSG', 4),('CDDCTRL291', 'DECY', 104);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL292', 'CZRT', 154),('CDDCTRL292', 'BSBL', 150),('CDDCTRL292', 'DECY', 136);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL293', 'CZRT', 208),('CDDCTRL293', 'CTSG', 6),('CDDCTRL293', 'BSBL', 6),('CDDCTRL293', 'DECY', 102);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL294', 'CZRT', 338),('CDDCTRL294', 'BSBL', 14),('CDDCTRL294', 'DECY', 248);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL295', 'CZRT', 96),('CDDCTRL295', 'CTSG', 6);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL296', 'CZRT', 248),('CDDCTRL296', 'CTSG', 10),('CDDCTRL296', 'BSBL', 66),('CDDCTRL296', 'DECY', 136);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL297', 'CZRT', 226),('CDDCTRL297', 'DECY', 348);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL298', 'PDRD', 1014),('CDDCTRL298', 'CZRT', 258),('CDDCTRL298', 'CTSG', 18);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL299', 'CZRT', 246),('CDDCTRL299', 'DECY', 1120);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL300', 'CZRT', 546),('CDDCTRL300', 'DECY', 282);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL301', 'CZRT', 98),('CDDCTRL301', 'BSBL', 40),('CDDCTRL301', 'DECY', 60);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL302', 'CZRT', 464),('CDDCTRL302', 'CTSG', 6),('CDDCTRL302', 'DECY', 446);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL303', 'PDRD', 414),('CDDCTRL303', 'CZRT', 274),('CDDCTRL303', 'CTSG', 6);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL304', 'CZRT', 144),('CDDCTRL304', 'BSBL', 42),('CDDCTRL304', 'DECY', 74);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL305', 'CZRT', 272),('CDDCTRL305', 'DECY', 616);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL306', 'CZRT', 1200),('CDDCTRL306', 'CTSG', 30),('CDDCTRL306', 'DECY', 6);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL307', 'PDRD', 40),('CDDCTRL307', 'CZRT', 210),('CDDCTRL307', 'DECY', 294);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL308', 'CZRT', 66),('CDDCTRL308', 'CTSG', 20),('CDDCTRL308', 'BSBL', 4);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL309', 'CZRT', 308),('CDDCTRL309', 'SPGD', 46),('CDDCTRL309', 'CTSG', 2),('CDDCTRL309', 'DECY', 288);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL310', 'CZRT', 170),('CDDCTRL310', 'CTSG', 16),('CDDCTRL310', 'BSBL', 24);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL311', 'CZRT', 122),('CDDCTRL311', 'CTSG', 36),('CDDCTRL311', 'TNTD', 16),('CDDCTRL311', 'DECY', 178);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL312', 'PDRD', 108),('CDDCTRL312', 'CZRT', 184),('CDDCTRL312', 'CTSG', 12),('CDDCTRL312', 'TNQD', 60);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL313', 'CZRT', 138),('CDDCTRL313', 'CTSG', 26),('CDDCTRL313', 'DECY', 20);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL314', 'CZRT', 216),('CDDCTRL314', 'DSHT', 64),('CDDCTRL314', 'CTSG', 18),('CDDCTRL314', 'BSBL', 34),('CDDCTRL314', 'DECY', 294);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL315', 'CZRT', 94),('CDDCTRL315', 'CTSG', 92),('CDDCTRL315', 'BSBL', 20),('CDDCTRL315', 'TNQD', 164);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL316', 'CZRT', 164),('CDDCTRL316', 'CTSG', 24),('CDDCTRL316', 'BSBL', 12),('CDDCTRL316', 'TNQD', 168),('CDDCTRL316', 'DECY', 92);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL317', 'CZRT', 278),('CDDCTRL317', 'DSHT', 70),('CDDCTRL317', 'SPGD', 18),('CDDCTRL317', 'CTSG', 10),('CDDCTRL317', 'BSBL', 18),('CDDCTRL317', 'DECY', 92);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL318', 'CZRT', 158),('CDDCTRL318', 'DSHT', 46),('CDDCTRL318', 'CTSG', 82),('CDDCTRL318', 'BSBL', 144),('CDDCTRL318', 'TNQD', 194),('CDDCTRL318', 'DECY', 450);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL319', 'CZRT', 234),('CDDCTRL319', 'CTSG', 24),('CDDCTRL319', 'BSBL', 6),('CDDCTRL319', 'DECY', 168);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL320', 'PDRD', 562),('CDDCTRL320', 'CZRT', 202),('CDDCTRL320', 'CTSG', 4),('CDDCTRL320', 'DXPG', 16),('CDDCTRL320', 'TNQD', 98),('CDDCTRL320', 'DECY', 632);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL321', 'CZRT', 110),('CDDCTRL321', 'CTSG', 14),('CDDCTRL321', 'BSBL', 18),('CDDCTRL321', 'TNQD', 42),('CDDCTRL321', 'DECY', 604);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL322', 'CZRT', 240),('CDDCTRL322', 'CTSG', 30),('CDDCTRL322', 'BSBL', 4),('CDDCTRL322', 'TNQD', 44),('CDDCTRL322', 'DECY', 126);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL323', 'CZRT', 202),('CDDCTRL323', 'BSBL', 4),('CDDCTRL323', 'DECY', 696);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL324', 'CZRT', 196),('CDDCTRL324', 'SPGD', 50),('CDDCTRL324', 'TNQD', 182),('CDDCTRL324', 'DECY', 1208);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL325', 'CZRT', 118),('CDDCTRL325', 'CTSG', 20),('CDDCTRL325', 'BSBL', 4);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL326', 'PDRD', 70),('CDDCTRL326', 'CZRT', 210),('CDDCTRL326', 'TNCD', 30),('CDDCTRL326', 'SPGD', 32),('CDDCTRL326', 'CTSG', 6),('CDDCTRL326', 'TNQD', 86),('CDDCTRL326', 'DECY', 174);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL327', 'CZRT', 118),('CDDCTRL327', 'CTSG', 10),('CDDCTRL327', 'TNQD', 74),('CDDCTRL327', 'DECY', 134);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL328', 'CZRT', 76),('CDDCTRL328', 'CTSG', 6),('CDDCTRL328', 'DECY', 182);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL329', 'PDRD', 24),('CDDCTRL329', 'CZRT', 322),('CDDCTRL329', 'SPGD', 44),('CDDCTRL329', 'TNQD', 74),('CDDCTRL329', 'DECY', 276);
+INSERT INTO calidad_defecto (id_control, id_defecto, cantidad) VALUES ('CDDCTRL330', 'CZRT', 90),('CDDCTRL330', 'CTSG', 24),('CDDCTRL330', 'DECY', 322);
+
+CREATE OR REPLACE VIEW calidad_control AS
+SELECT 
+    c.id_control,
+    v.n_embarcacion,
+    v.`OPER.`,
+    v.camp,
+    v.mes,
+    v.`SEM`,
+    v.`ETA LIMA`,
+    v.`ETD LIMA`,
+    v.`ETA DEST`,
+    o.`TEMP. FIN`,
+    c.reemp_desp,
+    v.`PACKER`,
+    v.`CLIENTE`,
+    v.`PLANTA/ PROV.`,
+    v.`AERO1`,
+    v.`AERO`,
+    v.`RUTA`,
+    c.awb,
+    c.hawb,
+    c.t_c,
+    vl.cal1,
+    c.cod_calibre AS "CAL",
+    c.caja_emb AS "CAJA EMB",
+    c.caja_obs AS "CAJA OBS",
+    a.atado AS "ATADOS",
+    c.pesoXcaja AS "PESO RECP X CAJA CSU (gr)",
+    (c.t_c * 1000) AS "PESO NETO X CAJA (gr)",
+    c.sobre_peso AS "SOBRE PESO (gr)",
+    (c.sobre_peso / (c.t_c * 1000)) * 100 AS "SOBRE PESO %",
+    c.fuera_rangoXcaja AS "FUERA RANGO X CAJA (gr)",
+    (c.fuera_rangoXcaja / c.pesoXcaja) * 100 AS "% FUERA RANGO P.R.",
+    (c.fuera_rangoXcaja / (c.t_c * 1000)) * 100 AS "% FUERA RANGO P.N.",
+    SUM(cd.cantidad) AS "TOTAL DEFECTOS",
+    (SUM(cd.cantidad) / c.pesoXcaja) * 100 AS "% DEFECTO P.R.",
+    (SUM(cd.cantidad) / (c.t_c * 1000)) * 100 AS "% DEFECTO P.N.",
+    IFNULL(MAX(CASE WHEN cd.id_defecto = 'PDRD' THEN cd.cantidad END), 0) AS PDRD,
+    IFNULL(MAX(CASE WHEN cd.id_defecto = 'DECY' THEN cd.cantidad END), 0) AS DECY,
+    IFNULL(MAX(CASE WHEN cd.id_defecto = 'TNCD' THEN cd.cantidad END), 0) AS TNCD,
+    IFNULL(MAX(CASE WHEN cd.id_defecto = 'DSHT' THEN cd.cantidad END), 0) AS DSHT,
+    IFNULL(MAX(CASE WHEN cd.id_defecto = 'DXPG' THEN cd.cantidad END), 0) AS DXPG,
+    IFNULL(MAX(CASE WHEN cd.id_defecto = 'DFCL' THEN cd.cantidad END), 0) AS DFCL,
+    IFNULL(MAX(CASE WHEN cd.id_defecto = 'TNRD' THEN cd.cantidad END), 0) AS TNRD,
+    IFNULL(MAX(CASE WHEN cd.id_defecto = 'TNQD' THEN cd.cantidad END), 0) AS TNQD,
+    IFNULL(MAX(CASE WHEN cd.id_defecto = 'OTDF' THEN cd.cantidad END), 0) AS OTDF,
+    IFNULL(MAX(CASE WHEN cd.id_defecto = 'CZRT' THEN cd.cantidad END), 0) AS CZRT,
+    IFNULL(MAX(CASE WHEN cd.id_defecto = 'BSBL' THEN cd.cantidad END), 0) AS BSBL,
+    IFNULL(MAX(CASE WHEN cd.id_defecto = 'CTSG' THEN cd.cantidad END), 0) AS CTSG,
+    IFNULL(MAX(CASE WHEN cd.id_defecto = 'SPGD' THEN cd.cantidad END), 0) AS SPGD,
+    IFNULL(MAX(CASE WHEN cd.id_defecto = 'TNTD' THEN cd.cantidad END), 0) AS TNTD,
+    IFNULL(MAX(CASE WHEN cd.id_defecto = 'BCPM' THEN cd.cantidad END), 0) AS BCPM,
+    IFNULL(MAX(CASE WHEN cd.id_defecto = 'CBRD' THEN cd.cantidad END), 0) AS CBRD,
+    IFNULL(MAX(CASE WHEN cd.id_defecto = 'TNCL' THEN cd.cantidad END), 0) AS TNCL,
+    IFNULL(MAX(CASE WHEN cd.id_defecto = 'TNCT' THEN cd.cantidad END), 0) AS TNCT,
+    IFNULL(MAX(CASE WHEN cd.id_defecto = 'TNCV' THEN cd.cantidad END), 0) AS TNCV,
+    IFNULL(MAX(CASE WHEN cd.id_defecto = 'STPL' THEN cd.cantidad END), 0) AS STPL,
+    IFNULL(MAX(CASE WHEN cd.id_defecto = 'CZTS' THEN cd.cantidad END), 0) AS CZTS,
+    c.id_valor
+FROM 
+    control c
+LEFT JOIN 
+    calidad_defecto cd ON c.id_control = cd.id_control
+JOIN
+	val v ON c.id_valor = v.id_valor
+JOIN
+	ope o ON v.n_embarcacion = o.n_embarcacion
+JOIN
+	valores vl ON c.id_valor = vl.id_valor
+JOIN
+	atados a ON c.cod_atado = a.cod_atado
+GROUP BY 
+    c.id_control
+ORDER BY
+	c.id_control;
+
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR001';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR002';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR003';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR004';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR005';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR006';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR007';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR008';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR009';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR010';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR011';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR012';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR013';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR014';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR015';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR016';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR017';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR018';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR019';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR020';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR021';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR022';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR023';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR024';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR025';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR026';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR027';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR028';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR029';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR030';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR031';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR032';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR033';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR034';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR035';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR036';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR037';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR038';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR039';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR040';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR041';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR042';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR043';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR044';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR045';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR046';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR047';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR048';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR049';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR050';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR051';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR052';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR053';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR054';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR055';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR056';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR057';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR058';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR059';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR060';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR061';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR062';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR063';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR064';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR065';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR066';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR067';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR068';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR069';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR070';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR071';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR072';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR073';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR074';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR075';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR076';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR077';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR078';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR079';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR080';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR081';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR082';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR083';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR084';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR085';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR086';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR087';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR088';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR089';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR090';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR091';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR092';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR093';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR094';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR095';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR096';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR097';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR098';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR099';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR100';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR101';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR102';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR103';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR104';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR105';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR106';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR107';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR108';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR109';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR110';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR111';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR112';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR113';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR114';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR115';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR116';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR117';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR118';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR119';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR120';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR121';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR122';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR123';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR124';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR125';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR126';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR127';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR128';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR129';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR130';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR131';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR132';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR133';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR134';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR135';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR136';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR137';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR138';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR139';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR140';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR141';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR142';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR143';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR144';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR145';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR146';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR147';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR148';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR149';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR150';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR151';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR152';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR153';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR154';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR155';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR156';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR157';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR158';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR159';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR160';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR161';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR162';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR163';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR164';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR165';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR166';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR167';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR168';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR169';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR170';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR171';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR172';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR173';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR174';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR175';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR176';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR177';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR178';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR179';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR180';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR181';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR182';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR183';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR184';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR185';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR186';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR187';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR188';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR189';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR190';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR191';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR192';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR193';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR194';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR195';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR196';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR197';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR198';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR199';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR200';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR201';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR202';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR203';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR204';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR205';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR206';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR207';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR208';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR209';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR210';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR211';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR212';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR213';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR214';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR215';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR216';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR217';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR218';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR219';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR220';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR221';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR222';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR223';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR224';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR225';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR226';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR227';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR228';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR229';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR230';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR231';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR232';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR233';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR234';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR235';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR236';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR237';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR238';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR239';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR240';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR241';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR242';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR243';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR244';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR245';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR246';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR247';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR248';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR249';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR250';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR251';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR252';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR253';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR254';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR255';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR256';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR257';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR258';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR259';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR260';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR261';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR262';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR263';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR264';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR265';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR266';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR267';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR268';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR269';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR270';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR271';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR272';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR273';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR274';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR275';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR276';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR277';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR278';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR279';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR280';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR281';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR282';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR283';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR284';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR285';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR286';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR287';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR288';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR289';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR290';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR291';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR292';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR293';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR294';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR295';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR296';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR297';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR298';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR299';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR300';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR301';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR302';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR303';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR304';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR305';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR306';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR307';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR308';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR309';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR310';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR311';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR312';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR313';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR314';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR315';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR316';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR317';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR318';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR319';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR320';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR321';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR322';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR323';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 2, apoyo_csu_defecto = 6, mano_obraXkg = 0.57075, ad_tp_kg = 0.696315 WHERE id_cdvalor = 'CDDVLR324';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 0, apoyo_csu_defecto = 0, mano_obraXkg = 0, ad_tp_kg = 0 WHERE id_cdvalor = 'CDDVLR325';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 0, apoyo_csu_defecto = 0, mano_obraXkg = 0, ad_tp_kg = 0 WHERE id_cdvalor = 'CDDVLR326';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 0, apoyo_csu_defecto = 0, mano_obraXkg = 0, ad_tp_kg = 0 WHERE id_cdvalor = 'CDDVLR327';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 0, apoyo_csu_defecto = 0, mano_obraXkg = 0, ad_tp_kg = 0 WHERE id_cdvalor = 'CDDVLR328';
+UPDATE calidad_valor SET apoyo_csu_fr_rango = 0, apoyo_csu_defecto = 0, mano_obraXkg = 0, ad_tp_kg = 0 WHERE id_cdvalor = 'CDDVLR329';
+
+WITH Precalculos AS (
+    SELECT
+        cc.id_control,
+        cc.n_embarcacion,
+        cc.`OPER.`,
+        cc.mes,
+        cc.`SEM`,
+        cc.`ETD LIMA`,
+        cc.reemp_desp,
+        cc.`PACKER`,
+        cc.`CLIENTE`,
+        cc.`PLANTA/ PROV.`,
+        cc.`AERO1`,
+        cc.`AERO`,
+        cc.`RUTA`,
+        cc.awb,
+        cc.hawb,
+        cc.cal1,
+        cc.`CAL`,
+        cc.`CAJA EMB`,
+        cc.t_c,
+        cc.`CAJA OBS`,
+        cc.`% FUERA RANGO P.R.`,
+        cc.`% FUERA RANGO P.N.`,
+        cc.`% DEFECTO P.R.`,
+        cc.`% DEFECTO P.N.`,
+        cc.`SOBRE PESO %`,
+        o.`TOTAL KG`,
+        o.tot_flete_inicial,
+        v.`PRECIO VENTA`,
+        v.`PRECIO COMPRA`,
+        cv.apoyo_csu_fr_rango,
+        cv.apoyo_csu_defecto,
+        cv.mano_obraXkg,
+        cv.ad_tp_kg,
+        ROUND(cc.t_c * cc.`CAJA OBS`, 2) AS total_kgs,   -- Calculado una sola vez
+        ROUND((v.`PRECIO VENTA` * 0.3) / cc.t_c, 2) AS precio_kg,
+        ROUND(o.tot_flete_inicial / o.`TOTAL KG`, 2) AS flete_kg,
+        ROUND(cv.mano_obraXkg * (cc.t_c * cc.`CAJA OBS`) / 100, 2) AS valor_mo_kg,
+        ROUND(cv.ad_tp_kg * (cc.t_c * cc.`CAJA OBS`) / 100, 2) AS valor_ad_tp_kg
+    FROM
+        calidad_control cc
+    JOIN
+        ope o ON cc.n_embarcacion = o.n_embarcacion
+    JOIN
+        val v ON cc.id_valor = v.id_valor
+    JOIN
+        calidad_valor cv ON cc.id_control = cv.id_control
+)
+SELECT
+    cv.id_cdvalor,
+    cc.n_embarcacion,
+    cc.`OPER.`,
+    cc.mes,
+    cc.`SEM`,
+    cc.`ETD LIMA`,
+    cc.reemp_desp,
+    cc.`PACKER`,
+    cc.`CLIENTE`,
+    cc.`PLANTA/ PROV.`,
+    cc.`AERO1`,
+    cc.`AERO`,
+    cc.`RUTA`,
+    cc.awb,
+    cc.hawb,
+    cc.t_c,
+    cc.cal1,
+    cc.`CAL`,
+    cc.`CAJA EMB`,
+    cc.`CAJA OBS`,
+    cc.total_kgs AS "KGS TOT",
+    ROUND(cc.`% FUERA RANGO P.R.`, 2) AS "% FUERA RANGO P.R. INI.",
+    ROUND(cc.`% FUERA RANGO P.N.`, 2) AS "% FUERA RANGO P.N. INI.",
+    ROUND(cv.apoyo_csu_fr_rango, 2) AS "% APOYO CSU FR",
+    ROUND((CASE
+        WHEN cc.`% FUERA RANGO P.R.` > cv.apoyo_csu_fr_rango THEN
+            cc.`% FUERA RANGO P.R.` - cv.apoyo_csu_fr_rango
+        ELSE 0
+    END), 2) AS "% FUERA RANGO P.R. FIN",
+    ROUND((CASE
+        WHEN cc.`% FUERA RANGO P.N.` > cv.apoyo_csu_fr_rango THEN
+            cc.`% FUERA RANGO P.N.` - cv.apoyo_csu_fr_rango
+        ELSE 0
+    END), 2) AS "% FUERA RANGO P.N. FIN",
+    ROUND(((cc.total_kgs / 100) * 
+        (CASE
+            WHEN cc.`% FUERA RANGO P.R.` > cv.apoyo_csu_fr_rango THEN
+                cc.`% FUERA RANGO P.R.` - cv.apoyo_csu_fr_rango
+            ELSE 0
+        END)), 2) AS "KGS FUERA RANGO P.R. FIN",
+    ROUND(((cc.total_kgs * 
+        (CASE
+            WHEN cc.`% FUERA RANGO P.N.` > cv.apoyo_csu_fr_rango THEN
+                cc.`% FUERA RANGO P.N.` - cv.apoyo_csu_fr_rango
+            ELSE 0
+        END)) / 100), 2) AS "KGS FUERA RANGO P.N. FIN",
+    ROUND(cc.precio_kg, 2) AS "PRECIO X KG",
+    ROUND((cc.precio_kg * cc.total_kgs * 
+        (CASE
+            WHEN cc.`% FUERA RANGO P.R.` > cv.apoyo_csu_fr_rango THEN
+                cc.`% FUERA RANGO P.R.` - cv.apoyo_csu_fr_rango
+            ELSE 0
+        END)) / 100, 2) AS "VALOR FUERA RANGO P.R. FIN",
+    ROUND((cc.precio_kg * cc.total_kgs * 
+        (CASE
+            WHEN cc.`% FUERA RANGO P.N.` > cv.apoyo_csu_fr_rango THEN
+                cc.`% FUERA RANGO P.N.` - cv.apoyo_csu_fr_rango
+            ELSE 0
+        END)) / 100, 2) AS "VALOR FUERA RANGO P.N. FIN",
+    ROUND((cc.precio_kg * cc.total_kgs * cc.`% FUERA RANGO P.N.`) / 100, 2) AS "VALOR FUERA RANGO P.N. INI.",
+    ROUND(cc.`% DEFECTO P.R.`, 2) AS "% DEFECTO P.R. INI.",
+    ROUND(cc.`% DEFECTO P.N.`, 2) AS "% DEFECTO P.N. INI.",
+    ROUND(cc.`SOBRE PESO %`, 2) AS "SOBRE PESO %",
+    ROUND(cv.apoyo_csu_defecto, 2) AS "% APOYO CSU DF",
+    ROUND((CASE 
+        WHEN cc.`% DEFECTO P.R.` > cv.apoyo_csu_defecto THEN
+            cc.`% DEFECTO P.R.` - cv.apoyo_csu_defecto
+        ELSE 0
+    END), 2) AS "% DEFECTO P.R. FIN",
+    ROUND((CASE 
+        WHEN cc.`% DEFECTO P.N.` > cv.apoyo_csu_defecto THEN
+            cc.`% DEFECTO P.N.` - cv.apoyo_csu_defecto
+        ELSE 0
+    END), 2) AS "% DEFECTO P.N. FIN",
+    ROUND(((cc.total_kgs * 
+        (CASE 
+            WHEN cc.`% DEFECTO P.R.` > cv.apoyo_csu_defecto THEN
+                cc.`% DEFECTO P.R.` - cv.apoyo_csu_defecto
+            ELSE 0
+        END)) / 100), 2) AS "KGS RECHAZ P.R. FIN",
+    ROUND(((cc.total_kgs * 
+        (CASE 
+            WHEN cc.`% DEFECTO P.N.` > cv.apoyo_csu_defecto THEN
+                cc.`% DEFECTO P.N.` - cv.apoyo_csu_defecto
+            ELSE 0
+        END)) / 100), 2) AS "KGS RECHAZ P.N. FIN",
+    ROUND((cc.total_kgs * cc.`% DEFECTO P.N.`) / 100, 2) AS "KGS RECHAZ P.N. INI.",
+    ROUND(cc.`PRECIO COMPRA`, 2) AS "PRECIO COMPRA",
+    ROUND(cc.`PRECIO VENTA`, 2) AS "PRECIO VENTA",
+    ROUND((cc.`PRECIO VENTA` / cc.t_c), 2) AS "PRECIO X KG",
+    ROUND(((cc.`PRECIO VENTA` / cc.t_c) * 
+        (cc.total_kgs * 
+            (CASE 
+                WHEN cc.`% DEFECTO P.R.` > cv.apoyo_csu_defecto THEN
+                    cc.`% DEFECTO P.R.` - cv.apoyo_csu_defecto
+                ELSE 0
+            END))) / 100, 2) AS "VALOR RECHAZO P.R. FIN",
+    ROUND(((cc.`PRECIO VENTA` / cc.t_c) * 
+        (cc.total_kgs * 
+            (CASE 
+                WHEN cc.`% DEFECTO P.N.` > cc.apoyo_csu_defecto THEN
+                    cc.`% DEFECTO P.N.` - cv.apoyo_csu_defecto
+                ELSE 0
+            END))) / 100, 2) AS "VALOR RECHAZO P.N. FIN",
+    ROUND(((cc.`PRECIO VENTA` / cc.t_c) * 
+        (cc.total_kgs * cc.`% DEFECTO P.N.`)) / 100, 2) AS "VALOR RECHAZO P.N. INI.",
+    ROUND(cc.`TOTAL KG`, 2) AS "KGS BRUTOS",
+    ROUND(cc.tot_flete_inicial, 2) AS "FLETE TOTAL",
+    ROUND((cc.tot_flete_inicial / cc.`TOTAL KG`), 2) AS "FLETE X KG",
+    ROUND(((cc.flete_kg * 
+        (cc.total_kgs * 
+            (CASE 
+                WHEN cc.`% DEFECTO P.R.` > cv.apoyo_csu_defecto THEN
+                    cc.`% DEFECTO P.R.` - cv.apoyo_csu_defecto
+                ELSE 0
+            END))) / 100), 2) AS "VALOR FLETE RECHAZO P.R. FIN",
+    ROUND(((cc.flete_kg * 
+        (cc.total_kgs * 
+            (CASE 
+                WHEN cc.`% DEFECTO P.N.` > cv.apoyo_csu_defecto THEN
+                    cc.`% DEFECTO P.N.` - cv.apoyo_csu_defecto
+                ELSE 0
+            END))) / 100), 2) AS "VALOR FLETE RECHAZO P.N. FIN"
+FROM
+    calidad_valor cv
+JOIN
+    Precalculos cc ON cv.id_control = cc.id_control
+ORDER BY
+    cv.id_cdvalor;
